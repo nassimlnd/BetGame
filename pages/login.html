@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de connexion</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+    <header>
+        <h1 class="titre">BetGame</h1>
+        <nav>
+            <ul class="nav__links">
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="#">Item 2</a></li>
+                <li><a href="#">Item 3</a></li>
+                <li><a href="#">Item 4</a></li>
+            </ul>
+        </nav>
+        <div class="buttons">
+            <a href="login.html" class="signin"><button>Se connecter</button></a>
+            <a href="#" class="signup"><button>S'inscrire</button></a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="title-container">
+            <h1 class="login-title">Connectez-vous !</h1>
+        </div>
+        <form action="test.php" method="post">
+            <label class="subtitle">E-mail</label>
+            <input type="email" name="email" class="input-login" required>
+            <label class="subtitle">Password</label>
+            <input type="password" name="password" class="input-login" required>
+            <button type="submit" id="button-login">Se connecter</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
