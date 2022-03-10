@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page de connexion</title>
-    <link rel="stylesheet" href="../css/login.css">
+    <title>S'inscrire - BetGame</title>
+    <link rel="stylesheet" href="../css/register.css">
 </head>
-
 <body>
 
     <header>
@@ -29,17 +27,24 @@
 
     <div class="container">
         <div class="title-container">
-            <h1 class="login-title">Connectez-vous !</h1>
+            <h1 class="login-title">Inscrivez-vous !</h1>
         </div>
         <form action="test.php" method="post">
-            <label class="subtitle">E-mail</label>
-            <input type="email" name="email" class="input-login" required>
+            <label class="subtitle">Pseudo</label>
+            <input type="text" name="pseudo" class="input-login" required>
             <label class="subtitle">Password</label>
             <input type="password" name="password" class="input-login" required>
+            <label class="subtitle">E-mail</label>
+            <input type="email" name="email" class="input-login" required>
+            <div id="checkbox">
+                <input type="checkbox" name="cgu" required>
+                <label for="cgu" class="cgu">En cochant cette case, vous certifiez avoir lu et accepté les CGU</label>
+            </div>
             <button type="submit" id="button-login">Se connecter</button>
         </form>
     </div>
 
-</body>
 
+    
+</body>
 </html>
