@@ -13,6 +13,7 @@ header {
   padding: 0;
   background-color: #24252a;
   top: 0;
+  z-index: 1;
 }
 
 li,
@@ -91,7 +92,7 @@ header {
   display: flex;
 }
 
-.slider {
+.body-content {
   background-color: red;
   justify-self: center;
   height: 400px;
@@ -164,8 +165,7 @@ header {
 
 /* tooltips nav */
 
-
-.NavToolTip .test_Tooltip_nav{
+.NavToolTip .test_Tooltip_nav {
   opacity: 0%;
   visibility: hidden;
   padding-top: 40px;
@@ -178,7 +178,7 @@ header {
   padding: 5px 0;
   box-shadow: none;
   transition: all ease 1s;
-  
+
   /* Position the tooltip */
   position: absolute;
   top: 100px;
@@ -186,21 +186,134 @@ header {
   margin-left: -60px;
 }
 
-
-#tooltip a{
+#tooltip a {
   display: block;
   width: 150px;
   padding: 5px;
   text-decoration: none;
   text-align: center;
   background-color: #24252a;
-  
 }
 
-#sp:hover .test_Tooltip_nav{
-opacity: 100%;
-visibility: visible;
-  
+#sp:hover .test_Tooltip_nav {
+  opacity: 100%;
+  visibility: visible;
 }
 
+/* Slider */
 
+.banner {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.banner .imgBx {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.banner .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: 0.5s;
+  background-position: center;
+}
+
+.banner .imgBx img.active {
+  opacity: 1;
+}
+
+.controls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  width: 80px;
+}
+
+.controls li {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background: #fff;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.controls li:hover {
+  background: #ffeb3b;
+}
+
+.controls li::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-left: 3px solid #111;
+  border-bottom: 3px solid #111;
+  transform: rotate(45deg);
+}
+
+.controls li:nth-child(2)::before {
+  transform: rotate(225deg);
+}
+
+.contentBx {
+  position: absolute;
+  bottom: 0;
+  max-width: 700px;
+}
+
+.contentBx div {
+  display: none;
+}
+
+.contentBx div.active {
+  display: block;
+  padding-left: 30px;
+  padding-top: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+  margin-left: 100px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.contentBx div h2 {
+  color: #fff;
+  font-size: 2em;
+  font-weight: bold;
+  font-family: "Montserrat";
+  margin-bottom: 10px;
+}
+
+.contentBx div p {
+  color: #111;
+  font-size: 1.1em;
+  font-family: "Montserrat";
+  margin-bottom: 25px;
+}
+
+.contentBx div a {
+  color: #111;
+  font-size: 1.1em;
+  display: inline-block;
+  padding-left: 10px 30px;
+  padding: 10px 10px 10px 10px;
+  background: #fff;
+  margin-top: 10px;
+  font-family: "Montserrat";
+}

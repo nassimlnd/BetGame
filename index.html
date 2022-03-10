@@ -44,20 +44,17 @@
         <nav>
             <ul class="nav__links">
                 <li><a href="index.html">Accueil</a></li>
-
-              <li id="sp"><a href="#">Choisir un sport</a>
+                <li id="sp"><a href="#">Choisir un sport</a>
                     <div class="NavToolTip">
                          <div class="test_Tooltip_nav">
                             <ul>
-                                <li id="tooltip"> <a href="../BetGame/pages/basket.html">Basket-ball</a></li>
-                                <li id="tooltip"> <a href="../BetGame/pages/foot.html">Foot-ball</a></li>
-                                <li id="tooltip"> <a href="../BetGame/pages/hockey.html">Hockey-ball</a></li>
+                                <li id="tooltip"> <a href="pages/basket.html">Basket-ball</a></li>
+                                <li id="tooltip"> <a href="pages/foot.html">Foot-ball</a></li>
+                                <li id="tooltip"> <a href="pages/hockey.html">Hockey-ball</a></li>
                             </ul>
                          </div>
                     </div>
                 </li>
-            
-
                 <li><a href="#">Item 3</a></li>
                 <li><a href="pages/quisommesnous.html">Qui sommes nous ?</a></li>
             </ul>
@@ -70,20 +67,49 @@
 
    
 
-    <div class="slider">
+    <section class="banner">
+        <div class="imgBx">
+            <img src="images/img1.jpg" class="active">
+            <img src="images/img2.jpg">
+            <img src="images/img3.jpg">
+            <img src="images/img4.jpg">
+        </div>
+        <ul class="controls">
+            <li onclick="previousSlide();"></li>
+            <li onclick="nextSlide();"></li>
+        </ul>
+
+        <div class="contentBx">
+            <div class="active">
+                <h2>Slide 1</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, accusantium non. Enim ducimus commodi repellendus maxime consequatur doloribus quasi aliquam.</p>
+                <a href="#">Details</a>
+            </div>
+            <div>
+                <h2>Slide 2</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, accusantium non. Enim ducimus commodi repellendus maxime consequatur doloribus quasi aliquam.</p>
+                <a href="#">Details</a>
+            </div>
+            <div>
+                <h2>Slide 3</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, accusantium non. Enim ducimus commodi repellendus maxime consequatur doloribus quasi aliquam.</p>
+                <a href="#">Details</a>
+            </div>
+            <div>
+                <h2>Slide 4</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, accusantium non. Enim ducimus commodi repellendus maxime consequatur doloribus quasi aliquam.</p>
+                <a href="#">Details</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="body-content">
+
     </div>
-
-    <div class="body content">
-
-    </div>
-
-
-    <script type="module" src="js/index.js"></script>
-
    
 
 
-
+    <script type="text/javascript" src="js/index.js"></script>
 </body>
 
 </html>
