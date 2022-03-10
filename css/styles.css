@@ -166,21 +166,23 @@ header {
 
 
 .NavToolTip .test_Tooltip_nav{
+  opacity: 0%;
+  visibility: hidden;
+  padding-top: 40px;
   list-style-type: none;
   margin: 0;
   padding: 10px;
-  display: none;
   width: 120px;
   color: #fff;
   text-align: center;
   padding: 5px 0;
   box-shadow: none;
+  transition: all ease 1s;
   
   /* Position the tooltip */
   position: absolute;
-  z-index: 1;
   top: 100px;
-  left: 37.5%;
+  left: 36.5%;
   margin-left: -60px;
 }
 
@@ -195,8 +197,9 @@ header {
   
 }
 
-.NavToolTip:hover .test_Tooltip_nav{
-  display: block;
+#sp:hover .test_Tooltip_nav{
+opacity: 100%;
+visibility: visible;
   
 }
 
