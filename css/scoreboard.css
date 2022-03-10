@@ -1,5 +1,6 @@
 @import url("base.css");
 @import url("reset.css");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 body {
   margin: 0;
@@ -104,8 +105,8 @@ header {
 .container {
   background-color: white;
   justify-self: center;
-  height: 500px;
-  width: 50%;
+  height: fit-content;
+  width: fit-content;
   margin: auto;
   margin-top: 150px;
   border-radius: 15px;
@@ -161,44 +162,43 @@ header {
   width: auto;
 }
 
-
 /*                       Scoreboard                       */
-.table_style{
+
+.table_style {
   border-collapse: collapse;
   min-width: 900px;
   width: auto;
-  box-shadow: 0 5px 50px rgba(16, 4, 82, 0.15) ;
   cursor: pointer;
-  margin: 50px auto ;
-  
+  margin: 50px auto;
   border: 2px solid rgb(0, 0, 0);
 }
- 
-thead tr{
- background-color: ghostwhite;
- 
+
+thead tr {
+  background-color: ghostwhite;
 }
-td{
+
+td {
   padding: 20px 20px;
   border-bottom: 1px #ddd solid;
 }
-.classment_col{
+
+.classment_col {
   border: 0.5px solid #ddd;
 }
-.classment_coln1{
+
+.classment_coln1 {
   border: 0.5px solid #ddd;
   background: grey;
   color: #ddd;
 }
-.n1{
+
+.n1 {
   color: #ddd;
   background: grey;
 }
-.classement_tiltler{
-  
-  margin-top: 125px;
+
+.classement_tiltler {
   text-align: center;
-  font-size: 100px;
-  font-family: 'Courier New';
-  
+  font-size: 64px;
+  font-family: "Montserrat";
 }
