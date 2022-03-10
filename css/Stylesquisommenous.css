@@ -189,10 +189,23 @@ img{
     margin-left: 100px;
     max-width: 10%;
     max-height: 10%;
+     
   }
-.image p{
+.textsousimage span{
+  margin-left: 105px;
+
     
-    margin-left: 100px;
-    max-width: 10%;
-    max-height: 10%;
   }
+  .textsousimage2 span{
+    margin-left: 755px;
+    margin-top: -200px;
+  
+      
+    }
+    .textsousimage3 span{
+      margin-left: 1030px;
+    
+        
+      }
+
+ 
