@@ -1,0 +1,73 @@
+@import url("base.css");
+@import url("reset.css");
+@import url("styles.css");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+
+.container{
+    height: 175%;
+}
+#tableM{
+    background-color: #fff;
+    padding: 30px;
+    margin-bottom: 50px;
+    border-radius: 15px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+#title{
+    font-family: "Montserrat";
+}
+
+.teammate figcaption {
+    text-align: center;
+    margin-top: 10px;
+    font-family: "Montserrat";
+}
+
+.score1{
+    font-family: "Montserrat";
+    float: left;
+}
+
+.score2{
+    font-family: "Montserrat";
+    float: right;
+}
+
+.score{
+    font-size: 40px;
+    
+}
+
+#scoresOverview{
+ width: 200px;
+ text-align: center;
+ border-left: 2px solid black;
+ border-right: 2px solid black;
+}
+
+
+#pari{
+    padding-top: 20px;
+    padding: 7px 35px;
+    background-color: #24252a;
+    border: 1px solid #3d5cb2;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.5s ease 0s;
+}
+
+#pari:hover {
+    background-color: #3d5cb2;
+  }
+
+#th{
+    position: center;
+    font-family: "Montserrat";
+    padding: 25px;
+}
+  
+#foot{
+    padding-top: 25px;
+    position: center;
+}
