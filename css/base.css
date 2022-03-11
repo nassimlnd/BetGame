@@ -1,10 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
 body {
-  font-family: "eesti";
+  font-family: "Montserrat";
   font-size: 16px;
-  background: #fdfdfd;
+  background: #efefef;
   font-family: "Fanwood Text", serif;
 }
-
 
 h1,
 h2,
@@ -12,6 +13,7 @@ h3,
 h4 {
   font-family: "Tenor Sans", sans-serif;
 }
+
 /* tooltips nav */
 
 .NavToolTip .test_Tooltip_nav {
@@ -47,4 +49,48 @@ h4 {
 #sp:hover .test_Tooltip_nav {
   opacity: 100%;
   visibility: visible;
+}
+
+/* Footer */
+
+footer {
+  background-color: #24252a;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  font-family: "Montserrat";
+  margin-top: 100px;
+  padding-left: 350px;
+  padding-right: 350px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+footer ul li {
+  margin-top: 5px;
+}
+
+footer .copyright {
+  text-align: center;
+  font-family: "Montserrat";
+  color: white;
+}
+
+footer .middle {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+footer .right {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+footer .left {
+  grid-column: 1;
+  grid-row: 1;
 }
