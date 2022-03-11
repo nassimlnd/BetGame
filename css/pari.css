@@ -5,6 +5,7 @@
 body {
   margin: 0;
   margin-top: 90px;
+  background-color: #efefef;
 }
 
 header {
@@ -25,93 +26,10 @@ button {
   text-decoration: none;
 }
 
-#titre{
-    font-size: 50px;
-    text-align: center;
-    
-    position: relative;
-    top: 95px;
-    color: white;
+.carre {
+  font-family: "Montserrat";
+}
 
-}
-#cote1{
-    height: 45%;
-    width: 14%;
-    position:absolute;
-    margin-top: 100px;
-    margin-left: 80px;
-}
-#cote2{
-    height: 45%;
-    width: 14%;
-    position:absolute;
-    margin-top: 100px;
-    left: 1300px;
-}
-#combat1{
-    position: absolute;
-    color: white;
-    margin-left:150px;
-    margin-top: 50px;
-    font-size: 30px;
-
-}
-#combat2{
-    color: white;
-    margin-left: 1150px;
-    position: absolute;
-    margin-top: 50px;
-    font-size: 30px;
-}
-#vs{
-    font-size: 150px;
-    text-align: center;
-    color: white;
-    padding-top: 60px;   
-   
-}
-#poid{
-    color: white;
-    text-align: center;
-    padding-top: 5px;
-    font-size: 35px;
-}
-#taille{
-    color: white;
-    text-align: center;
-    padding-top: 25px;
-    font-size: 35px;
-}
-#score{
-    color: white;
-    text-align: center;
-    padding-top: 25px;
-    font-size: 35px;
-}
-#cote{
-    color: white;
-    text-align: center;
-    padding-top: 25px;
-    font-size: 35px;
-}
-#btn1{
-    position: absolute;
-    padding-top: 60px;
-    padding-left: 200px;
-}
-#btn2{
-    position: absolute;
-    padding-left: 1220px;
-    padding-top: 60px;
-}
-#submit{
-    color:black;
-    position: relative;
-    left: 935px;
-    top: 10px;
-    background-color: rgb(168, 168, 168);
-
-}
 header {
   display: flex;
   justify-content: space-between;
@@ -189,18 +107,20 @@ header {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-.container {
+.container-principal {
   background-color: white;
   justify-self: center;
-  height: 500px;
-  width: 50%;
+  height: fit-content;
+  width: 1200px;
   margin: auto;
   margin-top: 150px;
   border-radius: 15px;
   text-align: center;
-  padding: 50px;
-  align-items: center;
+  padding: 50px 50px 50px 50px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
 }
 
 .input-login {
@@ -251,8 +171,7 @@ header {
 
 /* tooltips nav */
 
-
-.NavToolTip .test_Tooltip_nav{
+.NavToolTip .test_Tooltip_nav {
   list-style-type: none;
   margin: 0;
   padding: 10px;
@@ -262,7 +181,7 @@ header {
   text-align: center;
   padding: 5px 0;
   box-shadow: none;
-  
+
   /* Position the tooltip */
   position: absolute;
   z-index: 1;
@@ -271,20 +190,111 @@ header {
   margin-left: -60px;
 }
 
-
-#tooltip a{
+#tooltip a {
   display: block;
   width: 150px;
   padding: 5px;
   text-decoration: none;
   text-align: center;
   background-color: #24252a;
-  
 }
 
-.NavToolTip:hover .test_Tooltip_nav{
+.NavToolTip:hover .test_Tooltip_nav {
   display: block;
-  
 }
 
+/* Container du pari */
 
+h1 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.gauche {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.container-principal figure {
+  height: fit-content;
+  width: 100%;
+  padding: 20px;
+  margin: 0;
+  text-align: center;
+  background-color: #edf0f1;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.container-principal figure .image {
+  height: 100%;
+  max-height: 300px;
+  max-width: 300px;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
+.milieu {
+  grid-column: 2;
+  grid-row: 2;
+  margin-top: 40%;
+}
+
+.milieu p {
+  font-family: "Montserrat";
+  font-size: 32px;
+  margin-top: 10px;
+}
+
+.droit {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.container-principal div {
+  width: 100%;
+}
+
+.container-principal h1 {
+  margin: auto;
+  margin-bottom: 50px;
+  width: 60%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 48px;
+  font-family: "Montserrat";
+}
+
+.titreequipe {
+  margin-bottom: 10px;
+  font-family: "Montserrat";
+  font-size: 24px;
+}
+
+.btnmise {
+  background: #3d5cb2;
+  padding: 10px;
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 25px;
+}
+
+/* Details du pari */
+
+.container {
+  background-color: white;
+  justify-self: center;
+  height: fit-content;
+  width: 1200px;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 15px;
+  text-align: center;
+  padding: 50px;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(0.5fr);
+}
