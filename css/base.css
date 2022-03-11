@@ -5,13 +5,13 @@ body {
   font-family: "Fanwood Text", serif;
 }
 
-
 h1,
 h2,
 h3,
 h4 {
   font-family: "Tenor Sans", sans-serif;
 }
+
 /* tooltips nav */
 
 .NavToolTip .test_Tooltip_nav {
@@ -47,4 +47,43 @@ h4 {
 #sp:hover .test_Tooltip_nav {
   opacity: 100%;
   visibility: visible;
+}
+
+/* Footer */
+
+footer {
+  background-color: #24252a;
+  font-family: "Montserrat";
+  margin-top: 100px;
+  padding-left: 350px;
+  padding-right: 350px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+footer ul li {
+  margin-top: 5px;
+}
+
+footer .copyright {
+  text-align: center;
+  color: white;
+}
+
+footer .middle {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+footer .right {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+footer .left {
+  grid-column: 1;
+  grid-row: 1;
 }
