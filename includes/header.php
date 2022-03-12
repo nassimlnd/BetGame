@@ -5,7 +5,7 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 if ($curPageName == "index.php") {
 ?>
     <header>
-        <a href="index.php"><img src="images/logo_gif.gif" alt="Logo" id="logo"></a>
+        <a href="index.php"><img src="images/logo.png" alt="Logo" id="logo"></a>
         <nav>
             <ul class="nav__links">
                 <li><a href="index.php">Accueil</a></li>
