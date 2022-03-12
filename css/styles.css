@@ -26,6 +26,8 @@ button {
   text-decoration: none;
 }
 
+/* Header */
+
 header {
   display: flex;
   justify-content: space-between;
@@ -91,6 +93,15 @@ header {
 .buttons {
   display: flex;
 }
+
+.username {
+  color: white;
+  font-family: "Montserrat";
+  margin-right: 15px;
+  margin-top: 10px;
+}
+
+/* Body */
 
 .body-content {
   background-color: red;

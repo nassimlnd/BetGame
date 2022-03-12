@@ -39,73 +39,50 @@
 
 <body>
 
-    <header>
-        <a href="../index.html"><img src="../images/logo_gif.gif" alt="Logo" id="logo"></a>
-        <nav>
-            <ul class="nav__links">
-                <li><a href="../index.html">Accueil</a></li>
-                <li id="sp"><a href="#">Choisir un sport</a>
-                    <div class="NavToolTip">
-                         <div class="test_Tooltip_nav">
-                            <ul>
-                                <li id="tooltip"> <a href="basket.html">Basket-ball</a></li>
-                                <li id="tooltip"> <a href="foot.html">Foot-ball</a></li>
-                                <li id="tooltip"> <a href="hockey.html">Hockey</a></li>
-                                <li id="tooltip"> <a href="../pages/UFC.html">UFC</a></li>
-                            </ul>
-                         </div>
-                    </div>
-                </li>
-                <li><a href="scoreboard.html">Classement</a></li>
-                <li><a href="quisommesnous.html">Qui sommes nous ?</a></li>
-            </ul>
-        </nav>
-        <div class="buttons">
-            <a href="login.html" class="signin"><button>Se connecter</button></a>
-            <a href="register.html" class="signup"><button>S'inscrire</button></a>
-        </div>
-    </header>
+    <?php
+    include("../includes/header.php");
+    ?>
 
     <div class="container">
         <h1>Qui somme nous ?</h1>
         <h2 id="jcvd">Buvez de l'eau, dans 20/30 ans y'en aura plus !</h2>
         <div class="team">
             <figure class="teammate">
-                <img src="../images/pdpqui.png" alt="pdp" id="pdp" >
+                <img src="../images/pdpqui.png" alt="pdp" id="pdp">
                 <figcaption>LOUNADI Nassim</figcaption>
             </figure>
 
             <figure class="teammate">
-                <img src="../images/pdpqui.png" alt="pdp" id="pdp" >
+                <img src="../images/pdpqui.png" alt="pdp" id="pdp">
                 <figcaption>NERON Martin</figcaption>
             </figure>
 
             <figure class="teammate">
-                <img src="../images/pdpqui.png" alt="pdp" id="pdp" >
+                <img src="../images/pdpqui.png" alt="pdp" id="pdp">
                 <figcaption>BUREAU Baptiste</figcaption>
             </figure>
 
             <figure class="teammate">
-                <img src="../images/pdpqui.png" alt="pdp" id="pdp" >
+                <img src="../images/pdpqui.png" alt="pdp" id="pdp">
                 <figcaption>JACQUEMAIN Arthur</figcaption>
             </figure>
 
             <figure class="teammate">
-                <img src="../images/pdpqui.png" alt="pdp" id="pdp" >
+                <img src="../images/pdpqui.png" alt="pdp" id="pdp">
                 <figcaption>MOUTSOURAEV Magomed</figcaption>
-            </figure> 
+            </figure>
         </div>
-        
+
         <div class="text">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis eros a posuere facilisis. Phasellus sodales, augue non maximus luctus, mauris tortor dapibus felis, a commodo felis augue non purus. Quisque fermentum feugiat elit, quis aliquam enim ultrices at. Aliquam cursus sapien magna, ultricies molestie magna tempus sed. Nam nec mi nec est elementum viverra. Sed est dui, efficitur quis felis at, condimentum tristique lectus. Morbi sed lacus tempor, placerat mi quis, tincidunt sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae suscipit risus. Morbi dignissim eu ipsum non aliquet. Nam ornare, nunc ac mattis pellentesque, diam orci convallis nisl, id sodales erat libero a nulla. In hac habitasse platea dictumst. Maecenas volutpat lacus sollicitudin, ornare erat sit amet, sodales sapien.</p>
 
         </div>
 
     </div>
-  
+
 
     <script type="module" src="js/index.js"></script>
-    
+
 </body>
 
 

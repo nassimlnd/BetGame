@@ -39,34 +39,10 @@
 
 <body>
 
-    <header>
-        <a href="index.html"><img src="images/logo_gif.gif" alt="Logo" id="logo"></a>
-        <nav>
-            <ul class="nav__links">
-                <li><a href="index.html">Accueil</a></li>
-                <li id="sp"><a href="#">Choisir un sport</a>
-                    <div class="NavToolTip">
-                         <div class="test_Tooltip_nav">
-                            <ul>
-                                <li id="tooltip"> <a href="pages/basket.html">Basket-ball</a></li>
-                                <li id="tooltip"> <a href="pages/foot.html">Foot-ball</a></li>
-                                <li id="tooltip"> <a href="pages/hockey.html">Hockey-ball</a></li>
-                                <li id="tooltip"> <a href="../BetGame/pages/UFC.html">UFC</a></li>
-                            </ul>
-                         </div>
-                    </div>
-                </li>
-                <li><a href="pages/scoreboard.html">Classement</a></li>
-                <li><a href="pages/quisommesnous.html">Qui sommes nous ?</a></li>
-            </ul>
-        </nav>
-        <div class="buttons">
-            <a href="pages/login.html" class="signin"><button>Se connecter</button></a>
-            <a href="pages/register.html" class="signup"><button>S'inscrire</button></a>
-        </div>
-    </header>
+    <?php
 
-   
+    include('includes/header.php');
+    ?>
 
     <section class="banner">
         <div class="imgBx">
@@ -107,7 +83,7 @@
     <div class="body-content">
 
     </div>
-   
+
 
 
     <script type="text/javascript" src="js/index.js"></script>

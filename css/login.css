@@ -161,3 +161,19 @@ header {
   height: auto;
   width: auto;
 }
+
+/* Error */
+
+.errorbox {
+  background-color: red;
+  border-radius: 10px;
+  width: fit-content;
+  margin: auto;
+  padding: 10px;
+  margin-bottom: 25px;
+  font-family: "Montserrat";
+}
+
+.errorbox .error {
+  color: white;
+}

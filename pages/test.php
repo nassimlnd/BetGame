@@ -11,7 +11,9 @@
 
 <body>
 
-    <?php include("../html/header.php"); ?>
+    <?php
+    include("../includes/header.php");
+    ?>
 
     <div class="container">
         <p>

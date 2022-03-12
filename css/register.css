@@ -114,11 +114,11 @@ header {
   border-radius: 15px;
   text-align: center;
   padding: 50px;
-  align-items: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  align-items: center;
 }
 
-.input-login {
+.input-register {
   background-color: white;
   padding: 10px 10px;
   border-radius: 15px;
@@ -131,7 +131,7 @@ header {
   font-family: "Montserrat";
 }
 
-.input-login:hover {
+.input-register:hover {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
@@ -140,7 +140,7 @@ header {
   font-size: 18px;
 }
 
-#button-login {
+#button-register {
   margin: auto;
   padding: 9px 25px;
   background-color: #3d5cb2;
@@ -148,27 +148,32 @@ header {
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.5s ease 0s;
-  margin-top: 50px;
+  margin-top: 25px;
 }
 
-.login-title {
-  margin-bottom: 50px;
-  font-size: 32px;
+.cgu {
+  margin: auto;
+  text-align: center;
+  width: 50%;
   font-family: "Montserrat";
 }
 
-#checkbox {
-  display: grid;
+.linkcgu {
+  color: #3d5cb2;
 }
 
-#checkbox label {
-  grid-column: 2;
-  grid-row: 1;
+/* Error */
+
+.errorbox {
+  background-color: red;
+  border-radius: 10px;
+  width: fit-content;
+  margin: auto;
+  padding: 10px;
+  margin-bottom: 25px;
+  font-family: "Montserrat";
 }
 
-#checkbox input {
-  align-content: flex-end;
-  margin-top: 5px;
-  grid-column: 1;
-  grid-row: 1;
+.errorbox .error {
+  color: white;
 }

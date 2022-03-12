@@ -1,5 +1,11 @@
+<?php
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php?log_error=notconnected");
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,34 +16,9 @@
 
 <body>
 
-    <header>
-        <a href="../index.html"><img src="../images/logo_gif.gif" alt="Logo" id="logo"></a>
-        <nav>
-            <ul class="nav__links">
-                <li><a href="../index.html">Accueil</a></li>
-
-              <li><a href="#">Choisir un sport</a>
-                    <div class="NavToolTip">
-                         <div class="test_Tooltip_nav">
-                            <ul>
-                                <li id="tooltip"> <a href="basket.html">Basket-ball</a></li>
-                                <li id="tooltip"> <a href="foot.html">Foot-ball</a></li>
-                                <li id="tooltip"> <a href="hockey.html">Hockey-ball</a></li>
-                            </ul>
-                         </div>
-                    </div>
-                </li>
-            
-
-                <li><a href="scoreboard.html">Classement</a></li>
-                <li><a href="quisommesnous.html">Qui sommes nous ?</a></li>
-            </ul>
-        </nav>
-        <div class="buttons">
-            <a href="login.html" class="signin"><button>Se connecter</button></a>
-            <a href="register.html" class="signup"><button>S'inscrire</button></a>
-        </div>
-    </header>
+    <?php
+    include("../includes/header.php");
+    ?>
 
     <div class="container-principal">
         <h1>Pari :</h1>
@@ -45,12 +26,12 @@
         <div class="gauche">
             <figure>
                 <figcaption class="titreequipe">Conor MCGREGOR</figcaption>
-                <img src="../images/conor.jpg" alt="gauche" class="image" >
+                <img src="../images/conor.jpg" alt="gauche" class="image">
             </figure>
             <p class="cote">Cote : 2.00</p>
             <button class="btnmise">Miser</button>
         </div>
-        
+
         <div class="milieu">
             <p id="vs">-</p>
         </div>
@@ -115,24 +96,5 @@
 
     <script type="module" src="js/index.js"></script>
 </body>
-
-<footer>
-    <div class="left">
-        <ul>
-            <li>Lien1</li>
-            <li>Lien1</li>
-            <li>Lien1</li>
-            <li>Lien1</li>
-        </ul>
-    </div>
-
-    <div class="middle">
-        <p class="copyright">Copyright</p>
-    </div>
-    
-    <div class="right">
-
-    </div>
-</footer>
 
 </html>

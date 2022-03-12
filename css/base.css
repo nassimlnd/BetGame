@@ -94,3 +94,78 @@ footer .left {
   grid-column: 1;
   grid-row: 1;
 }
+
+/* Header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 10%;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.titre {
+  font-family: "Montserrat";
+  color: #edf0f1;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.nav__links {
+  list-style: none;
+}
+
+.nav__links li {
+  display: inline-block;
+  padding: 0 20px;
+}
+
+.nav__links li a {
+  transition: all 0.3s ease 0s;
+}
+
+.nav__links li a:hover {
+  color: #3d5cb2;
+}
+
+.signin {
+  padding: 9px 25px;
+  background-color: #3d5cb2;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.5s ease 0s;
+  margin-right: 25px;
+  border: 1pt solid #3d5cb2;
+}
+
+.signin:hover {
+  background-color: #24252a;
+}
+
+.signup {
+  padding: 9px 25px;
+  background-color: #24252a;
+  border: 1px solid #3d5cb2;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.5s ease 0s;
+}
+
+.signup:hover {
+  background-color: #3d5cb2;
+}
+
+.buttons {
+  display: flex;
+}
+
+.username {
+  color: white;
+  font-family: "Montserrat";
+  margin-right: 15px;
+  margin-top: 10px;
+}
