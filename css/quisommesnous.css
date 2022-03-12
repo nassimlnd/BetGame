@@ -151,19 +151,6 @@ header {
   margin-top: 50px;
 }
 
-.login-title {
-  margin-bottom: 50px;
-  font-size: 32px;
-  font-family: "Montserrat";
-}
-
-#logo {
-  max-height: 50px;
-  max-width: 100px;
-  height: auto;
-  width: auto;
-}
-
 h1 {
   margin: auto;
   margin-bottom: 50px;

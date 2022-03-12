@@ -162,20 +162,13 @@ header {
   font-family: "Montserrat";
 }
 
-#logo {
-  max-height: 50px;
-  max-width: 100px;
-  height: auto;
-  width: auto;
-}
-
 /* tooltips nav */
 
 .NavToolTip .test_Tooltip_nav {
   list-style-type: none;
   margin: 0;
   padding: 10px;
-  display: none;
+  display: block;
   width: 120px;
   color: #fff;
   text-align: center;
@@ -186,7 +179,7 @@ header {
   position: absolute;
   z-index: 1;
   top: 100px;
-  left: 37.5%;
+  left: 36%;
   margin-left: -60px;
 }
 
@@ -201,6 +194,7 @@ header {
 
 .NavToolTip:hover .test_Tooltip_nav {
   display: block;
+  z-index: 1000;
 }
 
 /* Container du pari */
