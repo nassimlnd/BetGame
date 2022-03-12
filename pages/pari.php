@@ -1,9 +1,8 @@
 <?php
-
 session_start();
 
 if (!isset($_SESSION['user'])) {
-    header("Location: login.php?log_error=notconnected");
+    echo $_SESSION['user'];
 }
 ?>
 <!DOCTYPE html>
