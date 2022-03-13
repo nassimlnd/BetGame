@@ -16,17 +16,40 @@
     ?>
 
     <div class="container">
-        <p>
-            <?php
-            if (isset($_POST['email']) && isset($_POST['password'])) {
-                echo "Connexion effectuée ✅ <br>" . $_POST['email'] . $_POST['password'];
-            } else {
-            }
-            ?>
+        <?php $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://v3.football.api-sports.io/fixtures?league=39&season=2021&status=ns&team=47',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+                'x-rapidapi-key: 21c977b6cc86dbabbc7661ea2e437cdf'
+            ),
+        ));
+        $response = curl_exec($curl);
+        curl_close($curl);
+
+        $someArray = json_decode($response, true);
+        //print_r($someArray);
+
+        /*for ($i = 0; $i < 20; $i++) {
+            echo $someArray["response"][$i]['team']['name'] . ' / ';
+        }*/
+
+        $pathlogo = $someArray["response"][0]["teams"]['home']["logo"];
+
+        ?> <img src="<?= $pathlogo ?>" alt="logo">
+
+        <?php
 
 
 
-        </p>
+
+        ?>
     </div>
 
 </body>

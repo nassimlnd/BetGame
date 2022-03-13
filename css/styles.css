@@ -120,7 +120,7 @@ header {
   height: 500px;
   width: 50%;
   margin: auto;
-  margin-top: 150px;
+  margin-top: 100px;
   border-radius: 15px;
   text-align: center;
   padding: 50px;
@@ -167,13 +167,6 @@ header {
   font-family: "Montserrat";
 }
 
-#logo {
-  max-height: 50px;
-  max-width: 100px;
-  height: auto;
-  width: auto;
-}
-
 /* tooltips nav */
 
 .NavToolTip .test_Tooltip_nav {
@@ -192,8 +185,7 @@ header {
 
   /* Position the tooltip */
   position: absolute;
-  top: 100px;
-  left: 35%;
+  left: 36%;
   margin-left: -60px;
 }
 
