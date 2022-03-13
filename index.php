@@ -58,18 +58,18 @@
 
         <div class="contentBx">
             <div class="active">
-                <h2>Slide 1</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, accusantium non. Enim ducimus commodi repellendus maxime consequatur doloribus quasi aliquam.</p>
-                <a href="#">Details</a>
+                <h2>Bientot Disponible</h2>
+                <p>Télécharger notre Application BetGame, bientot disponible sur toutes les platfforme : ios , android , windows store ! Regarder les match et vos paris directement sur votre smartphone !</p>
+                <a href="#">Bientot !</a>
             </div>
             <div>
-                <h2>Slide 2</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, accusantium non. Enim ducimus commodi repellendus maxime consequatur doloribus quasi aliquam.</p>
-                <a href="#">Details</a>
+                <h2>En savoir plus sur les match</h2>
+                <p>Vous pouvez suivres tout les match sur notre site web et très bientot sur notre apllication ! </p>
+                <a href="#">En savoir plus</a>
             </div>
             <div>
-                <h2>Slide 3</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, accusantium non. Enim ducimus commodi repellendus maxime consequatur doloribus quasi aliquam.</p>
+                <h2>Les prix</h2>
+                <p>Les prix change tout les mois, seul les 5 premiers du classement seront éligible à un prix, bonne chance a tout n'aux parieur !</p>
                 <a href="#">Details</a>
             </div>
             <div>
