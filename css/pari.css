@@ -210,7 +210,6 @@ h1 {
 }
 
 .container-principal figure {
-  height: fit-content;
   width: 100%;
   padding: 20px;
   margin: 0;
@@ -218,12 +217,13 @@ h1 {
   background-color: #edf0f1;
   border-radius: 10px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  height: 400px;
+  max-height: 600px;
 }
 
 .container-principal figure .image {
-  height: 100%;
-  max-height: 300px;
   max-width: 300px;
+  max-height: 300px;
   margin-left: 10px;
   border-radius: 10px;
 }

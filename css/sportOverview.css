@@ -4,24 +4,70 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 .container {
+<<<<<<< Updated upstream
   height: fit-content;
   width: fit-content;
+=======
+  margin-top: 100px;
+  height: fit-content;
+>>>>>>> Stashed changes
 }
-#tableM {
+
+.container-match {
   background-color: #fff;
   padding: 30px;
+  width: 100%;
+  height: 100%;
   margin-bottom: 50px;
+  padding-bottom: 50px;
   border-radius: 15px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 3fr 1fr;
 }
-#title {
+
+.left {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.middle {
+  grid-column: 2;
+  grid-row: 2;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.middle .text {
+  margin-top: 40%;
   font-family: "Montserrat";
 }
 
-.teammate figcaption {
+.middle p {
+}
+
+.right {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.titre-match {
+  grid-column: 2;
+  grid-row: 1;
+  font-family: "Montserrat";
+  font-size: 20px;
+}
+
+.team figcaption {
   text-align: center;
   margin-top: 10px;
   font-family: "Montserrat";
+}
+
+.team img {
+  height: 150px;
+  width: 150px;
 }
 
 .score1 {
@@ -45,14 +91,26 @@
   border-right: 2px solid black;
 }
 
+.lien {
+  grid-column: 1;
+  grid-row: 3;
+  width: fit-content;
+  height: fit-content;
+  margin-top: 40px;
+  margin-left: 30px;
+}
+
 #pari {
   padding-top: 20px;
   padding: 7px 35px;
+  width: fit-content;
   background-color: #24252a;
   border: 1px solid #3d5cb2;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.5s ease 0s;
+  grid-column: 1;
+  grid-row: 3;
 }
 
 #pari:hover {

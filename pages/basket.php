@@ -54,6 +54,7 @@
             </ul>
         </aside>
     </div>
+<<<<<<< Updated upstream
 
 
     <main class="main">
@@ -428,8 +429,63 @@
 
 
 
+=======
+>>>>>>> Stashed changes
 
 
+    <main class="main">
+        <div class="container">
+
+            <?php
+
+            if (isset($_GET['league'])) {
+                $ligue = htmlspecialchars($_GET['league']);
+
+                $filename = '../json/' . $ligue . '.json';
+                $someArray = file_get_contents($filename);
+
+                $someArray = json_decode($someArray, true);
+
+                for ($i = 0; $i < count($someArray['response']); $i++) {
+                    if ($someArray['response'][$i]['status']['long'] == "Not Started") {
+                        $nameteamhome = $someArray['response'][$i]['teams']['home']['name'];
+                        $nameteamaway = $someArray['response'][$i]['teams']['away']['name'];
+
+                        $logoteamhome = $someArray['response'][$i]['teams']['home']['logo'];
+                        $logoteamaway = $someArray['response'][$i]['teams']['away']['logo'];
+
+
+                        //echo '<div class="container">';
+                        echo '<div class="container-match">';
+                        echo '<h1 class="titre-match">Match du jour</h1>';
+                        echo '<div class="left">';
+                        echo '<figure class="team">';
+                        echo '<img src="' . $logoteamhome . '" alt="teamhome">';
+                        echo '<figcaption class="">' . $nameteamhome . '</figcaption>';
+                        echo '</figure>';
+                        echo '</div>';
+                        echo '<div class="middle">';
+                        echo '<div class="text">';
+                        echo '<p>Date :</p>';
+                        echo '<p>-</p>';
+                        echo '<p>Heure :</p>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '<div class="right">';
+                        echo '<figure class="team">';
+                        echo '<img src="' . $logoteamaway . '" alt="teamhome">';
+                        echo '<figcaption class="">' . $nameteamaway . '</figcaption>';
+                        echo '</figure>';
+                        echo '</div>';
+                        echo '<a class="lien" href="../pages/pari.php?matchid=' . $someArray['response'][$i]['id'] . '&sport=basket&league=' . $ligue . '"><button id="pari">Parier</button></a>';
+                        echo '</div>';
+                    }
+                }
+            } else {
+                header("Location: basket.php?league=nba");
+            }
+            ?>
+        </div>
 
 </body>
 
