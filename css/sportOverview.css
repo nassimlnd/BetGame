@@ -4,13 +4,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 .container {
-<<<<<<< Updated upstream
-  height: fit-content;
-  width: fit-content;
-=======
   margin-top: 100px;
   height: fit-content;
->>>>>>> Stashed changes
 }
 
 .container-match {

@@ -16,12 +16,8 @@
     ?>
 
     <div class="container">
-<<<<<<< Updated upstream
-        <?php $curl = curl_init();
-=======
         <?php
         /*$curl = curl_init();
->>>>>>> Stashed changes
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'https://v3.football.api-sports.io/fixtures?league=39&season=2021&status=ns&team=47',
             CURLOPT_RETURNTRANSFER => true,
@@ -56,42 +52,36 @@
 
 
         ?>
-=======
-        for ($i = 0; $i < 20; $i++) {
-            echo $someArray["response"][$i]['team']['name'] . ' / ';
-        }
+        =======
+        for ($i = 0; $i < 20; $i++) { echo $someArray["response"][$i]['team']['name'] . ' / ' ; } $pathlogo=$someArray["response"][0]["teams"]['home']["logo"]; ?> <img src="<?= $pathlogo ?>" alt="logo">*/
 
-        $pathlogo = $someArray["response"][0]["teams"]['home']["logo"];
-
-        ?> <img src="<?= $pathlogo ?>" alt="logo">*/
-
-        ?>
+            ?>
 
 
-        <div class="container-match">
-            <h1 class="titre-match">Match du jour</h1>
-            <div class="left">
-                <figure class="team">
-                    <img src="../images/pdpqui.png" alt="teamhome">
-                    <figcaption class="">Nom team home</figcaption>
-                </figure>
-            </div>
-            <div class="middle">
-                <div class="text">
-                    <p>Date :</p>
-                    <p>-</p>
-                    <p>Heure :</p>
+            <div class="container-match">
+                <h1 class="titre-match">Match du jour</h1>
+                <div class="left">
+                    <figure class="team">
+                        <img src="../images/pdpqui.png" alt="teamhome">
+                        <figcaption class="">Nom team home</figcaption>
+                    </figure>
                 </div>
+                <div class="middle">
+                    <div class="text">
+                        <p>Date :</p>
+                        <p>-</p>
+                        <p>Heure :</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <figure class="team">
+                        <img src="../images/pdpqui.png" alt="teamhome">
+                        <figcaption class="">Nom team home</figcaption>
+                    </figure>
+                </div>
+                <a id="pari" href="../pages/pari.php?matchid=' . $someArray['response'][$i]['id'] . '&sport=basket&league=' . $ligue . '">Parier</a>
             </div>
-            <div class="right">
-                <figure class="team">
-                    <img src="../images/pdpqui.png" alt="teamhome">
-                    <figcaption class="">Nom team home</figcaption>
-                </figure>
-            </div>
-            <a id="pari" href="../pages/pari.php?matchid=' . $someArray['response'][$i]['id'] . '&sport=basket&league=' . $ligue . '">Parier</a>
-        </div>
->>>>>>> Stashed changes
+            >>>>>>> Stashed changes
     </div>
 
 </body>
