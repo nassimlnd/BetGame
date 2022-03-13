@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
     <meta name="format-detection" content="telephone=no">
     <!-- Title -->
-    <title>BetGame-Foot-Ball</title>
+    <title>Basket-ball - BetGame</title>
     <!-- Description -->
     <meta name="description" content="Home description.">
     <!-- Social -->
@@ -43,142 +43,72 @@
     ?>
 
 
-    <div class="container">
-
-        <table id="tableM">
-            <tr>
-                <thead>
-                    <th colspan="3">Match du jour</th>
-                </thead>
-            </tr>
-
-            <tbody>
-                <tr>
-                    <td id="tableImg">
-                        <figure class="teammate">
-                            <img src="../images/pdpqui.png" alt="pdp" id="pdp">
-                            <figcaption>nom de l'équipe</figcaption>
-                        </figure>
-
-                    </td>
-                    <td id="scoresOverview">
-                        <div id="score1">000 </div> <br>
-                        <div id="score">SCORE</div> <br>
-                        <div id="score2">000 </div> <br>
-
-                    </td>
-
-                    <td id="tableImg">
-                        <figure class="teammate">
-                            <img src="../images/pdpqui.png" alt="pdp" id="pdp">
-                            <figcaption>nom de l'équipe</figcaption>
-                        </figure>
-                    </td>
-
-                </tr>
-            </tbody>
-
-            <tfoot>
-                <tr>
-                    <td id="foot" colspan="3"> <a id="pari" href="../pages/pari.php">Parier</a> </td>
-                </tr>
-            </tfoot>
-
-
-        </table>
-
-        <table id="tableM">
-            <tr>
-                <thead>
-                    <th colspan="3">Match du jour</th>
-                </thead>
-            </tr>
-
-            <tbody>
-                <tr>
-                    <td id="tableImg">
-                        <figure class="teammate">
-                            <img src="../images/pdpqui.png" alt="pdp" id="pdp">
-                            <figcaption>nom de l'équipe</figcaption>
-                        </figure>
-
-                    </td>
-                    <td id="scoresOverview">
-                        <div id="score1">000 </div> <br>
-                        <div id="score">SCORE</div> <br>
-                        <div id="score2">000 </div> <br>
-
-                    </td>
-
-                    <td id="tableImg">
-                        <figure class="teammate">
-                            <img src="../images/pdpqui.png" alt="pdp" id="pdp">
-                            <figcaption>nom de l'équipe</figcaption>
-                        </figure>
-                    </td>
-
-                </tr>
-            </tbody>
-
-            <tfoot>
-                <tr>
-                    <td id="foot" colspan="3"> <a id="pari" href="../pages/pari.php">Parier</a> </td>
-                </tr>
-            </tfoot>
-
-
-        </table>
-
-        <table id="tableM">
-            <tr>
-                <thead>
-                    <th colspan="3">Match du jour</th>
-                </thead>
-            </tr>
-
-
-
-
-            <tbody>
-                <tr>
-                    <td id="tableImg">
-                        <figure class="teammate">
-                            <img src="../images/pdpqui.png" alt="pdp" id="pdp">
-                            <figcaption>nom de l'équipe</figcaption>
-                        </figure>
-
-                    </td>
-                    <td id="scoresOverview">
-                        <div id="score1">000 </div> <br>
-                        <div id="score">SCORE</div> <br>
-                        <div id="score2">000 </div> <br>
-
-                    </td>
-
-                    <td id="tableImg">
-                        <figure class="teammate">
-                            <img src="../images/pdpqui.png" alt="pdp" id="pdp">
-                            <figcaption>nom de l'équipe</figcaption>
-                        </figure>
-                    </td>
-
-                </tr>
-            </tbody>
-
-            <tfoot>
-                <tr>
-                    <td id="foot" colspan="3"> <a id="pari" href="../pages/pari.php">Parier</a> </td>
-                </tr>
-            </tfoot>
-
-
-        </table>
+    <div class="sidebar">
+        <aside>
+            <h4 class="sidebar-title">Ligues</h4>
+            <ul>
+                <li><a href="basket.php?league=nba">NBA</a></li>
+                <li><a href="basket.php?league=proa">Pro A</a></li>
+                <li><a href="basket.php?league=gleague">G League</a></li>
+                <li><a href="basket.php?league=euroleague">Euroleague</a></li>
+            </ul>
+        </aside>
     </div>
 
 
-    </div>
+    <main class="main">
+        <div class="container">
+
+            <?php
+
+            if (isset($_GET['league'])) {
+                $ligue = htmlspecialchars($_GET['league']);
+
+                $filename = '../json/' . $ligue . '.json';
+                $someArray = file_get_contents($filename);
+
+                $someArray = json_decode($someArray, true);
+
+                for ($i = 0; $i < count($someArray['response']); $i++) {
+                    if ($someArray['response'][$i]['status']['long'] == "Not Started") {
+                        $nameteamhome = $someArray['response'][$i]['teams']['home']['name'];
+                        $nameteamaway = $someArray['response'][$i]['teams']['away']['name'];
+
+                        $logoteamhome = $someArray['response'][$i]['teams']['home']['logo'];
+                        $logoteamaway = $someArray['response'][$i]['teams']['away']['logo'];
 
 
+                        //echo '<div class="container">';
+                        echo '<div class="container-match">';
+                        echo '<h1 class="titre-match">Match du jour</h1>';
+                        echo '<div class="left">';
+                        echo '<figure class="team">';
+                        echo '<img src="' . $logoteamhome . '" alt="teamhome">';
+                        echo '<figcaption class="">' . $nameteamhome . '</figcaption>';
+                        echo '</figure>';
+                        echo '</div>';
+                        echo '<div class="middle">';
+                        echo '<div class="text">';
+                        echo '<p>Date :</p>';
+                        echo '<p>-</p>';
+                        echo '<p>Heure :</p>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '<div class="right">';
+                        echo '<figure class="team">';
+                        echo '<img src="' . $logoteamaway . '" alt="teamhome">';
+                        echo '<figcaption class="">' . $nameteamaway . '</figcaption>';
+                        echo '</figure>';
+                        echo '</div>';
+                        echo '<a class="lien" href="../pages/pari.php?matchid=' . $someArray['response'][$i]['id'] . '&sport=basket&league=' . $ligue . '"><button id="pari">Parier</button></a>';
+                        echo '</div>';
+                    }
+                }
+            } else {
+                header("Location: basket.php?league=nba");
+            }
+            ?>
+        </div>
 
 </body>
 

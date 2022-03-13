@@ -34,7 +34,7 @@ if ($curPageName == "index.php") {
 
             if (isset($_SESSION['user'])) {
             ?>
-                <p class="username">Bonjour <?= $_SESSION['user'] ?></p>
+                <p class="username">Bonjour <a href="pages/profil.php"><strong><?= $_SESSION['user'] ?></strong></a></p>
                 <a href="controllers/logout.php" class="logout"><button class="signin">Déconnexion</button></a>
             <?php
             } else {
@@ -78,7 +78,7 @@ if ($curPageName == "index.php") {
 
             if (isset($_SESSION['user'])) {
             ?>
-                <p class="username">Bonjour <?= $_SESSION['user'] ?></p>
+                <p class="username">Bonjour <a href="profil.php"><strong><?= $_SESSION['user'] ?></strong></a></p>
                 <a href="../controllers/logout.php" class="logout"><button class="signin">Déconnexion</button></a>
             <?php
             } else {

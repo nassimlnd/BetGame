@@ -58,18 +58,18 @@
 
         <div class="contentBx">
             <div class="active">
-                <h2>Bientot Disponible</h2>
-                <p>Télécharger notre Application BetGame, bientot disponible sur toutes les platfforme : ios , android , windows store ! Regarder les match et vos paris directement sur votre smartphone !</p>
-                <a href="#">Bientot !</a>
+                <h2>Bientôt disponible</h2>
+                <p>Télécharger notre application BetGame, bientôt disponible sur toutes les plateformes : IOS, Android ! Regarder les matchs et vos paris directement sur votre smartphone !</p>
+                <a href="#">Bientôt !</a>
             </div>
             <div>
-                <h2>En savoir plus sur les match</h2>
-                <p>Vous pouvez suivres tout les match sur notre site web et très bientot sur notre apllication ! </p>
+                <h2>En savoir plus sur les matchs</h2>
+                <p>Vous pouvez suivre tous les matchs sur notre site web et très bientot sur notre application !</p>
                 <a href="#">En savoir plus</a>
             </div>
             <div>
                 <h2>Les prix</h2>
-                <p>Les prix change tout les mois, seul les 5 premiers du classement seront éligible à un prix, bonne chance a tout n'aux parieur !</p>
+                <p>Les prix change tous les mois, seul les 5 premiers du classement seront éligible à un prix, bonne chance a tous !</p>
                 <a href="#">Details</a>
             </div>
             <div>

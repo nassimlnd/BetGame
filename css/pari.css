@@ -111,9 +111,9 @@ header {
   background-color: white;
   justify-self: center;
   height: fit-content;
-  width: 1200px;
+  width: fit-content;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 150px;
   border-radius: 15px;
   text-align: center;
   padding: 50px 50px 50px 50px;
@@ -217,14 +217,16 @@ h1 {
   background-color: #edf0f1;
   border-radius: 10px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-  height: 400px;
+  height: fit-content;
   max-height: 600px;
 }
 
 .container-principal figure .image {
-  max-width: 300px;
-  max-height: 300px;
-  margin-left: 10px;
+  display: block;
+  height: 200px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 10px;
 }
 
@@ -286,9 +288,9 @@ h1 {
   background-color: white;
   justify-self: center;
   height: fit-content;
-  width: 1200px;
+  width: 850px;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 50px;
   border-radius: 15px;
   text-align: center;
   padding: 50px;
