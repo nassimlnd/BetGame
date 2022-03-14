@@ -83,9 +83,6 @@ if (!isset($_SESSION['user'])) {
                     
                     for ($i = 0; $i < count($_SESSION['bet']); $i++) {
                         $matchidsession = $_SESSION['bet'][$i]['matchid'];
-                        
-                       
-
                         for ($j = 0; $j < count($matches['response']); $j++) {
                             if ($matchidsession == $matches['response'][$j]['id']) {
                                 $nameteamhomesession = $matches['response'][$j]['teams']['home']['name'];
