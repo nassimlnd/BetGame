@@ -4,7 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 .container {
-  margin-top: 100px;
+  margin-top: 75px;
   height: fit-content;
 }
 
@@ -139,7 +139,7 @@
   width: 375px;
   background: white;
   float: left;
-  margin-top: 100px;
+  margin-top: 75px;
   margin-left: 50px;
   border-radius: 15px;
   position: absolute;

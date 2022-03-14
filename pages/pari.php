@@ -27,6 +27,7 @@ if (!isset($_SESSION['user'])) {
 
         $matchid = htmlspecialchars($_GET['matchid']);
         $league = htmlspecialchars($_GET['league']);
+        $sport = htmlspecialchars($_GET['sport']);
 
         $filename = '../json/' . $league . '.json';
         str_replace(" ", "", $filename);
@@ -53,117 +54,129 @@ if (!isset($_SESSION['user'])) {
             }
         }
 
+        if (isset($_GET['bet']) || !empty($_SESSION['bet'])) {
     ?>
-        <div class="container-principal">
-            <h1>Pari :</h1>
+            <div class="sidebar">
+                <aside>
+                    <h4 class="sidebar-title">Paris en cours :</h4>
+                    <?php
+                    for ($i = 0; $i < count($_SESSION['bet']); $i++) {
+                        $matchidsession = $_SESSION['bet'][$i]['matchid'];
+                        for ($j = 0; $j < count($matches['response']); $j++) {
+                            if ($matchidsession == $matches['response'][$j]['id']) {
+                                $nameteamhomesession = $matches['response'][$j]['teams']['home']['name'];
+                                $nameteamawaysession = $matches['response'][$j]['teams']['away']['name'];
 
-            <div class="gauche">
-                <figure>
-                    <figcaption class="titreequipe"><?= $nameteamhome ?></figcaption>
-                    <img src="<?= $logoteamhome ?>" alt="gauche" class="image">
-                </figure>
-                <p class="cote">Cote : 2.00</p>
-                <button class="btnmise">Miser</button>
+                                $logoteamhomesession = $matches['response'][$j]['teams']['home']['logo'];
+                                $logoteamawaysession = $matches['response'][$j]['teams']['away']['logo'];
+                                break;
+                            }
+                        }
+                        echo '<div class="line">';
+                        echo "<p class = 'left'>" . $nameteamawaysession . " - " . $nameteamhomesession . "</p>";
+                        echo "<p class = 'right'> COTE </p>";
+                        echo '<p class = "middle">' . $_SESSION['bet'][$i]['bet'] . '</p>';
+                        echo '</div>';
+                    }
+                    ?>
+                    <form action="../controllers/bet.php" method="POST" class="form-paris">
+                        <label for="mise">Mise :</label>
+                        <input type="text" name="mise" class="input-mise" required>
+                        <a href="#"><button type="submit">Valider</button></a>
+                    </form>
+                </aside>
+            </div>
+        <?php
+        }
+
+        ?>
+
+        <main class="main">
+            <div class="container-principal">
+                <h1>Pari :</h1>
+
+                <div class="gauche">
+                    <figure>
+                        <figcaption class="titreequipe"><?= $nameteamhome ?></figcaption>
+                        <img src="<?= $logoteamhome ?>" alt="gauche" class="image">
+                    </figure>
+                    <p class="cote">Cote : 2.00</p>
+                    <a href="../controllers/bet.php?sport=<?= $sport ?>&bet=1&matchid=<?= $matchid ?>&league=<?= $league ?>"><button class="btnmise">Miser</button></a>
+                </div>
+
+                <div class="milieu">
+                    <p id="vs">-</p>
+                </div>
+
+                <div class="droit">
+                    <figure>
+                        <figcaption class="titreequipe"><?= $nameteamaway ?></figcaption>
+                        <img src="<?= $logoteamaway ?>" alt="droit" class="image">
+                    </figure>
+                    <p class="cote">Cote : 2.00</p>
+                    <button class="btnmise">Miser</button>
+                </div>
             </div>
 
-            <div class="milieu">
-                <p id="vs">-</p>
-            </div>
+        <?php
 
-            <div class="droit">
-                <figure>
-                    <figcaption class="titreequipe"><?= $nameteamaway ?></figcaption>
-                    <img src="<?= $logoteamaway ?>" alt="droit" class="image">
-                </figure>
-                <p class="cote">Cote : 2.00</p>
-                <button class="btnmise">Miser</button>
-            </div>
-        </div>
-    <?php
-
-    };
+    }
     if (!isset($_GET['sport']) || !isset($_GET['matchid']) || !isset($_GET['league'])) {
-    ?>
-        <div class="container-principal">
-            <h1>Pari :</h1>
-
-            <div class="gauche">
-                <figure>
-                    <figcaption class="titreequipe">Conor MCGREGOR</figcaption>
-                    <img src="../images/conor.jpg" alt="gauche" class="image">
-                </figure>
-                <p class="cote">Cote : 2.00</p>
-                <button class="btnmise">Miser</button>
-            </div>
-
-            <div class="milieu">
-                <p id="vs">-</p>
-            </div>
-
-            <div class="droit">
-                <figure>
-                    <figcaption class="titreequipe">Khamzat CHIMAEV</figcaption>
-                    <img src="../images/khamzat.jpg" alt="droit" class="image">
-                </figure>
-                <p class="cote">Cote : 2.00</p>
-                <button class="btnmise">Miser</button>
-            </div>
-        </div>
-    <?php
-
+        header('Location: ../index.php');
     };
 
-    ?>
+        ?>
 
-    <div class="container-details">
-        <div class="line">
-            <div class="left">
-                <p class="stats">150 kg</p>
+        <div class="container-details">
+            <div class="line">
+                <div class="left">
+                    <p class="stats">150 kg</p>
+                </div>
+                <div class="middle">
+                    <p class="detailsname">Poids</p>
+                </div>
+                <div class="right">
+                    <p class="stats">100 kg</p>
+                </div>
             </div>
-            <div class="middle">
-                <p class="detailsname">Poids</p>
+            <div class="line">
+                <div class="left">
+                    <p class="stats">150 kg</p>
+                </div>
+                <div class="middle">
+                    <p class="detailsname">Taille</p>
+                </div>
+                <div class="right">
+                    <p class="stats">100 kg</p>
+                </div>
             </div>
-            <div class="right">
-                <p class="stats">100 kg</p>
+            <div class="line">
+                <div class="left">
+                    <p class="stats">150 kg</p>
+                </div>
+                <div class="middle">
+                    <p class="detailsname">Nombre de victoires</p>
+                </div>
+                <div class="right">
+                    <p class="stats">100 kg</p>
+                </div>
+            </div>
+            <div class="line">
+                <div class="left">
+                    <p class="stats">150 kg</p>
+                </div>
+                <div class="middle">
+                    <p class="detailsname">Origine</p>
+                </div>
+                <div class="right">
+                    <p class="stats">100 kg</p>
+                </div>
             </div>
         </div>
-        <div class="line">
-            <div class="left">
-                <p class="stats">150 kg</p>
-            </div>
-            <div class="middle">
-                <p class="detailsname">Taille</p>
-            </div>
-            <div class="right">
-                <p class="stats">100 kg</p>
-            </div>
-        </div>
-        <div class="line">
-            <div class="left">
-                <p class="stats">150 kg</p>
-            </div>
-            <div class="middle">
-                <p class="detailsname">Nombre de victoires</p>
-            </div>
-            <div class="right">
-                <p class="stats">100 kg</p>
-            </div>
-        </div>
-        <div class="line">
-            <div class="left">
-                <p class="stats">150 kg</p>
-            </div>
-            <div class="middle">
-                <p class="detailsname">Origine</p>
-            </div>
-            <div class="right">
-                <p class="stats">100 kg</p>
-            </div>
-        </div>
-    </div>
+        </main>
 
 
-    <script type="module" src="js/index.js"></script>
+        <script type="module" src="js/index.js"></script>
 </body>
 
 </html>

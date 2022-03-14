@@ -48,40 +48,35 @@
 
         <?php
 
-
+        unset($_SESSION['bet']);
 
 
         ?>
-        =======
-        for ($i = 0; $i < 20; $i++) { echo $someArray["response"][$i]['team']['name'] . ' / ' ; } $pathlogo=$someArray["response"][0]["teams"]['home']["logo"]; ?> <img src="<?= $pathlogo ?>" alt="logo">*/
-
-            ?>
 
 
-            <div class="container-match">
-                <h1 class="titre-match">Match du jour</h1>
-                <div class="left">
-                    <figure class="team">
-                        <img src="../images/pdpqui.png" alt="teamhome">
-                        <figcaption class="">Nom team home</figcaption>
-                    </figure>
-                </div>
-                <div class="middle">
-                    <div class="text">
-                        <p>Date :</p>
-                        <p>-</p>
-                        <p>Heure :</p>
-                    </div>
-                </div>
-                <div class="right">
-                    <figure class="team">
-                        <img src="../images/pdpqui.png" alt="teamhome">
-                        <figcaption class="">Nom team home</figcaption>
-                    </figure>
-                </div>
-                <a id="pari" href="../pages/pari.php?matchid=' . $someArray['response'][$i]['id'] . '&sport=basket&league=' . $ligue . '">Parier</a>
+        <div class="container-match">
+            <h1 class="titre-match">Match du jour</h1>
+            <div class="left">
+                <figure class="team">
+                    <img src="../images/pdpqui.png" alt="teamhome">
+                    <figcaption class="">Nom team home</figcaption>
+                </figure>
             </div>
-            >>>>>>> Stashed changes
+            <div class="middle">
+                <div class="text">
+                    <p>Date :</p>
+                    <p>-</p>
+                    <p>Heure :</p>
+                </div>
+            </div>
+            <div class="right">
+                <figure class="team">
+                    <img src="../images/pdpqui.png" alt="teamhome">
+                    <figcaption class="">Nom team home</figcaption>
+                </figure>
+            </div>
+            <a id="pari" href="../pages/pari.php?matchid=' . $someArray['response'][$i]['id'] . '&sport=basket&league=' . $ligue . '">Parier</a>
+        </div>
     </div>
 
 </body>

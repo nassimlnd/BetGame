@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION['user'])) {
+    session_start();
+}
 
 $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
 
@@ -11,14 +14,18 @@ if ($curPageName == "index.php") {
                 <li><a href="index.php">Accueil</a></li>
                 <li id="sp"><a href="#">Choisir un sport</a>
                     <div class="NavToolTip">
-                        <div class="test_Tooltip_nav">
-                            <ul>
-                                <li id="tooltip"> <a href="pages/basket.php">Basket-ball</a></li>
-                                <li id="tooltip"> <a href="pages/foot.php">Foot-ball</a></li>
-                                <li id="tooltip"> <a href="pages/hockey.php">Hockey</a></li>
-                                <li id="tooltip"> <a href="pages/UFC.php">UFC</a></li>
-                            </ul>
-                        </div>
+                        <?php if (isset($_SESSION['user'])) {
+                            echo '<div class="test_Tooltip_nav">';
+                        } else {
+                            echo '<div class="test_Tooltip_nav" style = "left: 36.5%;">';
+                        }
+                        ?>
+                        <ul>
+                            <li id="tooltip"> <a href="pages/basket.php">Basket-ball</a></li>
+                            <li id="tooltip"> <a href="pages/foot.php">Foot-ball</a></li>
+                            <li id="tooltip"> <a href="pages/hockey.php">Hockey</a></li>
+                            <li id="tooltip"> <a href="pages/UFC.php">UFC</a></li>
+                        </ul>
                     </div>
                 </li>
                 <li><a href="pages/scoreboard.php">Classement</a></li>
@@ -28,13 +35,10 @@ if ($curPageName == "index.php") {
         <div class="buttons">
             <?php
 
-            if (!isset($_SESSION['user'])) {
-                session_start();
-            }
-
             if (isset($_SESSION['user'])) {
+                include('controllers/points.php');
             ?>
-                <p class="username">Bonjour <?= $_SESSION['user'] ?></p>
+                <p class="username">Bonjour <a href="pages/profil.php"><strong><?= $_SESSION['user'] ?></strong></a> | <?= $_SESSION['points'] ?> BetCoin(s)</p>
                 <a href="controllers/logout.php" class="logout"><button class="signin">Déconnexion</button></a>
             <?php
             } else {
@@ -72,13 +76,11 @@ if ($curPageName == "index.php") {
         </nav>
         <div class="buttons">
             <?php
-            if (!isset($_SESSION['user'])) {
-                session_start();
-            }
 
             if (isset($_SESSION['user'])) {
+                include('../controllers/points.php');
             ?>
-                <p class="username">Bonjour <?= $_SESSION['user'] ?></p>
+                <p class="username">Bonjour <a href="../pages/profil.php"><strong><?= $_SESSION['user'] ?></strong></a> | <?= $_SESSION['points'] ?> BetCoin(s)</p>
                 <a href="../controllers/logout.php" class="logout"><button class="signin">Déconnexion</button></a>
             <?php
             } else {

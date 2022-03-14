@@ -111,9 +111,9 @@ header {
   background-color: white;
   justify-self: center;
   height: fit-content;
-  width: 1200px;
+  width: fit-content;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 75px;
   border-radius: 15px;
   text-align: center;
   padding: 50px 50px 50px 50px;
@@ -179,7 +179,7 @@ header {
   position: absolute;
   z-index: 1;
   top: 100px;
-  left: 36%;
+  left: 32.75%;
   margin-left: -60px;
 }
 
@@ -217,14 +217,16 @@ h1 {
   background-color: #edf0f1;
   border-radius: 10px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-  height: 400px;
+  height: fit-content;
   max-height: 600px;
 }
 
 .container-principal figure .image {
-  max-width: 300px;
-  max-height: 300px;
-  margin-left: 10px;
+  display: block;
+  height: 200px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 10px;
 }
 
@@ -286,9 +288,9 @@ h1 {
   background-color: white;
   justify-self: center;
   height: fit-content;
-  width: 1200px;
+  width: 850px;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 50px;
   border-radius: 15px;
   text-align: center;
   padding: 50px;
@@ -299,7 +301,7 @@ h1 {
 
 .line {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 2fr;
   background-color: #efefef;
   border-radius: 10px;
   padding: 10px;
@@ -308,10 +310,13 @@ h1 {
 
 .middle {
   grid-column: 2;
+  grid-row: 1;
+  text-align: center;
 }
 
 .right {
   grid-column: 3;
+  text-align: center;
 }
 
 .left {
@@ -359,4 +364,75 @@ footer .right {
 footer .left {
   grid-column: 1;
   grid-row: 1;
+}
+
+/* Sidebar */
+
+.main {
+  float: left;
+  width: 90%;
+}
+
+.sidebar {
+  font-family: "Montserrat";
+  width: 450px;
+  background: white;
+  float: right;
+  margin-top: 75px;
+  margin-right: 50px;
+  border-radius: 15px;
+  position: fixed;
+  right: 0;
+  padding: 25px;
+  height: fit-content;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.sidebar a {
+  color: black;
+}
+
+.sidebar li {
+  margin-top: 5px;
+}
+
+.sidebar-title {
+  margin: 0;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-family: "Montserrat";
+}
+
+.form-paris {
+  margin-top: 25px;
+  border-top: 1px solid black;
+  display: flex;
+}
+
+.form-paris label {
+  margin-top: 28px;
+  margin-right: 20px;
+  width: 100px;
+}
+
+.input-mise {
+  background-color: white;
+  padding: 5px;
+  border-radius: 15px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  width: 75px;
+  border: 1px solid grey;
+  transition: all 0.3s ease 0s;
+  font-family: "Montserrat";
+}
+
+.form-paris a {
+  width: fit-content;
+  height: fit-content;
+  margin-left: 45%;
+  margin-top: 25px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #3d5cb2;
 }

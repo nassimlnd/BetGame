@@ -30,7 +30,7 @@ if (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['email'
             if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 if (strlen($password) >= 4) {
                     $password = hash('sha256', $password);
-                    $sql = "INSERT INTO accounts(id, pseudo, email, password) VALUES ('', '$pseudo', '$email', '$password')";
+                    $sql = "INSERT INTO accounts(id, pseudo, email, password, points) VALUES ('', '$pseudo', '$email', '$password', 10)";
                     $conn->query($sql);
 
                     header('Location: ../index.php');

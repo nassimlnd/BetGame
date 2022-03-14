@@ -185,7 +185,7 @@ header {
 
   /* Position the tooltip */
   position: absolute;
-  left: 36%;
+  left: 32.75%;
   margin-left: -60px;
 }
 
@@ -247,7 +247,7 @@ header {
   position: relative;
   width: 80px;
   height: 80px;
-  background: #fff;
+  background: #24252a;
   list-style: none;
   display: flex;
   justify-content: center;
@@ -256,7 +256,8 @@ header {
 }
 
 .controls li:hover {
-  background: #ffeb3b;
+  background: #3d5cb2;
+  transition: all 0.5s ease 0s;
 }
 
 .controls li::before {
@@ -264,8 +265,8 @@ header {
   position: absolute;
   width: 20px;
   height: 20px;
-  border-left: 3px solid #111;
-  border-bottom: 3px solid #111;
+  border-left: 3px solid #fff;
+  border-bottom: 3px solid #fff;
   transform: rotate(45deg);
 }
 
@@ -288,7 +289,7 @@ header {
   padding-left: 30px;
   padding-top: 25px;
   padding-right: 25px;
-  padding-bottom: 25px;   
+  padding-bottom: 25px;
   margin-left: 100px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
