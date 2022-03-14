@@ -23,7 +23,8 @@ if (isset($_POST['pseudo']) && isset($_POST['password'])) {
 
     if ($rowpseudo == 1) {
         $hashedpassword = hash("sha256", $password);
-
+        
+        //defines session parameters
         if ($hashedpassword === $data['password']) {
             $_SESSION['user'] = $data['pseudo'];
             $_SESSION['email'] = $data['email'];
