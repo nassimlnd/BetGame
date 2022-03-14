@@ -60,8 +60,32 @@ if (!isset($_SESSION['user'])) {
                 <aside>
                     <h4 class="sidebar-title">Paris en cours :</h4>
                     <?php
+                     if(isset($_GET['error'])){
+                        $error = htmlspecialchars($_GET['error']);
+                        switch($error){
+                            case "alreadybet":
+                                ?>
+                                <div class="errorbox"> 
+                                   <p> <strong>Vous ne pouvez pas parier 2 fois sur le même match!</strong> </p> 
+                                </div>
+                                <?php
+                                break;
+                            
+                                case "toomanybet":
+                                ?>
+                                <div class="errorbox">
+                                    <p><strong>Vous ne pouvez pas faire plus de 5 paris à la fois!</strong></p>
+                                </div> 
+                                <?php
+                                break;
+                        }
+                    }
+                    
                     for ($i = 0; $i < count($_SESSION['bet']); $i++) {
                         $matchidsession = $_SESSION['bet'][$i]['matchid'];
+                        
+                       
+
                         for ($j = 0; $j < count($matches['response']); $j++) {
                             if ($matchidsession == $matches['response'][$j]['id']) {
                                 $nameteamhomesession = $matches['response'][$j]['teams']['home']['name'];
