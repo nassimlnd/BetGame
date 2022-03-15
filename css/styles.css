@@ -103,17 +103,6 @@ header {
 
 /* Body */
 
-.body-content {
-  background-color: red;
-  justify-self: center;
-  height: 400px;
-  width: 50%;
-  margin: auto;
-  margin-top: 150px;
-  border-radius: 15px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
-
 .container {
   background-color: white;
   justify-self: center;
