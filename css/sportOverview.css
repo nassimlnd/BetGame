@@ -63,6 +63,7 @@
 .team img {
   height: 150px;
   width: 150px;
+  margin: auto;
 }
 
 .score1 {

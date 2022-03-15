@@ -62,9 +62,10 @@
             <?php
 
             if (isset($_GET['league'])) {
-                $ligue = htmlspecialchars($_GET['league']);
+                $league = htmlspecialchars($_GET['league']);
+                $sport = 'basket';
 
-                $filename = '../json/' . $ligue . '.json';
+                $filename = '../json/' . $sport . '/' . $league . '.json';
                 $someArray = file_get_contents($filename);
 
                 $someArray = json_decode($someArray, true);
@@ -100,7 +101,7 @@
                         echo '<figcaption class="">' . $nameteamaway . '</figcaption>';
                         echo '</figure>';
                         echo '</div>';
-                        echo '<a class="lien" href="../pages/pari.php?matchid=' . $someArray['response'][$i]['id'] . '&sport=basket&league=' . $ligue . '"><button id="pari">Parier</button></a>';
+                        echo '<a class="lien" href="../pages/pari.php?matchid=' . $someArray['response'][$i]['id'] . '&sport=basket&league=' . $league . '"><button id="pari">Parier</button></a>';
                         echo '</div>';
                     }
                 }

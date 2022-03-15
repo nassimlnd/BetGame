@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
     <meta name="format-detection" content="telephone=no">
     <!-- Title -->
-    <title>Basket-ball - BetGame</title>
+    <title>Football - BetGame</title>
     <!-- Description -->
     <meta name="description" content="Home description.">
     <!-- Social -->
@@ -47,10 +47,10 @@
         <aside>
             <h4 class="sidebar-title">Ligues</h4>
             <ul>
-                <li><a href="basket.php?league=nba">NBA</a></li>
-                <li><a href="basket.php?league=proa">Pro A</a></li>
-                <li><a href="basket.php?league=gleague">G League</a></li>
-                <li><a href="basket.php?league=euroleague">Euroleague</a></li>
+                <li><a href="foot.php?league=ligue1">Ligue 1</a></li>
+                <li><a href="foot.php?league=liga">Liga</a></li>
+                <li><a href="foot.php?league=pl">Premier League</a></li>
+                <li><a href="foot.php?league=seriea">Serie A</a></li>
             </ul>
         </aside>
     </div>
@@ -62,15 +62,16 @@
             <?php
 
             if (isset($_GET['league'])) {
-                $ligue = htmlspecialchars($_GET['league']);
+                $league = htmlspecialchars($_GET['league']);
+                $sport = 'foot';
 
-                $filename = '../json/' . $ligue . '.json';
+                $filename = '../json/' . $sport . '/' . $league . '.json';
                 $someArray = file_get_contents($filename);
 
                 $someArray = json_decode($someArray, true);
 
                 for ($i = 0; $i < count($someArray['response']); $i++) {
-                    if ($someArray['response'][$i]['status']['long'] == "Not Started") {
+                    if ($someArray['response'][$i]['fixture']['status']['long'] == "Not Started") {
                         $nameteamhome = $someArray['response'][$i]['teams']['home']['name'];
                         $nameteamaway = $someArray['response'][$i]['teams']['away']['name'];
 
@@ -100,12 +101,12 @@
                         echo '<figcaption class="">' . $nameteamaway . '</figcaption>';
                         echo '</figure>';
                         echo '</div>';
-                        echo '<a class="lien" href="../pages/pari.php?matchid=' . $someArray['response'][$i]['id'] . '&sport=basket&league=' . $ligue . '"><button id="pari">Parier</button></a>';
+                        echo '<a class="lien" href="../pages/pari.php?matchid=' . $someArray['response'][$i]['fixture']['id'] . '&sport=' . $sport . '&league=' . $league . '"><button id="pari">Parier</button></a>';
                         echo '</div>';
                     }
                 }
             } else {
-                header("Location: basket.php?league=nba");
+                header("Location: foot.php?league=ligue1");
             }
             ?>
         </div>

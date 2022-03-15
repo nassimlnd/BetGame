@@ -17,9 +17,9 @@
 
     <div class="container">
         <?php
-        /*$curl = curl_init();
+        $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://v3.football.api-sports.io/fixtures?league=39&season=2021&status=ns&team=47',
+            CURLOPT_URL => 'https://v3.football.api-sports.io/leagues',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -35,24 +35,12 @@
         curl_close($curl);
 
         $someArray = json_decode($response, true);
-        //print_r($someArray);
 
-<<<<<<< Updated upstream
-        /*for ($i = 0; $i < 20; $i++) {
-            echo $someArray["response"][$i]['team']['name'] . ' / ';
-        }*/
+        echo (var_dump($someArray));
 
-        $pathlogo = $someArray["response"][0]["teams"]['home']["logo"];
-
-        ?> <img src="<?= $pathlogo ?>" alt="logo">
-
-        <?php
-
-        unset($_SESSION['bet']);
-
+        file_put_contents("leaguesfoot.json", $response);
 
         ?>
-
 
         <div class="container-match">
             <h1 class="titre-match">Match du jour</h1>

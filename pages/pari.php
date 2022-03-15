@@ -29,7 +29,7 @@ if (!isset($_SESSION['user'])) {
         $league = htmlspecialchars($_GET['league']);
         $sport = htmlspecialchars($_GET['sport']);
 
-        $filename = '../json/' . $league . '.json';
+        $filename = '../json/' . $sport . '/' . $league . '.json';
         str_replace(" ", "", $filename);
 
         $matches = file_get_contents($filename);
@@ -42,15 +42,27 @@ if (!isset($_SESSION['user'])) {
         $logoteamhome = '';
 
 
+        if ($sport == 'foot') {
+            for ($i = 0; $i < count($matches['response']); $i++) {
+                if ($matchid == $matches['response'][$i]['fixture']['id']) {
+                    $nameteamhome = $matches['response'][$i]['teams']['home']['name'];
+                    $nameteamaway = $matches['response'][$i]['teams']['away']['name'];
 
-        for ($i = 0; $i < count($matches['response']); $i++) {
-            if ($matchid == $matches['response'][$i]['id']) {
-                $nameteamhome = $matches['response'][$i]['teams']['home']['name'];
-                $nameteamaway = $matches['response'][$i]['teams']['away']['name'];
+                    $logoteamhome = $matches['response'][$i]['teams']['home']['logo'];
+                    $logoteamaway = $matches['response'][$i]['teams']['away']['logo'];
+                    break;
+                }
+            }
+        } elseif ($sport == 'basket') {
+            for ($i = 0; $i < count($matches['response']); $i++) {
+                if ($matchid == $matches['response'][$i]['id']) {
+                    $nameteamhome = $matches['response'][$i]['teams']['home']['name'];
+                    $nameteamaway = $matches['response'][$i]['teams']['away']['name'];
 
-                $logoteamhome = $matches['response'][$i]['teams']['home']['logo'];
-                $logoteamaway = $matches['response'][$i]['teams']['away']['logo'];
-                break;
+                    $logoteamhome = $matches['response'][$i]['teams']['home']['logo'];
+                    $logoteamaway = $matches['response'][$i]['teams']['away']['logo'];
+                    break;
+                }
             }
         }
 
@@ -85,21 +97,44 @@ if (!isset($_SESSION['user'])) {
                         for ($i = 0; $i < count($_SESSION['bet']); $i++) {
                             if ($_SESSION['bet'][$i] != null && isset($_SESSION['bet'][$i])) {
                                 $matchidsession = $_SESSION['bet'][$i]['matchid'];
-                                for ($j = 0; $j < count($matches['response']); $j++) {
-                                    if ($matchidsession == $matches['response'][$j]['id']) {
-                                        $nameteamhomesession = $matches['response'][$j]['teams']['home']['name'];
-                                        $nameteamawaysession = $matches['response'][$j]['teams']['away']['name'];
+                                $leaguebet = $_SESSION['bet'][$i]['league'];
+                                $sportbet = $_SESSION['bet'][$i]['sport'];
 
-                                        $logoteamhomesession = $matches['response'][$j]['teams']['home']['logo'];
-                                        $logoteamawaysession = $matches['response'][$j]['teams']['away']['logo'];
-                                        break;
+                                $filenamebet = '../json/' . $sportbet . '/' . $leaguebet . '.json';
+                                str_replace(" ", "", $filename);
+
+                                $matchesbet = file_get_contents($filenamebet);
+                                $matchesbet = json_decode($matchesbet, true);
+
+                                if ($sportbet == 'foot') {
+                                    for ($j = 0; $j < count($matchesbet['response']); $j++) {
+                                        if ($matchidsession == $matchesbet['response'][$j]['fixture']['id']) {
+                                            $nameteamhomesession = $matchesbet['response'][$j]['teams']['home']['name'];
+                                            $nameteamawaysession = $matchesbet['response'][$j]['teams']['away']['name'];
+
+                                            $logoteamhomesession = $matchesbet['response'][$j]['teams']['home']['logo'];
+                                            $logoteamawaysession = $matchesbet['response'][$j]['teams']['away']['logo'];
+                                            break;
+                                        }
+                                    }
+                                } elseif ($sportbet == 'basket') {
+                                    for ($j = 0; $j < count($matchesbet['response']); $j++) {
+                                        if ($matchidsession == $matchesbet['response'][$j]['id']) {
+                                            $nameteamhomesession = $matchesbet['response'][$j]['teams']['home']['name'];
+                                            $nameteamawaysession = $matchesbet['response'][$j]['teams']['away']['name'];
+
+                                            $logoteamhomesession = $matchesbet['response'][$j]['teams']['home']['logo'];
+                                            $logoteamawaysession = $matchesbet['response'][$j]['teams']['away']['logo'];
+                                            break;
+                                        }
                                     }
                                 }
+
                                 echo '<div class="line">';
                                 echo "<p class = 'left'>" . $nameteamawaysession . " - " . $nameteamhomesession . "</p>";
                                 echo "<p class = 'right'> COTE </p>";
                                 echo '<p class = "middle">' . $_SESSION['bet'][$i]['bet'] . '</p>';
-                                echo '<div class="cross"><a href="../controllers/bet.php?sport=' . $sport . '&matchid=' . $matchid . '&league=' . $league . '&delete=' . $i . '">❌</a></div>';
+                                echo '<div class="cross"><a href="../controllers/bet.php?sport=' . $sportbet . '&matchid=' . $matchid . '&league=' . $leaguebet . '&delete=' . $i . '">❌</a></div>';
                                 echo '</div>';
                             }
                         }
@@ -107,7 +142,7 @@ if (!isset($_SESSION['user'])) {
                         <form action="../controllers/bet.php" method="POST" class="form-paris">
                             <label for="mise">Mise :</label>
                             <input type="text" name="mise" class="input-mise" required>
-                            <a href="#"><button type="submit">Valider</button></a>
+                            <button type="submit">Valider</button>
                         </form>
                     </aside>
                 </div>

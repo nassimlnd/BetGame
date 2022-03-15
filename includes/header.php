@@ -22,7 +22,7 @@ if ($curPageName == "index.php") {
                         ?>
                         <ul>
                             <li id="tooltip"> <a href="pages/basket.php">Basket-ball</a></li>
-                            <li id="tooltip"> <a href="pages/foot.php">Foot-ball</a></li>
+                            <li id="tooltip"> <a href="pages/foot.php">Football</a></li>
                             <li id="tooltip"> <a href="pages/hockey.php">Hockey</a></li>
                             <li id="tooltip"> <a href="pages/UFC.php">UFC</a></li>
                         </ul>
@@ -68,7 +68,7 @@ if ($curPageName == "index.php") {
                         ?>
                         <ul>
                             <li id="tooltip"> <a href="basket.php">Basket-ball</a></li>
-                            <li id="tooltip"> <a href="foot.php">Foot-ball</a></li>
+                            <li id="tooltip"> <a href="foot.php">Football</a></li>
                             <li id="tooltip"> <a href="hockey.php">Hockey</a></li>
                             <li id="tooltip"> <a href="UFC.php">UFC</a></li>
                         </ul>

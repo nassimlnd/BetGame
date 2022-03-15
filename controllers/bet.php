@@ -90,7 +90,8 @@ if (isset($_POST['mise'])) {
     if ($error == 'no') {
         for ($i = 0; $i < count($_SESSION['bet']); $i++) {
             $league = $_SESSION['bet'][$i]['league'];
-            $filename = '../json/' . $league . '.json';
+            $sport = $_SESSION['bet'][$i]['sport'];
+            $filename = '../json/' . $sport . '/' . $league . '.json';
             str_replace(" ", "", $filename);
 
             $matches = file_get_contents($filename);
@@ -98,12 +99,23 @@ if (isset($_POST['mise'])) {
             $matchidsession = $_SESSION['bet'][$i]['matchid'];
             if ($error = 'no') {
                 for ($j = 0; $j < count($matches['response']); $j++) {
-                    if ($matchidsession == $matches['response'][$j]['id']) {
-                        $status = $matches['response'][$j]['status']['long'];
+                    if ($sport == 'foot') {
+                        if ($matchidsession == $matches['response'][$j]['fixture']['id']) {
+                            $status = $matches['response'][$j]['fixture']['status']['long'];
 
-                        if ($status != "Not Started") {
-                            $error = 'gamestarted';
-                            break;
+                            if ($status != "Not Started") {
+                                $error = 'gamestarted';
+                                break;
+                            }
+                        }
+                    } elseif ($sport == 'basket') {
+                        if ($matchidsession == $matches['response'][$j]['id']) {
+                            $status = $matches['response'][$j]['status']['long'];
+
+                            if ($status != "Not Started") {
+                                $error = 'gamestarted';
+                                break;
+                            }
                         }
                     }
                 }
