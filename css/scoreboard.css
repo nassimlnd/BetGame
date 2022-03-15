@@ -1,6 +1,7 @@
 @import url("base.css");
 @import url("reset.css");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("styles.css");
 
 body {
   margin: 0;
@@ -193,5 +194,41 @@ td {
 .classement_tiltler {
   text-align: center;
   font-size: 64px;
+  font-family: "Montserrat";
+}
+
+.line {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr 0.5fr;
+  background-color: #efefef;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.middle {
+  grid-column: 2;
+  grid-row: 1;
+  text-align: center;
+}
+
+.right {
+  grid-column: 3;
+  text-align: center;
+  grid-row: 1;
+}
+
+.left {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.container-title {
+  margin-bottom: 50px;
+  font-family: "Montserrat";
+  font-size: 32px;
+}
+
+.line {
   font-family: "Montserrat";
 }

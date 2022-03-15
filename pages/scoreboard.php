@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+
 <html lang="fr">
 
 <head>
@@ -13,119 +15,51 @@
 
     <?php
     include("../includes/header.php");
+    require_once("../config/database.php");
     ?>
+   
+<div class="container">
+     <h1 class="container-title"> Classement </h1>
+    <?php
 
-    <div class="container">
-        <div class="classement_tiltler">
-            <h3>Les meilleurs Betteur !</h3>
-        </div>
-        <table class="table_style">
-            <thead>
-                <tr>
-                    <th class="classment_col"> Classement </th>
-                    <th> Nom du Betteur </th>
-                    <th> Nombre de points </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="classment_coln1"> N 1</td>
-                    <td class="n1"> joueur 1 </td>
-                    <td class="n1"> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 2</td>
-                    <td> joueur 2 </td>
-                    <td> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 3</td>
-                    <td> joueur 3 </td>
-                    <td> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 4</td>
-                    <td> joueur 4 </td>
-                    <td> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 6</td>
-                    <td> joueur 6 </td>
-                    <td> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 7</td>
-                    <td> joueur 7 </td>
-                    <td> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 8</td>
-                    <td> joueur 8 </td>
-                    <td> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 9</td>
-                    <td> joueur 9 </td>
-                    <td> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 10</td>
-                    <td> joueur 10 </td>
-                    <td> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 11</td>
-                    <td> joueur 11 </td>
-                    <td> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 12</td>
-                    <td> joueur 12 </td>
-                    <td> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 13</td>
-                    <td> joueur 13 </td>
-                    <td> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 14</td>
-                    <td> joueur 14 </td>
-                    <td> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 15</td>
-                    <td> joueur 15 </td>
-                    <td> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 16</td>
-                    <td> joueur 16 </td>
-                    <td> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 17</td>
-                    <td> joueur 17 </td>
-                    <td> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 18</td>
-                    <td> joueur 18 </td>
-                    <td> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 19</td>
-                    <td> joueur 19 </td>
-                    <td> 42 </td>
-                </tr>
-                <tr>
-                    <td class="classment_col"> N 20</td>
-                    <td> joueur 20 </td>
-                    <td> 42 </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    define('database', $database);
+    define('host', $host);
+    define('user', $user);
+    define('password', $password);
+
+    $conn = new mysqli($host, $user, $password, $database);
+
+    $rank = 'SELECT pseudo, points FROM accounts ORDER BY points DESC ';
+    $resultrank = $conn->query($rank);
+    $data = $resultrank->fetch_all(MYSQLI_ASSOC);
+
+    //echo var_dump($data);
+
+    for($i =0; $i<=20; $i++){
+        if(isset($data[$i])){
+            echo '<div class="line"> 
+            <div class="right">
+            <p> score :' . $data[$i]['points'] .' </p>
+            </div>
+            
+            <div class="left"> 
+            <p>' . $i+1 ." ".  $data[$i]['pseudo'] . ' </p> 
+            </div>
+
+
+        </div>';
+        } else {
+            break;
+        }
+        
+    }
+    
+    ?>  
+   
+
+</div>
+
+       
 </body>
 
 </html>
