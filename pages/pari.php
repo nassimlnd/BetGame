@@ -54,60 +54,65 @@ if (!isset($_SESSION['user'])) {
             }
         }
 
-        if (isset($_GET['bet']) || !empty($_SESSION['bet'])) {
+        if (isset($_SESSION['bet'][0])) {
+            if (isset($_GET['bet']) || !empty($_SESSION['bet'])) {
     ?>
-            <div class="sidebar">
-                <aside>
-                    <h4 class="sidebar-title">Paris en cours :</h4>
-                    <?php
-                     if(isset($_GET['error'])){
-                        $error = htmlspecialchars($_GET['error']);
-                        switch($error){
-                            case "alreadybet":
-                                ?>
-                                <div class="errorbox"> 
-                                   <p> <strong>Vous ne pouvez pas parier 2 fois sur le même match!</strong> </p> 
-                                </div>
+                <div class="sidebar">
+                    <aside>
+                        <h4 class="sidebar-title">Paris en cours :</h4>
+                        <?php
+                        if (isset($_GET['error'])) {
+                            $error = htmlspecialchars($_GET['error']);
+                            switch ($error) {
+                                case "alreadybet":
+                        ?>
+                                    <div class="errorbox">
+                                        <p> <strong>Vous ne pouvez pas parier 2 fois sur le même match!</strong> </p>
+                                    </div>
                                 <?php
-                                break;
-                            
+                                    break;
+
                                 case "toomanybet":
                                 ?>
-                                <div class="errorbox">
-                                    <p><strong>Vous ne pouvez pas faire plus de 5 paris à la fois!</strong></p>
-                                </div> 
-                                <?php
-                                break;
-                        }
-                    }
-                    
-                    for ($i = 0; $i < count($_SESSION['bet']); $i++) {
-                        $matchidsession = $_SESSION['bet'][$i]['matchid'];
-                        for ($j = 0; $j < count($matches['response']); $j++) {
-                            if ($matchidsession == $matches['response'][$j]['id']) {
-                                $nameteamhomesession = $matches['response'][$j]['teams']['home']['name'];
-                                $nameteamawaysession = $matches['response'][$j]['teams']['away']['name'];
-
-                                $logoteamhomesession = $matches['response'][$j]['teams']['home']['logo'];
-                                $logoteamawaysession = $matches['response'][$j]['teams']['away']['logo'];
-                                break;
+                                    <div class="errorbox">
+                                        <p><strong>Vous ne pouvez pas faire plus de 5 paris à la fois!</strong></p>
+                                    </div>
+                        <?php
+                                    break;
                             }
                         }
-                        echo '<div class="line">';
-                        echo "<p class = 'left'>" . $nameteamawaysession . " - " . $nameteamhomesession . "</p>";
-                        echo "<p class = 'right'> COTE </p>";
-                        echo '<p class = "middle">' . $_SESSION['bet'][$i]['bet'] . '</p>';
-                        echo '</div>';
-                    }
-                    ?>
-                    <form action="../controllers/bet.php" method="POST" class="form-paris">
-                        <label for="mise">Mise :</label>
-                        <input type="text" name="mise" class="input-mise" required>
-                        <a href="#"><button type="submit">Valider</button></a>
-                    </form>
-                </aside>
-            </div>
+
+                        for ($i = 0; $i < count($_SESSION['bet']); $i++) {
+                            if ($_SESSION['bet'][$i] != null && isset($_SESSION['bet'][$i])) {
+                                $matchidsession = $_SESSION['bet'][$i]['matchid'];
+                                for ($j = 0; $j < count($matches['response']); $j++) {
+                                    if ($matchidsession == $matches['response'][$j]['id']) {
+                                        $nameteamhomesession = $matches['response'][$j]['teams']['home']['name'];
+                                        $nameteamawaysession = $matches['response'][$j]['teams']['away']['name'];
+
+                                        $logoteamhomesession = $matches['response'][$j]['teams']['home']['logo'];
+                                        $logoteamawaysession = $matches['response'][$j]['teams']['away']['logo'];
+                                        break;
+                                    }
+                                }
+                                echo '<div class="line">';
+                                echo "<p class = 'left'>" . $nameteamawaysession . " - " . $nameteamhomesession . "</p>";
+                                echo "<p class = 'right'> COTE </p>";
+                                echo '<p class = "middle">' . $_SESSION['bet'][$i]['bet'] . '</p>';
+                                echo '<div class="cross"><a href="../controllers/bet.php?sport=' . $sport . '&matchid=' . $matchid . '&league=' . $league . '&delete=' . $i . '">❌</a></div>';
+                                echo '</div>';
+                            }
+                        }
+                        ?>
+                        <form action="../controllers/bet.php" method="POST" class="form-paris">
+                            <label for="mise">Mise :</label>
+                            <input type="text" name="mise" class="input-mise" required>
+                            <a href="#"><button type="submit">Valider</button></a>
+                        </form>
+                    </aside>
+                </div>
         <?php
+            }
         }
 
         ?>
@@ -135,7 +140,7 @@ if (!isset($_SESSION['user'])) {
                         <img src="<?= $logoteamaway ?>" alt="droit" class="image">
                     </figure>
                     <p class="cote">Cote : 2.00</p>
-                    <button class="btnmise">Miser</button>
+                    <a href="../controllers/bet.php?sport=<?= $sport ?>&bet=2&matchid=<?= $matchid ?>&league=<?= $league ?>"><button class="btnmise">Miser</button></a>
                 </div>
             </div>
 

@@ -42,7 +42,6 @@
 
     <?php
     include('../includes/header.php');
-    include('../controllers/points.php');
     ?>
 
     <div class="sidebar">
@@ -50,7 +49,7 @@
             <h4 class="sidebar-title">Profil</h4>
             <ul>
                 <li><a href="profil.php?page=informations">Informations</a></li>
-                <li><a href="basket.php?page=historique">Historique de paris</a></li>
+                <li><a href="profil.php?page=historique">Historique de paris</a></li>
             </ul>
         </aside>
     </div>
@@ -82,6 +81,9 @@
                             <a href="profil.php?modify=password"><button>Modifier le mot de passe</button></a>
                         </div>
                     <?php
+                        break;
+
+                    case 'historique':
                 }
             } else if (isset($_GET['modify'])) {
                 $email = $_SESSION['email'];

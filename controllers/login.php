@@ -16,16 +16,17 @@ if (isset($_POST['pseudo']) && isset($_POST['password'])) {
     $pseudo = htmlspecialchars($_POST['pseudo']);
     $password = htmlspecialchars($_POST['password']);
 
-    $checkpseudo = "SELECT pseudo, password, email, points FROM accounts WHERE pseudo = '$pseudo'";
+    $checkpseudo = "SELECT id, pseudo, password, email, points FROM accounts WHERE pseudo = '$pseudo'";
     $resultpseudo = $conn->query($checkpseudo);
     $data = $resultpseudo->fetch_array(MYSQLI_ASSOC);
     $rowpseudo = $resultpseudo->num_rows;
 
     if ($rowpseudo == 1) {
         $hashedpassword = hash("sha256", $password);
-        
+
         //defines session parameters
         if ($hashedpassword === $data['password']) {
+            $_SESSION['id'] = $data['id'];
             $_SESSION['user'] = $data['pseudo'];
             $_SESSION['email'] = $data['email'];
             $_SESSION['points'] = $data['points'];

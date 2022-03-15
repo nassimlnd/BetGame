@@ -80,10 +80,6 @@
         </div>
     </section>
 
-    <div class="body-content">
-
-    </div>
-
 
 
     <script type="text/javascript" src="js/index.js"></script>

@@ -36,7 +36,7 @@ if ($curPageName == "index.php") {
             <?php
 
             if (isset($_SESSION['user'])) {
-                include('controllers/points.php');
+                require_once('controllers/points.php');
             ?>
                 <p class="username">Bonjour <a href="pages/profil.php"><strong><?= $_SESSION['user'] ?></strong></a> | <?= $_SESSION['points'] ?> BetCoin(s)</p>
                 <a href="controllers/logout.php" class="logout"><button class="signin">Déconnexion</button></a>
@@ -60,14 +60,19 @@ if ($curPageName == "index.php") {
                 <li><a href="../index.php">Accueil</a></li>
                 <li id="sp"><a href="#">Choisir un sport</a>
                     <div class="NavToolTip">
-                        <div class="test_Tooltip_nav">
-                            <ul>
-                                <li id="tooltip"> <a href="basket.php">Basket-ball</a></li>
-                                <li id="tooltip"> <a href="foot.php">Foot-ball</a></li>
-                                <li id="tooltip"> <a href="hockey.php">Hockey</a></li>
-                                <li id="tooltip"> <a href="UFC.php">UFC</a></li>
-                            </ul>
-                        </div>
+                        <?php if (isset($_SESSION['user'])) {
+                            echo '<div class="test_Tooltip_nav">';
+                        } else {
+                            echo '<div class="test_Tooltip_nav" style = "left: 36.5%;">';
+                        }
+                        ?>
+                        <ul>
+                            <li id="tooltip"> <a href="basket.php">Basket-ball</a></li>
+                            <li id="tooltip"> <a href="foot.php">Foot-ball</a></li>
+                            <li id="tooltip"> <a href="hockey.php">Hockey</a></li>
+                            <li id="tooltip"> <a href="UFC.php">UFC</a></li>
+                        </ul>
+                    </div>
                     </div>
                 </li>
                 <li><a href="scoreboard.php">Classement</a></li>

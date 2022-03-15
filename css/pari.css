@@ -301,7 +301,7 @@ h1 {
 
 .line {
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-columns: 2fr 1fr 2fr 0.5fr;
   background-color: #efefef;
   border-radius: 10px;
   padding: 10px;
@@ -321,6 +321,11 @@ h1 {
 
 .left {
   grid-column: 1;
+}
+
+.cross {
+  grid-column: 4;
+  grid-row: 1;
 }
 
 .stats {
