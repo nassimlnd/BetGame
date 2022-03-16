@@ -84,6 +84,31 @@
                         break;
 
                     case 'historique':
+                        require_once('../config/database.php');
+
+                        define('host', $host);
+                        define('user', $user);
+                        define('password', $password);
+                        define('database', $database);
+
+                        $conn = new mysqli($host, $user, $password, $database);
+
+                        $queryallbets = 'SELECT * FROM bets WHERE accountid =' . $_SESSION['id'];
+
+                        $resultallbets = $conn->query($queryallbets);
+                        $databets = $resultallbets->fetch_all(MYSQLI_ASSOC);
+
+                        if ($resultallbets->num_rows <= 0) {
+                            echo "<p>Vous n'avez pas encore effectué de paris.</p>";
+                        } else {
+                            for ($i = 0; $i < count($databets); $i++) {
+                                echo '<div class="line">
+                                    <div class="middle">
+                                        <p>' . $databets[$i]['mise'] . '</p>
+                                    </div>
+                                    </div>';
+                            }
+                        }
                 }
             } else if (isset($_GET['modify'])) {
                 $email = $_SESSION['email'];

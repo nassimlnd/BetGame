@@ -1,10 +1,12 @@
 <?php
 
-session_start();
+if (!isset($_SESSION['user'])) {
+    session_start();
+}
 
 // Includes
 
-include("points.php");
+include_once("points.php");
 
 // Database connection variables
 require_once('../config/database.php');
@@ -156,3 +158,104 @@ if (isset($_POST['mise'])) {
         header("Location: ../index.php");
     }
 }
+
+function checkBet(string $host, string $user, string $password, string $database): bool
+{
+    require_once('../config/database.php');
+    include_once('../controllers/points.php');
+
+    $conn = new mysqli($host, $user, $password, $database);
+
+    $win = false;
+
+    $queryallbets = "SELECT * FROM bets WHERE accountid =" . $_SESSION['id'];
+    $resultallbets = $conn->query($queryallbets);
+    $arrayallbets = $resultallbets->fetch_all(MYSQLI_ASSOC);
+
+    for ($i = 0; $i < count($arrayallbets); $i++) {
+        if ($arrayallbets[$i]['validated'] == 0) {
+            $betsdetails = "SELECT * FROM bets_details WHERE betid =" . $arrayallbets[$i]['id'];
+            $resultbetdetails = $conn->query($betsdetails);
+            $arraybetdetails = $resultbetdetails->fetch_all(MYSQLI_ASSOC);
+
+            for ($j = 0; $j < count($arraybetdetails); $j++) {
+                $sportbetdetails = $arraybetdetails[$j]['sport'];
+                $leaguebetdetails = $arraybetdetails[$j]['league'];
+                $matchidbetdetails = $arraybetdetails[$j]['matchid'];
+                $betbetdetails = $arraybetdetails[$j]['bet'];
+
+                $filename = '../json/' . $sportbetdetails . '/' . $leaguebetdetails . '.json';
+                $arrayjson = file_get_contents($filename);
+                $arrayjson = json_decode($arrayjson, true);
+
+                for ($k = 0; $k < count($arrayjson['response']); $k++) {
+                    if ($sportbetdetails == "foot") {
+                        if ($matchidbetdetails == $arrayjson['response'][$k]['fixture']['id']) {
+                            if ($arrayjson['response'][$k]['fixture']['status']['long'] == "Game Finished") {
+                                $scorehome = $arrayjson['response'][$k]['score']['fulltime']['home'];
+                                $scoreaway = $arrayjson['response'][$k]['score']['fulltime']['away'];
+
+                                $winner = '0';
+                                if ($scorehome > $scoreaway) {
+                                    $winner = 1;
+                                } else $winner = 2;
+
+                                if ($betbetdetails == $winner) {
+                                    $win = true;
+                                } else {
+                                    if ($conn->query("UPDATE bets SET status = 0 AND validated = 1 WHERE id =" . $arrayallbets[$i]['id'])) {
+                                        echo 'ok';
+                                    }
+                                    return false;
+                                }
+                            } else break;
+                        }
+                    } elseif ($sportbetdetails == "basket") {
+                        if ($matchidbetdetails == $arrayjson['response'][$k]['id']) {
+                            if ($arrayjson['response'][$k]['status']['long'] == "Game Finished") {
+                                $scorehome = $arrayjson['response'][$k]['scores']['home']['total'];
+                                $scoreaway = $arrayjson['response'][$k]['scores']['away']['total'];
+
+                                $winner = 0;
+                                if ($scorehome > $scoreaway) {
+                                    $winner = 1;
+                                } else $winner = 2;
+
+                                if ($betbetdetails == $winner) {
+                                    $win = true;
+                                } else {
+                                    $basketrequest = "UPDATE bets SET status = 0 WHERE id =" . $arrayallbets[$i]['id'];
+                                    $basketrequest2 = "UPDATE bets SET validated = 1 WHERE id =" . $arrayallbets[$i]['id'];
+                                    if ($conn->query($basketrequest) && $conn->query($basketrequest2)) {
+                                        echo 'ok';
+                                    }
+                                    return false;
+                                }
+                            } else break;
+                        }
+                    }
+                }
+            }
+
+            if ($win == true) {
+                $cotetotale = $arrayallbets[$i]['cote'];
+                $mise = $arrayallbets[$i]['mise'];
+
+                $actualpoints = $_SESSION['points'];
+
+                $newamountpoints = $mise * $cotetotale + $actualpoints;
+
+                if ($conn->query("UPDATE bets SET status = 1 WHERE id =" . $arrayallbets[$i]['id']) && $conn->query("UPDATE bets SET validated = 1 WHERE id =" . $arrayallbets[$i]['id'])) {
+                    echo 'ok';
+                }
+
+                setPoints($newamountpoints, $conn);
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+}
+
+checkBet($host, $user, $password, $database);

@@ -40,7 +40,7 @@
   font-family: "Montserrat";
 }
 
-/* Container principal */
+/* Container principal / informations */
 
 .container {
   text-align: start;
@@ -112,4 +112,36 @@
 
 .successbox p {
   font-family: "Montserrat";
+}
+
+/* Historique de paris */
+
+.line {
+  font-family: "Montserrat";
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr 0.5fr;
+  background-color: #efefef;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.middle {
+  grid-column: 2;
+  grid-row: 1;
+  text-align: center;
+}
+
+.right {
+  grid-column: 3;
+  text-align: center;
+}
+
+.left {
+  grid-column: 1;
+}
+
+.cross {
+  grid-column: 4;
+  grid-row: 1;
 }

@@ -6,6 +6,8 @@ if (!isset($_SESSION['user'])) {
 $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
 
 if ($curPageName == "index.php") {
+    include_once('controllers/api-sports.php');
+    //refreshAll($curPageName);
 ?>
     <header>
         <a href="index.php"><img src="images/logo.png" alt="Logo" id="logo"></a>
@@ -52,6 +54,8 @@ if ($curPageName == "index.php") {
     </header>
 <?php
 } else {
+    include_once('../controllers/api-sports.php');
+    //refreshAll($curPageName);
 ?>
     <header>
         <a href="../index.php"><img src="../images/logo.png" alt="Logo" id="logo"></a>

@@ -41,3 +41,12 @@ function refreshPointsBet(int $mise, mysqli $conn): void
         echo 'ok';
     }
 }
+
+function setPoints(int $amount, mysqli $conn): void
+{
+    $sql = "UPDATE accounts SET points = $amount WHERE id =" . $_SESSION['id'];
+
+    if ($conn->query($sql)) {
+        echo 'ok';
+    }
+}

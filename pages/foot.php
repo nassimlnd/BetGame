@@ -91,8 +91,12 @@
                         echo '<div class="middle">';
                         echo '<div class="text">';
                         echo '<p>Date :</p>';
+                        echo '<p>' . date('d/m/Y', strtotime($someArray['response'][$i]['fixture']['date'])) . '</p>';
+                        echo '<br>';
                         echo '<p>-</p>';
+                        echo '<br>';
                         echo '<p>Heure :</p>';
+                        echo '<p>' . date('H:i:s', strtotime($someArray['response'][$i]['fixture']['date'])) . '</p>';
                         echo '</div>';
                         echo '</div>';
                         echo '<div class="right">';

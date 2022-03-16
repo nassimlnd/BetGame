@@ -1,6 +1,6 @@
 <?php
 
-function refreshBasket(): void
+function refreshBasket(string $pagename): void
 {
     $league = array(
         0 => 12,
@@ -61,11 +61,15 @@ function refreshBasket(): void
                 break;
         };
 
-        file_put_contents("../json/basket/" . $leaguename . ".json", $response);
+        if ($pagename == 'index.php') {
+            file_put_contents("json/basket/" . $leaguename . ".json", $response);
+        } else {
+            file_put_contents("../json/basket/" . $leaguename . ".json", $response);
+        }
     }
 }
 
-function refreshFoot(): void
+function refreshFoot(string $pagename): void
 {
     $league = array(
         0 => 39,
@@ -112,6 +116,35 @@ function refreshFoot(): void
                 break;
         };
 
-        file_put_contents("../json/foot/" . $leaguename . ".json", $response);
+        if ($pagename == 'index.php') {
+            file_put_contents("json/foot/" . $leaguename . ".json", $response);
+        } else {
+            file_put_contents("../json/foot/" . $leaguename . ".json", $response);
+        }
+    }
+}
+
+function refreshAll(string $pagename): void
+{
+    if ($pagename == "index.php") {
+        $oldtime = (int)file_get_contents("controllers/maj.txt");
+        $newtime = time();
+
+        if ($newtime - $oldtime > 3600) {
+            unlink('../controllers/maj.txt');
+            file_put_contents('../controllers/maj.txt', $newtime);
+            refreshFoot($pagename);
+            refreshBasket($pagename);
+        }
+    } else {
+        $oldtime = file_get_contents("../controllers/maj.txt");
+        $newtime = time();
+
+        if ($newtime - $oldtime > 3600) {
+            unlink('../controllers/maj.txt');
+            file_put_contents('../controllers/maj.txt', $newtime);
+            refreshFoot($pagename);
+            refreshBasket($pagename);
+        }
     }
 }
