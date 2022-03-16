@@ -163,9 +163,6 @@ h1 {
 }
 
 h2 {
-  margin-top: 25px;
-  margin-bottom: 25px;
-  text-align: center;
   text-align: center;
   font-size: 35px;
   font-family: "Montserrat";
@@ -193,4 +190,14 @@ h2 {
 
 #jcvd {
   font-family: "Lobster Two";
+}
+
+.autor-quote {
+  margin-left: 50%;
+  font-style: italic;
+}
+
+.quote {
+  margin-top: 25px;
+  margin-bottom: 25px;
 }

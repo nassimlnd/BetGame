@@ -107,7 +107,7 @@ header {
   background-color: white;
   justify-self: center;
   height: fit-content;
-  width: fit-content;
+  width: 900px;
   margin: auto;
   margin-top: 150px;
   border-radius: 15px;
@@ -156,54 +156,16 @@ header {
   font-family: "Montserrat";
 }
 
-/*                       Scoreboard                       */
-
-.table_style {
-  border-collapse: collapse;
-  min-width: 900px;
-  width: auto;
-  cursor: pointer;
-  margin: 50px auto;
-  border: 2px solid rgb(0, 0, 0);
-}
-
-thead tr {
-  background-color: ghostwhite;
-}
-
-td {
-  padding: 20px 20px;
-  border-bottom: 1px #ddd solid;
-}
-
-.classment_col {
-  border: 0.5px solid #ddd;
-}
-
-.classment_coln1 {
-  border: 0.5px solid #ddd;
-  background: grey;
-  color: #ddd;
-}
-
-.n1 {
-  color: #ddd;
-  background: grey;
-}
-
-.classement_tiltler {
-  text-align: center;
-  font-size: 64px;
-  font-family: "Montserrat";
-}
+/* Scoreboard */
 
 .line {
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr 0.5fr;
+  grid-template-columns: 2fr 3fr 2fr 0.5fr;
   background-color: #efefef;
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 10px;
+  font-family: "Montserrat";
 }
 
 .middle {
@@ -221,6 +183,7 @@ td {
 .left {
   grid-column: 1;
   grid-row: 1;
+  text-align: center;
 }
 
 .container-title {
@@ -229,6 +192,12 @@ td {
   font-size: 32px;
 }
 
-.line {
+.main-line {
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr 0.5fr;
+  background-color: grey;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
   font-family: "Montserrat";
 }

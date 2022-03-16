@@ -17,49 +17,63 @@
     include("../includes/header.php");
     require_once("../config/database.php");
     ?>
-   
-<div class="container">
-     <h1 class="container-title"> Classement </h1>
-    <?php
 
-    define('database', $database);
-    define('host', $host);
-    define('user', $user);
-    define('password', $password);
+    <div class="container">
+        <h1 class="container-title"> Classement </h1>
 
-    $conn = new mysqli($host, $user, $password, $database);
-
-    $rank = 'SELECT pseudo, points FROM accounts ORDER BY points DESC ';
-    $resultrank = $conn->query($rank);
-    $data = $resultrank->fetch_all(MYSQLI_ASSOC);
-
-    //echo var_dump($data);
-
-    for($i =0; $i<=20; $i++){
-        if(isset($data[$i])){
-            echo '<div class="line"> 
+        <div class="main-line">
+            <div class="left">
+                <p>Position</p>
+            </div>
+            <div class="middle">
+                <p>Pseudo</p>
+            </div>
             <div class="right">
-            <p> score :' . $data[$i]['points'] .' </p>
+                <p>Score</p>
             </div>
-            
-            <div class="left"> 
-            <p>' . $i+1 ." ".  $data[$i]['pseudo'] . ' </p> 
+            <div class="cross">
+                <p>Rank</p>
             </div>
+        </div>
+        <?php
 
+        define('database', $database);
+        define('host', $host);
+        define('user', $user);
+        define('password', $password);
 
-        </div>';
-        } else {
-            break;
+        $conn = new mysqli($host, $user, $password, $database);
+
+        $rank = 'SELECT pseudo, points FROM accounts ORDER BY points DESC ';
+        $resultrank = $conn->query($rank);
+        $data = $resultrank->fetch_all(MYSQLI_ASSOC);
+
+        //echo var_dump($data);
+
+        for ($i = 0; $i <= 20; $i++) {
+            if (isset($data[$i])) {
+                echo '<div class="line">
+                    <div class="left"> 
+                        <p>' . $i + 1 . ' </p> 
+                    </div>
+                    <div class="middle">
+                        <p> ' .  $data[$i]['pseudo'] . ' </p>
+                    </div>
+                    <div class="right">
+                        <p>' . $data[$i]['points'] . ' BetCoins</p>
+                    </div>
+                </div>';
+            } else {
+                break;
+            }
         }
-        
-    }
-    
-    ?>  
-   
 
-</div>
+        ?>
 
-       
+
+    </div>
+
+
 </body>
 
 </html>

@@ -45,7 +45,11 @@
 
     <div class="container">
         <h1>Qui somme nous ?</h1>
-        <h2 id="jcvd">Buvez de l'eau, dans 20/30 ans y'en aura plus !</h2>
+        <div class="quote">
+            <h2 id="jcvd">"Buvez de l'eau, dans 20/30 ans y'en aura plus !"</h2>
+            <p class="autor-quote">- JCVD</p>
+        </div>
+
         <div class="team">
             <figure class="teammate">
                 <img src="../images/pdpqui.png" alt="pdp" id="pdp">
