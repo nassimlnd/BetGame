@@ -7,6 +7,7 @@ if (!isset($_SESSION['user'])) {
 // Includes
 
 include_once("points.php");
+include_once("match.php");
 
 // Database connection variables
 require_once('../config/database.php');
@@ -15,6 +16,8 @@ define('user', $user);
 define('password', $password);
 define('host', $host);
 define('database', $database);
+
+$conn = new mysqli($host, $user, $password, $database);
 
 
 // counting bet in session data 
@@ -25,6 +28,12 @@ if (isset($_GET['bet']) && isset($_GET['matchid']) && isset($_GET['sport']) && i
     $sport = htmlspecialchars($_GET['sport']);
     $league = htmlspecialchars($_GET['league']);
     $error = "non";
+
+    if (checkCoteMatch($matchid, $conn, $sport, $league) == false) {
+        setCoteMatch($conn, $matchid, $sport, $league);
+    } else {
+        $cote = getCoteMatch($conn, $matchid, $bet, $sport, $league);
+    }
 
     if (isset($_SESSION['bet']) && count($_SESSION['bet']) == 5) {
         header('Location: ../pages/pari.php?sport=' . $sport . '&matchid=' . $matchid . '&bet=' . $bet . '&league=' . $league . '&error=toomanybet');
@@ -45,6 +54,7 @@ if (isset($_GET['bet']) && isset($_GET['matchid']) && isset($_GET['sport']) && i
                 'matchid' => $matchid,
                 'sport' => $sport,
                 'league' => $league,
+                'cote' => $cote
             );
 
             if (empty($_SESSION['bet'])) {
@@ -53,7 +63,8 @@ if (isset($_GET['bet']) && isset($_GET['matchid']) && isset($_GET['sport']) && i
                         "bet" => $bet,
                         'matchid' => $matchid,
                         'sport' => $sport,
-                        'league' => $league
+                        'league' => $league,
+                        'cote' => $cote
                     )
                 );
 
@@ -127,8 +138,6 @@ if (isset($_POST['mise'])) {
 
     // Adding the bet to the database
     if ($error == 'no') {
-        $conn = new mysqli($host, $user, $password, $database);
-
         $date = date("Y-m-d H:i:s");
         $addbet = "INSERT INTO bets(id, accountid, cote, mise, date) VALUES ('', '" . $_SESSION['id'] . "', '$cotetotal', '$mise', '$date')";
         if ($conn->query($addbet)) {
@@ -159,12 +168,9 @@ if (isset($_POST['mise'])) {
     }
 }
 
-function checkBet(string $host, string $user, string $password, string $database): bool
+function checkBet(mysqli $conn): bool
 {
-    require_once('../config/database.php');
     include_once('../controllers/points.php');
-
-    $conn = new mysqli($host, $user, $password, $database);
 
     $win = false;
 
@@ -203,7 +209,7 @@ function checkBet(string $host, string $user, string $password, string $database
                                 if ($betbetdetails == $winner) {
                                     $win = true;
                                 } else {
-                                    if ($conn->query("UPDATE bets SET status = 0 AND validated = 1 WHERE id =" . $arrayallbets[$i]['id'])) {
+                                    if ($conn->query("UPDATE bets SET status = 0, validated = 1 WHERE id =" . $arrayallbets[$i]['id'])) {
                                         echo 'ok';
                                     }
                                     return false;
@@ -258,4 +264,4 @@ function checkBet(string $host, string $user, string $password, string $database
     }
 }
 
-checkBet($host, $user, $password, $database);
+checkBet($conn);

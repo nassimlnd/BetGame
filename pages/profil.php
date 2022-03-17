@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
     <meta name="format-detection" content="telephone=no">
     <!-- Title -->
-    <title>Basket-ball - BetGame</title>
+    <title>Profil - BetGame</title>
     <!-- Description -->
     <meta name="description" content="Home description.">
     <!-- Social -->
@@ -73,7 +73,7 @@
                         <div class="informations">
                             <p><strong>Pseudo</strong> : <?= $pseudo ?></p>
                             <p><strong>Email</strong> : <?= $email ?></p>
-                            <p><strong>BetCoin</strong> : <?= $points ?></p>
+                            <p><strong>BetCoin(s)</strong> : <?= $points ?></p>
                         </div>
 
                         <div class="buttonsmodify">

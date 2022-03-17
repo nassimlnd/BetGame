@@ -7,7 +7,7 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 
 if ($curPageName == "index.php") {
     include_once('controllers/api-sports.php');
-    //refreshAll($curPageName);
+    refreshAll($curPageName);
 ?>
     <header>
         <a href="index.php"><img src="images/logo.png" alt="Logo" id="logo"></a>
@@ -55,7 +55,7 @@ if ($curPageName == "index.php") {
 <?php
 } else {
     include_once('../controllers/api-sports.php');
-    //refreshAll($curPageName);
+    refreshAll($curPageName);
 ?>
     <header>
         <a href="../index.php"><img src="../images/logo.png" alt="Logo" id="logo"></a>

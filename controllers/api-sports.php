@@ -131,8 +131,8 @@ function refreshAll(string $pagename): void
         $newtime = time();
 
         if ($newtime - $oldtime > 3600) {
-            unlink('../controllers/maj.txt');
-            file_put_contents('../controllers/maj.txt', $newtime);
+            unlink('controllers/maj.txt');
+            file_put_contents('controllers/maj.txt', $newtime);
             refreshFoot($pagename);
             refreshBasket($pagename);
         }
