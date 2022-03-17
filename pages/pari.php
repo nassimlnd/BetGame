@@ -25,6 +25,16 @@ if (!isset($_SESSION['user'])) {
 
     if (isset($_GET['sport']) && isset($_GET['matchid']) && isset($_GET['league'])) {
 
+        require_once('../config/database.php');
+        include_once('../controllers/match.php');
+
+        define('user', $user);
+        define('password', $password);
+        define('host', $host);
+        define('database', $database);
+
+        $conn = new mysqli($host, $user, $password, $database);
+
         $matchid = htmlspecialchars($_GET['matchid']);
         $league = htmlspecialchars($_GET['league']);
         $sport = htmlspecialchars($_GET['sport']);
@@ -41,6 +51,13 @@ if (!isset($_SESSION['user'])) {
         $logoteamaway = '';
         $logoteamhome = '';
 
+        if (checkCoteMatch($matchid, $conn, $sport, $league) == false) {
+            setBaseCoteMatch($conn, $matchid, $sport, $league);
+        }
+        /*else {
+            $cote = getCoteMatch($conn, $matchid, $bet, $sport, $league);
+        }*/
+
 
         if ($sport == 'foot') {
             for ($i = 0; $i < count($matches['response']); $i++) {
@@ -50,6 +67,10 @@ if (!isset($_SESSION['user'])) {
 
                     $logoteamhome = $matches['response'][$i]['teams']['home']['logo'];
                     $logoteamaway = $matches['response'][$i]['teams']['away']['logo'];
+
+                    $cotehome = getCoteMatch($conn, $matchid, '1', $sport, $league) / 100;
+                    $coteaway = getCoteMatch($conn, $matchid, '2', $sport, $league) / 100;
+                    $cotedraw = getCoteMatch($conn, $matchid, 'N', $sport, $league) / 100;
                     break;
                 }
             }
@@ -61,6 +82,9 @@ if (!isset($_SESSION['user'])) {
 
                     $logoteamhome = $matches['response'][$i]['teams']['home']['logo'];
                     $logoteamaway = $matches['response'][$i]['teams']['away']['logo'];
+
+                    $cotehome = getCoteMatch($conn, $matchid, '1', $sport, $league) / 100;
+                    $coteaway = getCoteMatch($conn, $matchid, '2', $sport, $league) / 100;
                     break;
                 }
             }
@@ -114,6 +138,15 @@ if (!isset($_SESSION['user'])) {
 
                                             $logoteamhomesession = $matchesbet['response'][$j]['teams']['home']['logo'];
                                             $logoteamawaysession = $matchesbet['response'][$j]['teams']['away']['logo'];
+
+                                            if ($_SESSION['bet'][$i]['bet'] == 1) {
+                                                $cotesession = getCoteMatch($conn, $matchidsession, '1', $sportbet, $leaguebet) / 100;
+                                            } elseif ($_SESSION['bet'][$i]['bet'] == 2) {
+                                                $cotesession = getCoteMatch($conn, $matchidsession, '2', $sportbet, $leaguebet) / 100;
+                                            } elseif ($_SESSION['bet'][$i]['bet'] == 'N') {
+                                                $cotesession = getCoteMatch($conn, $matchidsession, 'N', $sportbet, $leaguebet) / 100;
+                                            }
+
                                             break;
                                         }
                                     }
@@ -125,6 +158,12 @@ if (!isset($_SESSION['user'])) {
 
                                             $logoteamhomesession = $matchesbet['response'][$j]['teams']['home']['logo'];
                                             $logoteamawaysession = $matchesbet['response'][$j]['teams']['away']['logo'];
+
+                                            if ($_SESSION['bet'][$i]['bet'] == 1) {
+                                                $cotesession = getCoteMatch($conn, $matchidsession, '1', $sportbet, $leaguebet) / 100;
+                                            } elseif ($_SESSION['bet'][$i]['bet'] == 2) {
+                                                $cotesession = getCoteMatch($conn, $matchidsession, '2', $sportbet, $leaguebet) / 100;
+                                            }
                                             break;
                                         }
                                     }
@@ -132,7 +171,7 @@ if (!isset($_SESSION['user'])) {
 
                                 echo '<div class="line">';
                                 echo "<p class = 'left'>" . $nameteamawaysession . " - " . $nameteamhomesession . "</p>";
-                                echo "<p class = 'right'> COTE </p>";
+                                echo "<p class = 'right'>" . $cotesession . " </p>";
                                 echo '<p class = "middle">' . $_SESSION['bet'][$i]['bet'] . '</p>';
                                 echo '<div class="cross"><a href="../controllers/bet.php?sport=' . $sportbet . '&matchid=' . $matchid . '&league=' . $leaguebet . '&delete=' . $i . '">❌</a></div>';
                                 echo '</div>';
@@ -161,7 +200,7 @@ if (!isset($_SESSION['user'])) {
                         <figcaption class="titreequipe"><?= $nameteamhome ?></figcaption>
                         <img src="<?= $logoteamhome ?>" alt="gauche" class="image">
                     </figure>
-                    <p class="cote">Cote : 2.00</p>
+                    <p class="cote">Cote : <?= $cotehome ?></p>
                     <a href="../controllers/bet.php?sport=<?= $sport ?>&bet=1&matchid=<?= $matchid ?>&league=<?= $league ?>"><button class="btnmise">Miser</button></a>
                 </div>
 
@@ -174,7 +213,7 @@ if (!isset($_SESSION['user'])) {
                         <figcaption class="titreequipe"><?= $nameteamaway ?></figcaption>
                         <img src="<?= $logoteamaway ?>" alt="droit" class="image">
                     </figure>
-                    <p class="cote">Cote : 2.00</p>
+                    <p class="cote">Cote : <?= $coteaway ?></p>
                     <a href="../controllers/bet.php?sport=<?= $sport ?>&bet=2&matchid=<?= $matchid ?>&league=<?= $league ?>"><button class="btnmise">Miser</button></a>
                 </div>
             </div>

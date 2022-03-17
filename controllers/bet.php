@@ -29,12 +29,6 @@ if (isset($_GET['bet']) && isset($_GET['matchid']) && isset($_GET['sport']) && i
     $league = htmlspecialchars($_GET['league']);
     $error = "non";
 
-    if (checkCoteMatch($matchid, $conn, $sport, $league) == false) {
-        setCoteMatch($conn, $matchid, $sport, $league);
-    } else {
-        $cote = getCoteMatch($conn, $matchid, $bet, $sport, $league);
-    }
-
     if (isset($_SESSION['bet']) && count($_SESSION['bet']) == 5) {
         header('Location: ../pages/pari.php?sport=' . $sport . '&matchid=' . $matchid . '&bet=' . $bet . '&league=' . $league . '&error=toomanybet');
     } else {
@@ -161,6 +155,8 @@ if (isset($_POST['mise'])) {
         }
 
         unset($_SESSION['bet']);
+
+        setCoteMatch($conn, $matchidbet, $sportbet, $leaguebet, $betbet);
 
         refreshPointsBet($mise, $conn);
 
