@@ -41,6 +41,7 @@
 <body>
 
     <?php
+     include("../controllers/rank.php");
     include('../includes/header.php');
     ?>
 
@@ -70,10 +71,15 @@
             ?>
                         <h1 class="title">Informations</h1>
 
+                        <?php
+                            $rank = attributerank($points);
+                        ?>
+
                         <div class="informations">
                             <p><strong>Pseudo</strong> : <?= $pseudo ?></p>
                             <p><strong>Email</strong> : <?= $email ?></p>
                             <p><strong>BetCoin(s)</strong> : <?= $points ?></p>
+                            <p><strong>Rank</strong> : <?= $rank ?> </p>
                         </div>
 
                         <div class="buttonsmodify">

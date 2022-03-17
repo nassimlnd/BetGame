@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 
 
@@ -14,6 +17,7 @@
 <body>
 
     <?php
+    include("../controllers/rank.php");
     include("../includes/header.php");
     require_once("../config/database.php");
     ?>
@@ -48,10 +52,12 @@
         $resultrank = $conn->query($rank);
         $data = $resultrank->fetch_all(MYSQLI_ASSOC);
 
-        //echo var_dump($data);
-
         for ($i = 0; $i <= 20; $i++) {
             if (isset($data[$i])) {
+
+                $ranknum = $data[$i]['points'];
+                $rankdesc = attributerank($ranknum);
+    
                 echo '<div class="line">
                     <div class="left"> 
                         <p>' . $i + 1 . ' </p> 
@@ -62,17 +68,17 @@
                     <div class="right">
                         <p>' . $data[$i]['points'] . ' BetCoins</p>
                     </div>
+                    <div class="cross">
+                        <p> ' . $rankdesc . ' </p>
+                    </div>
                 </div>';
+                   
             } else {
                 break;
             }
         }
-
         ?>
-
-
     </div>
-
 
 </body>
 
