@@ -70,12 +70,14 @@
             <div>
                 <h2>Les prix</h2>
                 <p>Les prix change tous les mois, seul les 5 premiers du classement seront éligible à un prix, bonne chance a tous !</p>
-                <a href="#">Details</a>
+                <a href="pages\scoreboard.php">Details</a>
             </div>
             <div>
-                <h2>Slide 4</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, accusantium non. Enim ducimus commodi repellendus maxime consequatur doloribus quasi aliquam.</p>
-                <a href="#">Details</a>
+                <h2>Notre systeme<br>de rank !</h2>
+                <p>Voici notre systeme Rank <br>
+                essayer de vous issez en haut du classement <br>
+                pour gagner des Betcoins ! </p>
+                <a href="pages\scoreboard.php">Details</a>
             </div>
         </div>
     </section>

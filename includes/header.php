@@ -14,7 +14,7 @@ if ($curPageName == "index.php") {
         <nav>
             <ul class="nav__links">
                 <li><a href="index.php">Accueil</a></li>
-                <li id="sp"><a href="#">Choisir un sport</a>
+                <li id="sp"><a href="pages\choixsport.php">Choisir un sport</a>
                     <div class="NavToolTip">
                         <?php if (isset($_SESSION['user'])) {
                             echo '<div class="test_Tooltip_nav">';
