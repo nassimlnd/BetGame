@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 
 
@@ -41,10 +38,12 @@
         </div>
         <?php
 
-        define('database', $database);
-        define('host', $host);
-        define('user', $user);
-        define('password', $password);
+        if (!isset($host)) {
+            define('database', $database);
+            define('host', $host);
+            define('user', $user);
+            define('password', $password);
+        }
 
         $conn = new mysqli($host, $user, $password, $database);
 
@@ -57,7 +56,7 @@
 
                 $ranknum = $data[$i]['points'];
                 $rankdesc = attributerank($ranknum);
-    
+
                 echo '<div class="line">
                     <div class="left"> 
                         <p>' . $i + 1 . ' </p> 
@@ -72,7 +71,6 @@
                         <p> ' . $rankdesc . ' </p>
                     </div>
                 </div>';
-                   
             } else {
                 break;
             }

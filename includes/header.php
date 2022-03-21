@@ -7,6 +7,7 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 
 if ($curPageName == "index.php") {
     include_once('controllers/api-sports.php');
+    include_once('controllers/bet.php');
     refreshAll($curPageName);
 ?>
     <header>
@@ -55,6 +56,7 @@ if ($curPageName == "index.php") {
 <?php
 } else {
     include_once('../controllers/api-sports.php');
+    include_once('../controllers/bet.php');
     refreshAll($curPageName);
 ?>
     <header>
@@ -87,7 +89,7 @@ if ($curPageName == "index.php") {
             <?php
 
             if (isset($_SESSION['user'])) {
-                include('../controllers/points.php');
+                include_once('../controllers/points.php');
             ?>
                 <p class="username">Bonjour <a href="../pages/profil.php"><strong><?= $_SESSION['user'] ?></strong></a> | <?= $_SESSION['points'] ?> BetCoin(s)</p>
                 <a href="../controllers/logout.php" class="logout"><button class="signin">Déconnexion</button></a>

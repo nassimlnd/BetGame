@@ -33,7 +33,7 @@ if (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['email'
                     $sql = "INSERT INTO accounts(id, pseudo, email, password, points) VALUES ('', '$pseudo', '$email', '$password', 10)";
                     $conn->query($sql);
 
-                    header('Location: ../index.php');
+                    header('Location: ../pages/register.php?reg_error=success');
                 }
             } else header("Location: ../pages/register.php?reg_error=emailnotvalid");
         } else header("Location: ../pages/register.php?reg_error=alreadyemail");

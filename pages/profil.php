@@ -5,33 +5,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="../css/profil.css" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <!-- Canonical -->
-    <link rel="canonical" href="https://www.example.com">
-    <!-- Robots -->
-    <meta name="robots" content="noindex, nofollow">
-    <!-- Device -->
-    <!-- <meta name="viwport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
-    <meta name="format-detection" content="telephone=no">
-    <!-- Title -->
     <title>Profil - BetGame</title>
-    <!-- Description -->
-    <meta name="description" content="Home description.">
-    <!-- Social -->
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Quick Parcel Project — Home">
-    <meta name="twitter:description" content="Home description.">
-    <meta name="twitter:image" content="#">
-    <!-- Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.example.com">
-    <meta property="og:title" content="Quick Parcel Project — Home">
-    <meta property="og:description" content="Home description.">
-    <meta property="og:image" content="#">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <!-- Favicon -->
     <meta name="theme-color" content="#fff">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,10 +66,12 @@
                     case 'historique':
                         require_once('../config/database.php');
 
-                        define('host', $host);
-                        define('user', $user);
-                        define('password', $password);
-                        define('database', $database);
+                        if (!isset($host)) {
+                            define('host', $host);
+                            define('user', $user);
+                            define('password', $password);
+                            define('database', $database);
+                        }
 
                         $conn = new mysqli($host, $user, $password, $database);
 
@@ -108,7 +84,13 @@
                             echo "<p>Vous n'avez pas encore effectué de paris.</p>";
                         } else {
                             for ($i = 0; $i < count($databets); $i++) {
-                                echo '<div class="linebet">
+                                $databetsid = $databets[$i]['id'];
+                                $querynummatches = "SELECT * FROM bets_details WHERE betid =" . $databetsid;
+                                $resultnummatches = $conn->query($querynummatches);
+                                $nummatches = $resultnummatches->num_rows;
+
+                                if ($databets[$i]['status'] == '') {
+                                    echo '<div class="linebet">
                                 <div class="top left">
                                     <p class="title-bet">Bet n° ' . $databets[$i]['id'] . '</p>
                                 </div>
@@ -118,7 +100,7 @@
                                     <p class="status-bet"><strong>Status</strong>: 🕒 En attente</p>
                                 </div>
                                 <div class="bottom left">
-                                    <p class="text-bet">Nombre de match pariés : X</p>
+                                    <p class="text-bet">Nombre de match pariés : ' . $nummatches . '</p>
                                 </div>
                                 <div class="bottom middle">
                                     <p class="text-bet">Cote totale : ' . $databets[$i]['cote'] . '</p>
@@ -127,6 +109,47 @@
                                     <p class="text-bet">Mise : ' . $databets[$i]['mise'] . '</p>
                                 </div>
                             </div>';
+                                } elseif ($databets[$i]['status'] == '1') {
+                                    echo '<div class="linebet">
+                                <div class="top left">
+                                    <p class="title-bet">Bet n° ' . $databets[$i]['id'] . '</p>
+                                </div>
+                                <div class="top middle">
+                                </div>
+                                <div class="top right">
+                                    <p class="status-bet"><strong>Status</strong>: ✅ Gagné !</p>
+                                </div>
+                                <div class="bottom left">
+                                    <p class="text-bet">Nombre de match pariés : ' . $nummatches . '</p>
+                                </div>
+                                <div class="bottom middle">
+                                    <p class="text-bet">Cote totale : ' . $databets[$i]['cote'] . '</p>
+                                </div>
+                                <div class="bottom right">
+                                    <p class="text-bet">Mise : ' . $databets[$i]['mise'] . '</p>
+                                </div>
+                            </div>';
+                                } elseif ($databets[$i]['status'] == '0') {
+                                    echo '<div class="linebet">
+                                <div class="top left">
+                                    <p class="title-bet">Bet n° ' . $databets[$i]['id'] . '</p>
+                                </div>
+                                <div class="top middle">
+                                </div>
+                                <div class="top right">
+                                    <p class="status-bet"><strong>Status</strong>: ❌ Perdu</p>
+                                </div>
+                                <div class="bottom left">
+                                    <p class="text-bet">Nombre de match pariés : ' . $nummatches . '</p>
+                                </div>
+                                <div class="bottom middle">
+                                    <p class="text-bet">Cote totale : ' . $databets[$i]['cote'] . '</p>
+                                </div>
+                                <div class="bottom right">
+                                    <p class="text-bet">Mise : ' . $databets[$i]['mise'] . '</p>
+                                </div>
+                            </div>';
+                                }
                             }
                         }
                 }

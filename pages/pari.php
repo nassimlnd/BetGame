@@ -28,10 +28,12 @@ if (!isset($_SESSION['user'])) {
         require_once('../config/database.php');
         include_once('../controllers/match.php');
 
-        define('user', $user);
-        define('password', $password);
-        define('host', $host);
-        define('database', $database);
+        if (!isset($host)) {
+            define('user', $user);
+            define('password', $password);
+            define('host', $host);
+            define('database', $database);
+        }
 
         $conn = new mysqli($host, $user, $password, $database);
 
@@ -50,6 +52,10 @@ if (!isset($_SESSION['user'])) {
 
         $logoteamaway = '';
         $logoteamhome = '';
+
+        $cotehome = 1;
+        $coteaway = 1;
+        $cotedraw = 1;
 
         if (checkCoteMatch($matchid, $conn, $sport, $league) == false) {
             setBaseCoteMatch($conn, $matchid, $sport, $league);
