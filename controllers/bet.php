@@ -134,7 +134,7 @@ function checkBet(mysqli $conn): void
 
                     $actualpoints = $_SESSION['points'];
 
-                    $newamountpoints = $mise * $cotetotale + $actualpoints;
+                    $newamountpoints = $mise * ($cotetotale / 100) + $actualpoints;
 
                     if ($conn->query("UPDATE bets SET status = 1 WHERE id =" . $arrayallbets[$i]['id']) && $conn->query("UPDATE bets SET validated = 1 WHERE id =" . $arrayallbets[$i]['id'])) {
                     }
@@ -222,7 +222,7 @@ function miseBet(mysqli $conn): void
     // Check if the game has started or not : if the game has started we cant bet, else we can.
     if ($error == 'no') {
         for ($i = 0; $i < count($_SESSION['bet']); $i++) {
-            $cotetotale = $cotetotale * ($_SESSION['bet'][$i]['cote'] / 100);
+            $cotetotale = $cotetotale * $_SESSION['bet'][$i]['cote'];
             $league = $_SESSION['bet'][$i]['league'];
             $sport = $_SESSION['bet'][$i]['sport'];
 

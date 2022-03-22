@@ -103,7 +103,7 @@
                                     <p class="text-bet">Nombre de match pariés : ' . $nummatches . '</p>
                                 </div>
                                 <div class="bottom middle">
-                                    <p class="text-bet">Cote totale : ' . $databets[$i]['cote'] . '</p>
+                                    <p class="text-bet">Cote totale : ' . ($databets[$i]['cote'] / 100) . '</p>
                                 </div>
                                 <div class="bottom right">
                                     <p class="text-bet">Mise : ' . $databets[$i]['mise'] . '</p>
@@ -123,7 +123,7 @@
                                     <p class="text-bet">Nombre de match pariés : ' . $nummatches . '</p>
                                 </div>
                                 <div class="bottom middle">
-                                    <p class="text-bet">Cote totale : ' . $databets[$i]['cote'] . '</p>
+                                    <p class="text-bet">Cote totale : ' . ($databets[$i]['cote'] / 100) . '</p>
                                 </div>
                                 <div class="bottom right">
                                     <p class="text-bet">Mise : ' . $databets[$i]['mise'] . '</p>
@@ -143,7 +143,7 @@
                                     <p class="text-bet">Nombre de match pariés : ' . $nummatches . '</p>
                                 </div>
                                 <div class="bottom middle">
-                                    <p class="text-bet">Cote totale : ' . $databets[$i]['cote'] . '</p>
+                                    <p class="text-bet">Cote totale : ' . ($databets[$i]['cote'] / 100) . '</p>
                                 </div>
                                 <div class="bottom right">
                                     <p class="text-bet">Mise : ' . $databets[$i]['mise'] . '</p>
