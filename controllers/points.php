@@ -6,10 +6,6 @@ if ($curPageName == "index.php") {
     include('../config/database.php');
 }
 
-if (!isset($_SESSION['user'])) {
-    session_start();
-}
-
 if (!isset($host) || !isset($database) || !isset($user) || !isset($password)) {
     define('host', $host);
     define('database', $database);
@@ -19,15 +15,18 @@ if (!isset($host) || !isset($database) || !isset($user) || !isset($password)) {
 
 $conn = new mysqli($host, $user, $password, $database);
 
-$sql = 'SELECT points FROM accounts WHERE pseudo ="' . $_SESSION['user'] . '"';
+if (isset($_SESSION['user'])) {
+    $sql = 'SELECT points FROM accounts WHERE pseudo ="' . $_SESSION['user'] . '"';
 
-$resultquery = $conn->query($sql);
-$data = $resultquery->fetch_array(MYSQLI_ASSOC);
+    $resultquery = $conn->query($sql);
+    $data = $resultquery->fetch_array(MYSQLI_ASSOC);
 
-$points = $data['points'];
+    $points = $data['points'];
 
-unset($_SESSION['points']);
-$_SESSION['points'] = $points;
+    unset($_SESSION['points']);
+    $_SESSION['points'] = $points;
+}
+
 
 
 function refreshPointsBet(int $mise, mysqli $conn): void

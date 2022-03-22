@@ -170,3 +170,31 @@ header {
 .errorbox .error {
   color: white;
 }
+
+/* Notification */
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.notif-success {
+  position: fixed;
+  right: 10px;
+  background-color: #8bfa87;
+  border-left: 5px solid #35ff02;
+  width: 250px;
+  height: 50px;
+  text-align: center;
+  line-height: 45px;
+  animation: 1s ease-out 0s 1 slideInFromRight;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.success-text {
+  font-family: "Montserrat";
+}
