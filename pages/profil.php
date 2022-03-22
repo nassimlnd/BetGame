@@ -41,7 +41,7 @@
 <body>
 
     <?php
-     include("../controllers/rank.php");
+    include("../controllers/rank.php");
     include('../includes/header.php');
     ?>
 
@@ -72,7 +72,7 @@
                         <h1 class="title">Informations</h1>
 
                         <?php
-                            $rank = attributerank($points);
+                        $rank = attributerank($points);
                         ?>
 
                         <div class="informations">
@@ -108,11 +108,25 @@
                             echo "<p>Vous n'avez pas encore effectué de paris.</p>";
                         } else {
                             for ($i = 0; $i < count($databets); $i++) {
-                                echo '<div class="line">
-                                    <div class="middle">
-                                        <p>' . $databets[$i]['mise'] . '</p>
-                                    </div>
-                                    </div>';
+                                echo '<div class="linebet">
+                                <div class="top left">
+                                    <p class="title-bet">Bet n° ' . $databets[$i]['id'] . '</p>
+                                </div>
+                                <div class="top middle">
+                                </div>
+                                <div class="top right">
+                                    <p class="status-bet"><strong>Status</strong>: 🕒 En attente</p>
+                                </div>
+                                <div class="bottom left">
+                                    <p class="text-bet">Nombre de match pariés : X</p>
+                                </div>
+                                <div class="bottom middle">
+                                    <p class="text-bet">Cote totale : ' . $databets[$i]['cote'] . '</p>
+                                </div>
+                                <div class="bottom right">
+                                    <p class="text-bet">Mise : ' . $databets[$i]['mise'] . '</p>
+                                </div>
+                            </div>';
                             }
                         }
                 }
@@ -195,8 +209,6 @@
             ?>
         </div>
     </main>
-
-
 
 </body>
 
