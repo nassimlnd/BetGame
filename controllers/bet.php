@@ -118,7 +118,6 @@ function checkBet(mysqli $conn): void
                                         $basketrequest = "UPDATE bets SET status = 0 WHERE id =" . $arrayallbets[$i]['id'];
                                         $basketrequest2 = "UPDATE bets SET validated = 1 WHERE id =" . $arrayallbets[$i]['id'];
                                         if ($conn->query($basketrequest) && $conn->query($basketrequest2)) {
-                                            echo 'ok';
                                         }
                                         $loose = true;
                                     }
@@ -267,7 +266,6 @@ function miseBet(mysqli $conn): void
         $date = date("Y-m-d H:i:s");
         $addbet = "INSERT INTO bets(id, accountid, cote, mise, date) VALUES ('', '" . $_SESSION['id'] . "', '$cotetotale', '$mise', '$date')";
         if ($conn->query($addbet)) {
-            echo 'ok query bets';
         }
 
         $betid = $conn->insert_id;

@@ -247,6 +247,18 @@ h1 {
   grid-row: 2;
 }
 
+.bas-gauche {
+  grid-column: 1;
+  grid-row: 3;
+  padding-top: 40px;
+}
+
+.bas-droite {
+  grid-column: 3;
+  grid-row: 3;
+  padding-top: 40px;
+}
+
 .container-principal div {
   width: 100%;
 }

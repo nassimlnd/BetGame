@@ -188,11 +188,12 @@ header {
   background-color: #8bfa87;
   border-left: 5px solid #35ff02;
   width: 250px;
-  height: 50px;
+  height: fit-content;
   text-align: center;
-  line-height: 45px;
+  line-height: 25px;
   animation: 1s ease-out 0s 1 slideInFromRight;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  padding: 10px;
 }
 
 .success-text {

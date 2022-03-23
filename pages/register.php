@@ -19,7 +19,7 @@
         if (isset($_GET['reg_error']) && $_GET['reg_error'] == 'success') {
     ?>
             <div class="notif-success">
-                <p class="success-text">✅ Inscription validée.</p>
+                <p class="success-text">✅ Un mail vient d'être envoyé pour confirmer votre inscription.</p>
             </div>
         <?php
         }

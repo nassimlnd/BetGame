@@ -1,5 +1,6 @@
 <?php
 require_once("../config/database.php");
+include_once("../controllers/mail.php");
 
 define('host', $host);
 define('user', $user);
@@ -18,6 +19,8 @@ if (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['email'
     $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
 
+    $confirmCode = random_int(0, 9999);
+
     $checkemail = "SELECT * FROM accounts WHERE email = '$email'";
     $checkpseudo = "SELECT * FROM accounts WHERE pseudo = '$pseudo'";
     $resultemail = $conn->query($checkemail);
@@ -30,8 +33,10 @@ if (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['email'
             if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 if (strlen($password) >= 4) {
                     $password = hash('sha256', $password);
-                    $sql = "INSERT INTO accounts(id, pseudo, email, password, points) VALUES ('', '$pseudo', '$email', '$password', 10)";
+                    $sql = "INSERT INTO accounts(id, pseudo, email, password, points, confirmCode, confirmed) VALUES ('', '$pseudo', '$email', '$password', 10, '$confirmCode', 0)";
                     $conn->query($sql);
+
+                    sendMailConfirmation($confirmCode, $pseudo, $email);
 
                     header('Location: ../pages/register.php?reg_error=success');
                 }

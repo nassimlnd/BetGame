@@ -207,7 +207,9 @@ if (!isset($_SESSION['user'])) {
                         <img src="<?= $logoteamhome ?>" alt="gauche" class="image">
                     </figure>
                     <p class="cote">Cote : <?= $cotehome ?></p>
-                    <a href="../controllers/bet.php?sport=<?= $sport ?>&bet=1&matchid=<?= $matchid ?>&league=<?= $league ?>"><button class="btnmise">Miser</button></a>
+                </div>
+                <div class="bas-gauche">
+                    <a class="btnmise" href="../controllers/bet.php?sport=<?= $sport ?>&bet=1&matchid=<?= $matchid ?>&league=<?= $league ?>">Miser</a>
                 </div>
 
                 <div class="milieu">
@@ -220,7 +222,9 @@ if (!isset($_SESSION['user'])) {
                         <img src="<?= $logoteamaway ?>" alt="droit" class="image">
                     </figure>
                     <p class="cote">Cote : <?= $coteaway ?></p>
-                    <a href="../controllers/bet.php?sport=<?= $sport ?>&bet=2&matchid=<?= $matchid ?>&league=<?= $league ?>"><button class="btnmise">Miser</button></a>
+                </div>
+                <div class="bas-droite">
+                    <a class="btnmise" href="../controllers/bet.php?sport=<?= $sport ?>&bet=2&matchid=<?= $matchid ?>&league=<?= $league ?>">Miser</a>
                 </div>
             </div>
 
