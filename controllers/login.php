@@ -17,7 +17,10 @@ if (isset($_POST['pseudo']) && isset($_POST['password'])) {
     $password = htmlspecialchars($_POST['password']);
 
     $checkpseudo = "SELECT id, pseudo, password, email, points, confirmCode, confirmed FROM accounts WHERE pseudo = '$pseudo'";
-    $resultpseudo = $conn->query($checkpseudo);
+    if ($conn->query($checkpseudo)) {
+        $resultpseudo = $conn->query($checkpseudo);
+    } else echo 'nononon';
+
     $data = $resultpseudo->fetch_array(MYSQLI_ASSOC);
     $rowpseudo = $resultpseudo->num_rows;
 

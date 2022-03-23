@@ -22,7 +22,7 @@ function refreshBasket(string $pagename): void
                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST => 'GET',
                 CURLOPT_HTTPHEADER => array(
-                    'x-rapidapi-key: 21c977b6cc86dbabbc7661ea2e437cdf'
+                    'x-rapidapi-key: 04ffc7b14445e02a0ef461ee4b74e6ea'
                 ),
             ));
         } elseif ($league[$i] == 120) {
@@ -36,7 +36,7 @@ function refreshBasket(string $pagename): void
                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST => 'GET',
                 CURLOPT_HTTPHEADER => array(
-                    'x-rapidapi-key: 21c977b6cc86dbabbc7661ea2e437cdf'
+                    'x-rapidapi-key: 04ffc7b14445e02a0ef461ee4b74e6ea'
                 ),
             ));
         }
@@ -91,7 +91,7 @@ function refreshFoot(string $pagename): void
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'x-rapidapi-key: 21c977b6cc86dbabbc7661ea2e437cdf'
+                'x-rapidapi-key: 04ffc7b14445e02a0ef461ee4b74e6ea'
             ),
         ));
 

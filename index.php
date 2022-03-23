@@ -15,18 +15,18 @@
     <!-- Title -->
     <title>BetGame</title>
     <!-- Description -->
-    <meta name="description" content="Home description.">
+    <meta name="description" content="Site de paris sportif gratuit">
     <!-- Social -->
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Quick Parcel Project — Home">
-    <meta name="twitter:description" content="Home description.">
+    <meta name="twitter:title" content="BetGame">
+    <meta name="twitter:description" content="Site de paris sportif gratuit">
     <meta name="twitter:image" content="#">
     <!-- Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.example.com">
-    <meta property="og:title" content="Quick Parcel Project — Home">
-    <meta property="og:description" content="Home description.">
+    <meta property="og:title" content="BetGame">
+    <meta property="og:description" content="Site de paris sportif gratuit">
     <meta property="og:image" content="#">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -75,8 +75,8 @@
             <div>
                 <h2>Notre systeme<br>de rank !</h2>
                 <p>Voici notre systeme Rank <br>
-                essayer de vous issez en haut du classement <br>
-                pour gagner des Betcoins ! </p>
+                    essayer de vous issez en haut du classement <br>
+                    pour gagner des Betcoins ! </p>
                 <a href="pages\scoreboard.php">Details</a>
             </div>
         </div>
