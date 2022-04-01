@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2022-03-17 17:35:08
+Date: 2022-04-01 19:15:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,20 +21,18 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `accounts`;
 CREATE TABLE `accounts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `pseudo` varchar(20) DEFAULT NULL,
-  `email` varchar(50) DEFAULT '',
-  `password` varchar(100) DEFAULT NULL,
+  `pseudo` varchar(20) NOT NULL DEFAULT '',
+  `email` varchar(50) NOT NULL DEFAULT '',
+  `password` varchar(100) NOT NULL DEFAULT '',
   `points` int(11) NOT NULL DEFAULT 0,
+  `confirmCode` int(11) NOT NULL,
+  `confirmed` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of accounts
 -- ----------------------------
-INSERT INTO `accounts` VALUES ('6', 'nassim', 'test@test.com', '1568e3d2b2383c3b2c813d9a326720fda7b1f5d7d9b8b2b81c3ea80bc9b118c2', '999998145');
-INSERT INTO `accounts` VALUES ('7', 'martin', 'martinlebg@gmail.com', 'dc03b27079721aee79f33f5b6441168d2e941b31b9a0b2ea4cafb2b9168c41c6', '0');
-INSERT INTO `accounts` VALUES ('8', 'baptiste', 'baptistelebgdu37@gmail.com', 'd9c918b0896854b587665db158e5eb2c9df82456dc9d841d75c1fa70e9b95100', '0');
-INSERT INTO `accounts` VALUES ('9', 'dzadzadzdzadz', 'dzada@gmail.com', 'e3d80d10307b29b89e7941db862aacdd2b9babc9789a940c2c8bd436dda472a7', '10');
 
 -- ----------------------------
 -- Table structure for `bets`
@@ -49,7 +47,7 @@ CREATE TABLE `bets` (
   `status` varchar(1) NOT NULL,
   `validated` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of bets
@@ -69,8 +67,10 @@ CREATE TABLE `bets_details` (
   `league` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `betid` (`betid`),
+  KEY `accountid` (`accountid`),
+  CONSTRAINT `accountid` FOREIGN KEY (`accountid`) REFERENCES `accounts` (`id`),
   CONSTRAINT `betid` FOREIGN KEY (`betid`) REFERENCES `bets` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of bets_details
@@ -89,7 +89,7 @@ CREATE TABLE `cotes` (
   `sport` varchar(20) NOT NULL,
   `league` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of cotes
