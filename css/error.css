@@ -1,0 +1,13 @@
+@import url("base.css");
+
+.body {
+}
+
+.error {
+  margin: auto;
+  padding: 50px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  background-color: #24252a;
+}
