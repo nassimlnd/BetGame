@@ -1,1 +1,0 @@
-{"get":"fixtures","parameters":{"league":"140","season":"2021"},"errors":{"token":"Error\/Missing application key. Go to https:\/\/www.api-football.com\/documentation-v3 to learn how to get your API application key."},"results":0,"paging":{"current":1,"total":1},"response":[]}
