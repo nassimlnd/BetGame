@@ -5,5 +5,6 @@ $router = new App\Router(dirname(__DIR__) . '/views');
 
 $router
     ->get('/', 'home', "Page d'accueil")
-    ->get('/basket', 'sports', 'Sports')
+    ->get('/basket', 'sports', 'Basketball')
+    ->get('/football', 'sports', 'Football')
     ->run();

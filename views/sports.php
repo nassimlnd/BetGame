@@ -5,13 +5,13 @@ if (str_contains($_SERVER['REQUEST_URI'], '/basket')) {
 
     <div class="sidebar">
         <aside>
-            <h4 class="sidebar-title">Ligues</h4>
-            <ul>
-                <li><a href="basket.php?league=nba">NBA</a></li>
-                <li><a href="basket.php?league=proa">Pro A</a></li>
-                <li><a href="basket.php?league=gleague">G League</a></li>
-                <li><a href="basket.php?league=euroleague">Euroleague</a></li>
-            </ul>
+            <h2 class="sport-title">Basketball</h2>
+            <div class="sidebar-links-container">
+                <a href="basket?league=nba" class="sidebar-links">NBA</a>
+                <a href="basket?league=proa" class="sidebar-links">Pro A</a>
+                <a href="basket?league=gleague" class="sidebar-links">G League</a>
+                <a href="basket?league=euroleague" class="sidebar-links">Euroleague</a>
+            </div>
         </aside>
     </div>
 
