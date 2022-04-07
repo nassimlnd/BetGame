@@ -18,12 +18,12 @@ $title = 'Accueil - '
             <div class="content">
                 <h2>Les prix</h2>
                 <p>Les prix change tous les mois, seul les 5 premiers du classement seront éligible à un prix, bonne chance a tous !</p>
-                <a href="views\scoreboard.php">Détails</a>views
+                <a href="scoreboard.php">Détails</a>
             </div>
             <div class="content">
                 <h2>Notre systeme de rank !</h2>
                 <p>Voici notre systeme Rank essayer de vous issez en haut du classement pour gagner des BetCoins ! </p>
-                <a href="views\scoreboard.php">Détails</a>
+                <a href="scoreboard.php">Détails</a>
             </div>
         </div>
         <!--<svg class="" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">

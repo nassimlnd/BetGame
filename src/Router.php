@@ -32,11 +32,18 @@ class Router
     public function run()
     {
         $match = $this->router->match();
-        $view = $match['target'];
-        ob_start();
-        require $this->viewPath . DIRECTORY_SEPARATOR . $view . '.php';
-        $content = ob_get_clean();
-        require $this->viewPath . DIRECTORY_SEPARATOR . 'layouts/default.php';
+        if ($match != false) {
+            $view = $match['target'];
+            ob_start();
+            require $this->viewPath . DIRECTORY_SEPARATOR . $view . '.php';
+            $content = ob_get_clean();
+            require $this->viewPath . DIRECTORY_SEPARATOR . 'layouts/default.php';
+        } else {
+            ob_start();
+            require $this->viewPath . DIRECTORY_SEPARATOR . 'error.php';
+            $content = ob_get_clean();
+            require $this->viewPath . DIRECTORY_SEPARATOR . 'layouts/default.php';
+        }
 
         return $this;
     }

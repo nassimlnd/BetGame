@@ -7,4 +7,5 @@ $router
     ->get('/', 'home', "Page d'accueil")
     ->get('/basket', 'sports', 'Basketball')
     ->get('/football', 'sports', 'Football')
+    ->get('/login', 'login', 'Page de connexion')
     ->run();

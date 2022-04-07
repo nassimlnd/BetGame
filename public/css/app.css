@@ -149,6 +149,7 @@ h4 {
     top: 0;
     padding: 0.5% 3%;
     padding-bottom: 0;
+    margin-bottom: 1rem;
     position: fixed;
     width: 100%;
     background-color: white;
@@ -169,9 +170,8 @@ h4 {
         justify-content: space-between;
         align-items: center;
         position: fixed;
-        padding: 0;
         width: 100%;
-        height: 125px;
+        /*height: 125px;*/
     }
 }
 
@@ -469,7 +469,7 @@ h4 {
 
 .sidebar {
     float: left;
-    width: 80rem;
+    width: 19.1vw;
     max-width: 28.5rem;
     border-right: 1px solid #e8e8e8;
     height: 100%;
@@ -477,10 +477,9 @@ h4 {
 
 
 .sidebar .sport-title {
-    font-size: 32px;
-    text-align: center;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    font-size: 23px;
+    padding-left: 4rem;
+    padding-top: 2rem;
     font-weight: 500;
 }
 
@@ -488,6 +487,13 @@ h4 {
     font-size: 16px;
     margin: 0;
     padding-left: 1rem;
+}
+
+.sidebar .barre {
+    width: 80%;
+    height: 1rem;
+    margin-left: 2rem;
+    border-bottom: 1px solid #000000;
 }
 
 .sidebar-links-container {
@@ -500,7 +506,8 @@ h4 {
     font-size: 15px;
     padding: 0.75rem;
     border-radius: 0.5rem;
-    font-weight: 600;
+    font-weight: 400;
+    color: #6b7280;
 }
 
 .sidebar-links:hover {
@@ -509,7 +516,7 @@ h4 {
 
 .main {
     float: right;
-    width: 90.420rem;
+    width: 80vw;
     height: 100%;
     max-width: 150rem;
     background-color: #f3f4f6;
@@ -517,62 +524,216 @@ h4 {
 
 .main .container {
     border-radius: 0.375rem;
-    margin: 1rem;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    width: 80%;
+    padding: 2rem;
 }
 
-.container-match {
-    background-color: #fff;
-    padding: 30px;
-    width: 100%;
+.flex {
+    display: flex;
     height: 100%;
-    margin-bottom: 50px;
-    padding-bottom: 50px;
-    border-radius: 0.375rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 3fr 1fr;
-    border: 1px solid #f9fafb;
 }
 
-.left {
-    grid-column: 1;
-    grid-row: 2;
-}
-
-.middle {
-    grid-column: 2;
-    grid-row: 2;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-}
-
-.middle .text {
-    margin-top: 25%;
-    font-family: "Montserrat";
-}
-
-.middle p {}
-
-.right {
-    grid-column: 3;
-    grid-row: 2;
-}
-
-.titre-match {
-    grid-column: 2;
-    grid-row: 1;
-    font-family: "Montserrat";
+.container .match-title {
+    text-align: center;
     font-size: 20px;
 }
 
-.team figcaption {
-    text-align: center;
-    margin-top: 10px;
-    font-family: "Montserrat";
+.match-teams {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 1rem;
 }
 
-.team img {
-    height: 150px;
-    width: 150px;
+.match-center {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.match-center span {
+    display:inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.match-teamname {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.match-teamhome {
+    padding-right: 5rem;
+}
+
+.match-teamaway {
+    padding-left: 5rem;
+}
+
+.match-teamhome-logo img {
+    width: 200px;
+    height: 200px;
+}
+
+.match-teamaway-logo img {
+    width: 200px;
+    height: 200px;
+}
+
+@media (max-width: 1100px) {
+    .header {
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        /*height: 125px;*/
+    }
+}
+
+.match-odds-home {
     margin: auto;
+    text-align: center;
+}
+
+.match-odds-away {
+    margin: auto;
+    text-align: center;
+}
+
+.odds-links {
+    display: inline-block;
+    background-color: #3d5cb2;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    border-radius: 0.375rem;
+    color: white;
+}
+
+.odds-links:hover {
+    background-color: #31488b;
+}
+
+/*************************************************
+****************** PAGE LOGIN ********************
+*************************************************/
+
+.login-container {
+    padding-top: 3rem;
+    margin: auto;
+    max-width: 28rem;
+}
+
+.login-container .logo {
+    margin: auto;
+    width: 150px;
+    height: 150px;
+}
+
+.login-title {
+    text-align: center;
+    font-size: 25px;
+}
+
+.login-form {
+    padding-top: 2rem;
+}
+
+.login-input {
+    margin: auto;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    border: 1px solid rgb(209 213 219 / 1);
+    border-top-left-radius: 00.375rem;
+    border-top-right-radius: 00.375rem;
+    width: 100%;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.login-input:focus {
+    border-color: #3d5cb2;
+    border-width: 2px;
+}
+
+.password-input {
+    margin: auto;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    border: 1px solid rgb(209 213 219 / 1);
+    border-bottom-left-radius: 00.375rem;
+    border-bottom-right-radius: 00.375rem;
+    width: 100%;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.password-input:focus {
+    border-color: #3d5cb2;
+    border-width: 2px;
+}
+
+.login-items {
+    padding-top: 1rem;
+    justify-content: space-between;
+}
+
+.login-items .forgot-password a {
+    color: #3d5cb2;
+}
+
+.login-items .login-remember {
+    align-items: center;
+}
+
+.login-items .login-remember input {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.25rem;
+}
+
+.login-items .login-remember label {
+    align-items: center;
+    margin-left: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.signin-button {
+    margin-top: 2rem;
+    width: 100%;
+    font-size: 00.875rem;
+}
+
+.login-button {
+    color: white;
+    width: 100%;
+    margin-top: 1rem;
+    background-color: #3d5cb2;
+    padding-left: 1rem;
+    justify-content: center;
+    border-radius: 0.375rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+.login-button:hover {
+    background-color: #31488b;
+}
+
+.login-button svg {
+    height: 1.25rem;
+    width: 1.25rem;
+    color: white;
+    opacity: 0;
 }
