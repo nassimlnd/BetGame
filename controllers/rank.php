@@ -59,3 +59,6 @@ function attributerank($ranknum)
         return " ";
     }
 }
+
+
+?>

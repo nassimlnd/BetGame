@@ -21,7 +21,7 @@
                 <h1 class="login-title">Confirmer votre inscription</h1>
             </div>
 
-            <form action="../controllers/login.php?accountid=<?= $_GET['accountid'] ?>" method="POST">
+            <form action="../controllers/login.php?accountid=<?= $_GET['accountid'] ?>" method="POST"> 
                 <label class="subtitle">Code</label>
                 <input type="text" name="code" placeholder="Code" class="input-login">
                 <button type="submit" id="button-login">Envoyer</button>
