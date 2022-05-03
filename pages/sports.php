@@ -44,8 +44,8 @@ if ($_GET['sport'] == 'basket') {
                             setBaseCoteMatch($matchID, $sport, $league);
                         }
 
-                        $coteHome = getCoteMatch($conn, $matchID, '1', $sport, $league) / 100;
-                        $coteAway = getCoteMatch($conn, $matchID, '2', $sport, $league) / 100;
+                        $coteHome = getCoteMatch($matchID, '1', $sport, $league) / 100;
+                        $coteAway = getCoteMatch($matchID, '2', $sport, $league) / 100;
 
                         echo '
                         <div class="container">
@@ -59,7 +59,7 @@ if ($_GET['sport'] == 'basket') {
                                 </div>
                                 <h2 class="match-teamname">' . $nameTeamHome . '</h2>
                                 <div class="match-odds-home">
-                                    <a href="#" class="odds-links">' . $coteHome . '</a>
+                                    <a href="controllers/bet.php?sport=' . $sport . '&bet=1&matchid=' . $matchID . '&league=' . $league . '" class="odds-links">' . $coteHome . '</a>
                                 </div>
                             </div>
                             <div class="match-center">
@@ -72,7 +72,7 @@ if ($_GET['sport'] == 'basket') {
                                 </div>
                                 <h2 class="match-teamname">' . $nameTeamAway . '</h2>
                                 <div class="match-odds-away">
-                                    <a href="#" class="odds-links">' . $coteAway . '</a>
+                                    <a href="controllers/bet.php?sport=' . $sport . '&bet=1&matchid=' . $matchID . '&league=' . $league . '" class="odds-links">' . $coteAway . '</a>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +83,7 @@ if ($_GET['sport'] == 'basket') {
             ?>
         </main>
 
-        <div class="betip">
+        <!--<div class="betip">
             <div class="betip-title">
                 <h2>En cours :</h2>
             </div>
@@ -98,7 +98,7 @@ if ($_GET['sport'] == 'basket') {
                     <button type="submit" class="betip-button">Bet</button>
                 </form>
             </div>
-        </div>
+        </div>-->
 
         <?php
         if (isset($_SESSION['bet'][0])) {
@@ -108,8 +108,63 @@ if ($_GET['sport'] == 'basket') {
                     <div class="betip-title">
                         <h2>En cours :</h2>
                     </div>
-                    <div class="bet">
-                        <p>HOME - AWAY</p>
+                    <?php
+                    for ($i = 0; $i < count($_SESSION['bet']); $i++) {
+                        if ($_SESSION['bet'][$i] != null && isset($_SESSION['bet'][$i])) {
+                            $matchIDSession = $_SESSION['bet'][$i]['matchid'];
+                            $leagueSession = $_SESSION['bet'][$i]['league'];
+                            $sportSession = $_SESSION['bet'][$i]['sport'];
+
+                            $fileNameBet = @dirname(__DIR__) . '/data/json/' . $sportSession . '/' . $leagueSession . '.json';
+                            str_replace(" ", "", $fileNameBet);
+
+                            $matchesBet = file_get_contents($fileNameBet);
+                            $matchesBet = json_decode($matchesBet, true);
+
+                            if ($sportSession == 'foot') {
+                                for ($j = 0; $j < count($matchesBet['response']); $j++) {
+                                    if ($matchIDSession == $matchesBet['response'][$j]['fixture']['id']) {
+                                        $nameHomeSession = $matchesBet['response'][$j]['teams']['home']['name'];
+                                        $nameAwaySession = $matchesBet['response'][$j]['teams']['away']['name'];
+
+                                        $logoHomeSession = $matchesBet['response'][$j]['teams']['home']['logo'];
+                                        $logoAwaySession = $matchesBet['response'][$j]['teams']['away']['logo'];
+
+                                        $coteSession = getCoteMatch($matchID, $_SESSION['bet'][$i]['bet'], $sportSession, $leagueSession) / 100;
+                                        break;
+                                    }
+                                }
+                            } elseif ($sportSession == 'basket') {
+                                for ($j = 0; $j < count($matchesBet['response']); $j++) {
+                                    if ($matchIDSession == $matchesBet['response'][$j]['id']) {
+                                        $nameHomeSession = $matchesBet['response'][$j]['teams']['home']['name'];
+                                        $nameAwaySession = $matchesBet['response'][$j]['teams']['away']['name'];
+
+                                        $logoHomeSession = $matchesBet['response'][$j]['teams']['home']['logo'];
+                                        $logoAwaySession = $matchesBet['response'][$j]['teams']['away']['logo'];
+
+                                        $coteSession = getCoteMatch($matchID, $_SESSION['bet'][$i]['bet'], $sportSession, $leagueSession) / 100;
+                                        break;
+                                    }
+                                }
+                            }
+
+
+                            echo '
+                            <div class="flex bet">
+                            <p>' . $nameHomeSession . ' - ' . $nameAwaySession . '</p>
+                            <p>' . $coteSession . '</p>
+                            <a href="#">❌</a>
+                            </div>';
+                        }
+                    }
+
+                    ?>
+                    <div class="form">
+                        <form action="#" class="flex">
+                            <input type="text" placeholder="Mise" class="betip-mise">
+                            <button type="submit" class="betip-button">Bet</button>
+                        </form>
                     </div>
                 </div>
         <?php

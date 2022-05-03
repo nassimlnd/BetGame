@@ -74,9 +74,9 @@ if (!isset($_SESSION['user'])) {
                     $logoteamhome = $matches['response'][$i]['teams']['home']['logo'];
                     $logoteamaway = $matches['response'][$i]['teams']['away']['logo'];
 
-                    $cotehome = getCoteMatch($conn, $matchid, '1', $sport, $league) / 100;
-                    $coteaway = getCoteMatch($conn, $matchid, '2', $sport, $league) / 100;
-                    $cotedraw = getCoteMatch($conn, $matchid, 'N', $sport, $league) / 100;
+                    $cotehome = getCoteMatch($matchid, '1', $sport, $league) / 100;
+                    $coteaway = getCoteMatch($matchid, '2', $sport, $league) / 100;
+                    $cotedraw = getCoteMatch($matchid, 'N', $sport, $league) / 100;
                     break;
                 }
             }
@@ -89,8 +89,8 @@ if (!isset($_SESSION['user'])) {
                     $logoteamhome = $matches['response'][$i]['teams']['home']['logo'];
                     $logoteamaway = $matches['response'][$i]['teams']['away']['logo'];
 
-                    $cotehome = getCoteMatch($conn, $matchid, '1', $sport, $league) / 100;
-                    $coteaway = getCoteMatch($conn, $matchid, '2', $sport, $league) / 100;
+                    $cotehome = getCoteMatch($matchid, '1', $sport, $league) / 100;
+                    $coteaway = getCoteMatch($matchid, '2', $sport, $league) / 100;
                     break;
                 }
             }
@@ -146,11 +146,11 @@ if (!isset($_SESSION['user'])) {
                                             $logoteamawaysession = $matchesbet['response'][$j]['teams']['away']['logo'];
 
                                             if ($_SESSION['bet'][$i]['bet'] == 1) {
-                                                $cotesession = getCoteMatch($conn, $matchidsession, '1', $sportbet, $leaguebet) / 100;
+                                                $cotesession = getCoteMatch($matchidsession, '1', $sportbet, $leaguebet) / 100;
                                             } elseif ($_SESSION['bet'][$i]['bet'] == 2) {
-                                                $cotesession = getCoteMatch($conn, $matchidsession, '2', $sportbet, $leaguebet) / 100;
+                                                $cotesession = getCoteMatch($matchidsession, '2', $sportbet, $leaguebet) / 100;
                                             } elseif ($_SESSION['bet'][$i]['bet'] == 'N') {
-                                                $cotesession = getCoteMatch($conn, $matchidsession, 'N', $sportbet, $leaguebet) / 100;
+                                                $cotesession = getCoteMatch($matchidsession, 'N', $sportbet, $leaguebet) / 100;
                                             }
 
                                             break;
@@ -166,9 +166,9 @@ if (!isset($_SESSION['user'])) {
                                             $logoteamawaysession = $matchesbet['response'][$j]['teams']['away']['logo'];
 
                                             if ($_SESSION['bet'][$i]['bet'] == 1) {
-                                                $cotesession = getCoteMatch($conn, $matchidsession, '1', $sportbet, $leaguebet) / 100;
+                                                $cotesession = getCoteMatch($matchidsession, '1', $sportbet, $leaguebet) / 100;
                                             } elseif ($_SESSION['bet'][$i]['bet'] == 2) {
-                                                $cotesession = getCoteMatch($conn, $matchidsession, '2', $sportbet, $leaguebet) / 100;
+                                                $cotesession = getCoteMatch($matchidsession, '2', $sportbet, $leaguebet) / 100;
                                             }
                                             break;
                                         }

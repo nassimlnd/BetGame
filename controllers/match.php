@@ -24,8 +24,12 @@ function setBaseCoteMatch(int $matchid, string $sport, string $league): bool
     }
 }
 
-function getCoteMatch(mysqli $conn, int $matchid, string $bet, string $sport, string $league): int
+function getCoteMatch(int $matchid, string $bet, string $sport, string $league): int
 {
+    require_once @dirname(__DIR__) . '/config/DatabaseConfiguration.php';
+
+    $conn = connect();
+
     if (checkCoteMatch($matchid, $sport, $league) == false) {
         return 200;
     } else {
@@ -60,9 +64,9 @@ function setCoteMatch(mysqli $conn, int $matchid, string $sport, string $league,
 {
 
     if ($bet == '1') {
-        $cotehome = getCoteMatch($conn, $matchid, '1', $sport, $league) - 5;
-        $coteaway = getCoteMatch($conn, $matchid, '2', $sport, $league) + 5;
-        $cotedraw = getCoteMatch($conn, $matchid, 'N', $sport, $league) + 5;
+        $cotehome = getCoteMatch($matchid, '1', $sport, $league) - 5;
+        $coteaway = getCoteMatch($matchid, '2', $sport, $league) + 5;
+        $cotedraw = getCoteMatch($matchid, 'N', $sport, $league) + 5;
         $queryupdatecote = "UPDATE cotes SET home=" . $cotehome . ", away=" . $coteaway . ", draw=" . $cotedraw . " WHERE matchid=" . $matchid . " AND sport='" . $sport . "' AND league='" . $league . "'";
 
         echo $queryupdatecote;
@@ -71,16 +75,16 @@ function setCoteMatch(mysqli $conn, int $matchid, string $sport, string $league,
             echo 'ok';
         }
     } elseif ($bet == '2') {
-        $cotehome = getCoteMatch($conn, $matchid, '1', $sport, $league) + 5;
-        $coteaway = getCoteMatch($conn, $matchid, '2', $sport, $league) - 5;
-        $cotedraw = getCoteMatch($conn, $matchid, 'N', $sport, $league) + 5;
+        $cotehome = getCoteMatch($matchid, '1', $sport, $league) + 5;
+        $coteaway = getCoteMatch($matchid, '2', $sport, $league) - 5;
+        $cotedraw = getCoteMatch($matchid, 'N', $sport, $league) + 5;
         $queryupdatecote = "UPDATE cotes SET home=" . $cotehome . ", away=" . $coteaway . ", draw=" . $cotedraw . " WHERE matchid=" . $matchid . " AND sport='" . $sport . "' AND league='" . $league . "'";
 
         $conn->query($queryupdatecote);
     } elseif ($bet == 'N') {
-        $cotehome = getCoteMatch($conn, $matchid, '1', $sport, $league) + 5;
-        $coteaway = getCoteMatch($conn, $matchid, '2', $sport, $league) + 5;
-        $cotedraw = getCoteMatch($conn, $matchid, 'N', $sport, $league) - 5;
+        $cotehome = getCoteMatch($matchid, '1', $sport, $league) + 5;
+        $coteaway = getCoteMatch($matchid, '2', $sport, $league) + 5;
+        $cotedraw = getCoteMatch($matchid, 'N', $sport, $league) - 5;
         $queryupdatecote = "UPDATE cotes SET home=" . $cotehome . ", away=" . $coteaway . ", draw=" . $cotedraw . " WHERE matchid=" . $matchid . " AND sport='" . $sport . "' AND league='" . $league . "'";
 
         $conn->query($queryupdatecote);

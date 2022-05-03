@@ -2,18 +2,14 @@
 
 // Includes
 
-include_once("controllers/points.php");
-include_once("controllers/match.php");
-
-// Database connection variables
-
-$conn = connect();
+//include_once("controllers/points.php");
+//include_once("controllers/match.php");
 
 
 // counting bet in session data 
 // principal array = session bet 
 if (isset($_GET['bet']) && isset($_GET['matchid']) && isset($_GET['sport']) && isset($_GET['league'])) {
-    addBet($conn);
+    addBet();
 }
 
 if (isset($_GET['delete']) && isset($_GET['matchid']) && isset($_GET['sport']) && isset($_GET['league'])) {
@@ -26,6 +22,9 @@ if (isset($_POST['mise'])) {
 
 function checkBet(mysqli $conn): void
 {
+    include_once("controllers/points.php");
+    include_once("controllers/match.php");
+
     if (isset($_SESSION['user'])) {
         $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
 
@@ -126,8 +125,11 @@ function checkBet(mysqli $conn): void
     }
 }
 
-function addBet(mysqli $conn): void
+function addBet(): void
 {
+    //include_once("points.php");
+    include_once("match.php");
+
     if (!isset($_SESSION['user'])) {
         session_start();
     }
@@ -135,7 +137,7 @@ function addBet(mysqli $conn): void
     $bet = htmlspecialchars($_GET['bet']);
     $sport = htmlspecialchars($_GET['sport']);
     $league = htmlspecialchars($_GET['league']);
-    $cote = getCoteMatch($conn, $matchid, $bet, $sport, $league);
+    $cote = getCoteMatch($matchid, $bet, $sport, $league);
 
     $error = "non";
 

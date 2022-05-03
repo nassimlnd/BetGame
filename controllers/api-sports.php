@@ -118,12 +118,12 @@ function refreshFoot(): void
 
 function refreshAll(): void
 {
-    $oldtime = (int)file_get_contents("controllers/maj.txt");
+    $oldtime = (int)file_get_contents("data/maj.txt");
     $newtime = time();
 
     if ($newtime - $oldtime > 3600) {
-        unlink('controllers/maj.txt');
-        file_put_contents('controllers/maj.txt', $newtime);
+        unlink('data/maj.txt');
+        file_put_contents('data/maj.txt', $newtime);
         refreshFoot();
         refreshBasket();
     }
