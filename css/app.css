@@ -389,6 +389,60 @@ h4 {
     background-color: #f9fafb;
 }
 
+.profil-menu {
+    transform: translateX(-70%);
+    visibility: hidden;
+    position: absolute;
+    background-color: white;
+    margin-top: 1rem;
+    border-radius: 0.375rem;
+    width: 100vw;
+    max-width: 17rem;
+    z-index: 10;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    border: 0.5px solid rgb(0 0 0 / 0.1);
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+    opacity: 0;
+}
+
+.profil-links-container {
+    display: grid;
+    padding: 2rem;
+}
+
+.profil-links {
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.profil-links:hover {
+    background-color: #f9fafb;
+}
+
+.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.profil-menu-buttons {
+    margin-top: 1rem;
+}
+
+.profil-logout-button {
+    background-color: #dc2626;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.profil-logout-button:hover {
+    background-color: #b91c1c;
+}
+
 /* Carousel/Slider */
 
 .carousel-div {
@@ -528,7 +582,7 @@ h4 {
     margin-top: 1rem;
     margin-bottom: 1rem;
     background-color: white;
-    width: 80%;
+    width: 65%;
     padding: 2rem;
 }
 
@@ -556,7 +610,7 @@ h4 {
 }
 
 .match-center span {
-    display:inline-block;
+    display: inline-block;
     vertical-align: middle;
     line-height: normal;
 }
@@ -618,6 +672,61 @@ h4 {
 }
 
 .odds-links:hover {
+    background-color: #31488b;
+}
+
+.betip {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 2rem;
+    background-color: white;
+    border-top-left-radius: 00.375rem;
+    border-top-right-radius: 00.375rem;
+    padding: 2rem;
+    width: 15vw;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    border: #e8e8e8;
+}
+
+.betip .betip-title {
+    font-size: 18px;
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.betip .bet {
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+.betip .form {
+    border-top: 1px solid #e8e8e8;
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+.betip .form form {
+    justify-content: space-between;
+}
+
+.betip .form .betip-mise {
+    width: 2.5rem;
+    padding: 0.25rem;
+    border: 0.5px solid #e8e8e8;
+    border-radius: 0.375rem;
+}
+
+.betip .form .betip-button {
+    background-color: #3d5cb2;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 00.375rem;
+    color: white;
+}
+
+.betip .form .betip-button:hover {
     background-color: #31488b;
 }
 
@@ -738,8 +847,25 @@ h4 {
     opacity: 0;
 }
 
+.confirm-input {
+    margin: auto;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    border: 1px solid rgb(209 213 219 / 1);
+    border-radius: 00.375rem;
+    width: 100%;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.confirm-input:focus {
+    border-color: #3d5cb2;
+    border-width: 2px;
+}
+
 /*************************************************
-****************** PAGE LOGIN ********************
+****************** PAGE REGISTER ********************
 *************************************************/
 
 .register-container {
@@ -787,6 +913,20 @@ h4 {
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
+.register-form .register-input:nth-child(3) {
+    margin: auto;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid rgb(209 213 219 / 1);
+    border-bottom-left-radius: 00.375rem;
+    border-bottom-right-radius: 00.375rem;
+    width: 100%;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.register-form .register-input:focus {
+    border-color: #3d5cb2;
+    border-width: 2px;
+}
 
 .register-form .register-cgu {
     padding-top: 1rem;
@@ -798,4 +938,22 @@ h4 {
 
 .cgu-checkbox label {
     padding-left: 0.5rem;
+}
+
+.register-button {
+    color: white;
+    width: 100%;
+    margin-top: 1rem;
+    background-color: #3d5cb2;
+    padding-left: 1rem;
+    justify-content: center;
+    border-radius: 0.375rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+.register-button:hover {
+    background-color: #31488b;
 }

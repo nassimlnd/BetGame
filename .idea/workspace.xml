@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ae44d0ba-da80-4509-9c03-c5ad5c41e394" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/Configuration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/json/basket/euroleague.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/json/basket/euroleague.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/json/basket/nba.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/json/basket/nba.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/json/basket/proa.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/json/basket/proa.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/json/foot/liga.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/json/foot/liga.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/json/foot/ligue1.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/json/foot/ligue1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/json/foot/pl.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/json/foot/pl.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/json/foot/seriea.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/json/foot/seriea.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/maj.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/maj.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/page/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/sports.php" beforeDir="false" afterPath="$PROJECT_DIR$/page/sports.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/ApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/BetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/BetController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/MatchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/MatchController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/PointsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/PointsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="28WNtjm6LYb3BIvMSLtZ9JjY0nQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ae44d0ba-da80-4509-9c03-c5ad5c41e394" name="Changes" comment="" />
+      <created>1651328600571</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1651328600571</updated>
+      <workItem from="1651328602377" duration="366000" />
+      <workItem from="1651328985151" duration="1670000" />
+      <workItem from="1651330714480" duration="107000" />
+      <workItem from="1651577724544" duration="193000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

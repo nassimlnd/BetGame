@@ -57,8 +57,8 @@ if (!isset($_SESSION['user'])) {
         $coteaway = 1;
         $cotedraw = 1;
 
-        if (checkCoteMatch($matchid, $conn, $sport, $league) == false) {
-            setBaseCoteMatch($conn, $matchid, $sport, $league);
+        if (checkCoteMatch($matchid, $sport, $league) == false) {
+            setBaseCoteMatch($matchid, $sport, $league);
         }
         /*else {
             $cote = getCoteMatch($conn, $matchid, $bet, $sport, $league);

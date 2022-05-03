@@ -1,7 +1,9 @@
 <?php
 
-function checkCoteMatch(int $matchid, mysqli $conn, string $sport, string $league): bool
+function checkCoteMatch(int $matchid, string $sport, string $league): bool
 {
+    $conn = connect();
+
     $querycheck = "SELECT * FROM cotes WHERE matchid =" . $matchid . " AND sport ='" . $sport . "' AND league='" . $league . "'";
     $resultquerycheck = $conn->query($querycheck);
 
@@ -10,9 +12,11 @@ function checkCoteMatch(int $matchid, mysqli $conn, string $sport, string $leagu
     } else return true;
 }
 
-function setBaseCoteMatch(mysqli $conn, int $matchid, string $sport, string $league): bool
+function setBaseCoteMatch(int $matchid, string $sport, string $league): bool
 {
-    if (!checkCoteMatch($matchid, $conn, $sport, $league)) {
+    $conn = connect();
+
+    if (!checkCoteMatch($matchid, $sport, $league)) {
         $querysetcote = "INSERT INTO cotes(id, matchid, home, away, draw, sport, league) VALUES ('', " . $matchid . ", 200, 200, 200, '" . $sport . "', '" . $league . "')";
         if ($conn->query($querysetcote) == true) {
             return true;
@@ -22,7 +26,7 @@ function setBaseCoteMatch(mysqli $conn, int $matchid, string $sport, string $lea
 
 function getCoteMatch(mysqli $conn, int $matchid, string $bet, string $sport, string $league): int
 {
-    if (checkCoteMatch($matchid, $conn, $sport, $league) == false) {
+    if (checkCoteMatch($matchid, $sport, $league) == false) {
         return 200;
     } else {
         if ($bet == 1) {

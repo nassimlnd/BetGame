@@ -1,14 +1,21 @@
 <?php
 
 session_start();
-require_once("../config/database.php");
+require_once("../config/DatabaseConfiguration.php");
 
-define('database', $database);
-define('host', $host);
-define('user', $user);
-define('password', $password);
+$conn = connect();
 
-$conn = new mysqli($host, $user, $password, $database);
+if (isset($_GET['action'])) {
+    $action = htmlspecialchars($_GET['action']);
+
+    switch ($action) {
+        case 'logout':
+            logout();
+            break;
+    }
+
+    die();
+}
 
 
 if (isset($_POST['pseudo']) && isset($_POST['password'])) {
@@ -29,7 +36,7 @@ if (isset($_POST['pseudo']) && isset($_POST['password'])) {
         $hashedpassword = hash("sha256", $password);
 
         //defines session parameters
-        if ($hashedpassword === $data['password']) {
+        if (password_verify($password, $data['password'])) {
             if ($data['confirmed'] == 1) {
                 $_SESSION['id'] = $data['id'];
                 $_SESSION['user'] = $data['pseudo'];
@@ -57,6 +64,14 @@ if (isset($_POST['pseudo']) && isset($_POST['password'])) {
                 header('Location: ../pages/login.php?log_error=confirmed');
             }
         }
-    }
+    } else header('Location: ../index.php');
 } else
-    header("Location: ../pages/login.php?log_error=fieldserror");
+    header("Location: ../index.php?page=login&log_error=fieldserror");
+
+function logout()
+{
+    if (isset($_SESSION['user'])) {
+        session_destroy();
+        header("Location: ../index.php");
+    } else header("Location: ../index.php");
+}

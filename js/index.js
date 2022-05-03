@@ -1,23 +1,93 @@
-// Slider
+// Carousel
+var slides = document.querySelectorAll('.slide');
+var contents = document.querySelectorAll('.content')
+var btns = document.querySelectorAll('.btn');
+let currentSlide = 1;
 
-const imgBx = document.querySelector(".imgBx");
-const contentSlides = document.querySelector(".contentBx");
-const slides = imgBx.getElementsByTagName("img");
-const textdiv = contentSlides.getElementsByTagName("div");
-var i = 0;
+var manualNav = function (manual) {
+    slides.forEach((slide) => {
+        slide.classList.remove('active');
+        contents.forEach((content) => {
+            content.classList.remove('active');
+            btns.forEach((btn) => {
+                btn.classList.remove('active');
+            });
+        })
+    });
 
-function nextSlide(){
-    slides[i].classList.remove('active');
-    textdiv[i].classList.remove('active');
-    i = (i + 1) % slides.length;
-    slides[i].classList.add('active');
-    textdiv[i].classList.add('active');
+    slides[manual].classList.add('active');
+    btns[manual].classList.add('active');
+    contents[manual].classList.add('active');
 }
 
-function previousSlide() {
-    slides[i].classList.remove('active');
-    textdiv[i].classList.remove('active');
-    i = (i - 1 + slides.length) % slides.length;
-    slides[i].classList.add('active'); 
-    textdiv[i].classList.add('active');
+btns.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+        manualNav(i);
+        currentSlide = i;
+        currentContent = i;
+    });
+});
+
+var repeat = function (activeClass) {
+    let active = document.getElementsByClassName('active');
+    let i = 1;
+
+    var repeater = () => {
+        setTimeout(function () {
+            [...active].forEach((activeSlide) => {
+                activeSlide.classList.remove('active');
+            });
+
+            slides[i].classList.add('active');
+            btns[i].classList.add('active');
+            contents[i].classList.add('active');
+            i++;
+
+            if (slides.length == i) {
+                i = 0;
+            }
+            if (i >= slides.length) {
+                return;
+            }
+            repeater();
+        }, 10000);
+    }
+    repeater();
+}
+repeat();
+
+// Header
+
+function showMenu() {
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    if (dropdownMenu.classList.contains('active')) {
+        dropdownMenu.classList.remove('active');
+    } else {
+        dropdownMenu.classList.add('active');
+    }
+}
+
+function showProfilMenu() {
+    const profilMenu = document.querySelector('.profil-menu');
+    if (profilMenu.classList.contains('active')) {
+        profilMenu.classList.remove('active');
+    } else {
+        profilMenu.classList.add('active');
+    }
+}
+
+function showMenuMobile() {
+    const dropdownMenuMobile = document.querySelector('.mobile-menu-dropdown');
+
+    if (dropdownMenuMobile.classList.contains('active')) {
+        dropdownMenuMobile.classList.remove('active');
+    } else {
+        dropdownMenuMobile.classList.add('active');
+    }
+}
+
+function closeMenuMobile() {
+    const dropdownMenuMobile = document.querySelector('.mobile-menu-dropdown');
+
+    dropdownMenuMobile.classList.remove('active');
 }

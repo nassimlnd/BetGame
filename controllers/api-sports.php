@@ -1,6 +1,6 @@
 <?php
 
-function refreshBasket(string $pagename): void
+function refreshBasket(): void
 {
     $league = array(
         0 => 12,
@@ -61,15 +61,11 @@ function refreshBasket(string $pagename): void
                 break;
         };
 
-        if ($pagename == 'index.php') {
-            file_put_contents("json/basket/" . $leaguename . ".json", $response);
-        } else {
-            file_put_contents("../json/basket/" . $leaguename . ".json", $response);
-        }
+        file_put_contents("json/basket/" . $leaguename . ".json", $response);
     }
 }
 
-function refreshFoot(string $pagename): void
+function refreshFoot(): void
 {
     $league = array(
         0 => 39,
@@ -116,35 +112,19 @@ function refreshFoot(string $pagename): void
                 break;
         };
 
-        if ($pagename == 'index.php') {
-            file_put_contents("json/foot/" . $leaguename . ".json", $response);
-        } else {
-            file_put_contents("../json/foot/" . $leaguename . ".json", $response);
-        }
+        file_put_contents("json/foot/" . $leaguename . ".json", $response);
     }
 }
 
-function refreshAll(string $pagename): void
+function refreshAll(): void
 {
-    if ($pagename == "index.php") {
-        $oldtime = (int)file_get_contents("controllers/maj.txt");
-        $newtime = time();
+    $oldtime = (int)file_get_contents("controllers/maj.txt");
+    $newtime = time();
 
-        if ($newtime - $oldtime > 3600) {
-            unlink('controllers/maj.txt');
-            file_put_contents('controllers/maj.txt', $newtime);
-            refreshFoot($pagename);
-            refreshBasket($pagename);
-        }
-    } else {
-        $oldtime = file_get_contents("../controllers/maj.txt");
-        $newtime = time();
-
-        if ($newtime - $oldtime > 3600) {
-            unlink('../controllers/maj.txt');
-            file_put_contents('../controllers/maj.txt', $newtime);
-            refreshFoot($pagename);
-            refreshBasket($pagename);
-        }
+    if ($newtime - $oldtime > 3600) {
+        unlink('controllers/maj.txt');
+        file_put_contents('controllers/maj.txt', $newtime);
+        refreshFoot();
+        refreshBasket();
     }
 }

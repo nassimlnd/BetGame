@@ -2,31 +2,12 @@
 
 // Includes
 
-$curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
-
-if ($curPageName == 'index.php') {
-    include_once("controllers/points.php");
-    include_once("controllers/match.php");
-} else {
-    include_once("../controllers/points.php");
-    include_once("../controllers/match.php");
-}
-
+include_once("controllers/points.php");
+include_once("controllers/match.php");
 
 // Database connection variables
 
-if ($curPageName == "index.php") {
-    require_once('config/database.php');
-} else {
-    require_once('../config/database.php');
-}
-
-define('user', $user);
-define('password', $password);
-define('host', $host);
-define('database', $database);
-
-$conn = new mysqli($host, $user, $password, $database);
+$conn = connect();
 
 
 // counting bet in session data 
@@ -305,5 +286,3 @@ function deleteBet(): void
     array_splice($_SESSION['bet'], $nb, 1);
     header('Location: ../pages/pari.php?sport=' . $sport . '&matchid=' . $matchid . '&league=' . $league);
 }
-
-checkBet($conn);

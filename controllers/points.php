@@ -1,19 +1,6 @@
 <?php
-$curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
-if ($curPageName == "index.php") {
-    include('config/database.php');
-} else {
-    include('../config/database.php');
-}
 
-if (!isset($host) || !isset($database) || !isset($user) || !isset($password)) {
-    define('host', $host);
-    define('database', $database);
-    define('user', $user);
-    define('password', $password);
-}
-
-$conn = new mysqli($host, $user, $password, $database);
+$conn = connect();
 
 if (isset($_SESSION['user'])) {
     $sql = 'SELECT points FROM accounts WHERE pseudo ="' . $_SESSION['user'] . '"';
