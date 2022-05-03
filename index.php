@@ -1,6 +1,11 @@
 <?php
 
 /*******************************************
+ * Include autoloader de composer pour les classes et les namespaces
+ *******************************************/
+include_once(@dirname(__FILE__) . '/vendor/autoload.php');
+
+/*******************************************
  * On démarre une nouvelle session ou reprend une session existante
  *******************************************/
 session_start();
@@ -10,17 +15,17 @@ session_start();
  *******************************************/
 include_once(@dirname(__FILE__) . '/configuration/Configuration.php');
 include_once(@dirname(__FILE__) . '/includes/Header.php');
-include_once(@dirname(__FILE__) . '/vendor/autoload.php');
 
 /*******************************************
  * Actualisation des données de l'API / Check des bets
  *******************************************/
 
-require 'src/Controllers/ApiController.php';
-require 'src/Controllers/BetController.php';
+use App\Controllers\BetController;
+use App\Controllers\ApiController;
+ApiController::refreshAll();
+BetController::checkBet();
 
-refreshAll();
-checkBet();
+
 
 /*******************************************
  * URL Rewriting

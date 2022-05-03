@@ -19,7 +19,7 @@
 				<a href="scoreboard.php">Détails</a>
 			</div>
 			<div class="content">
-				<h2>Notre systeme de rank !</h2>
+				<h2>Notre système de rank !</h2>
 				<p>Voici notre systeme Rank essayer de vous issez en haut du classement pour gagner des BetCoins ! </p>
 				<a href="scoreboard.php">Détails</a>
 			</div>

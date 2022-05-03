@@ -1,6 +1,7 @@
 <?php
 if ($_GET['sport'] == 'basket') {
-?>
+    ?>
+    <title>Basketball - BetGame</title>
     <div class="flex">
         <div class="sidebar">
             <aside>
@@ -79,6 +80,7 @@ if ($_GET['sport'] == 'basket') {
     <?php
 } elseif ($_GET['sport'] == 'football') {
     ?>
+    <title>Football - BetGame</title>
     <div class="flex">
         <div class="sidebar">
             <aside>
@@ -224,4 +226,4 @@ if ($_GET['sport'] == 'basket') {
         </main>
     </div>
     <?php
-}?>
+} ?>

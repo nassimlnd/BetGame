@@ -1,9 +1,4 @@
 ﻿<?php
-
-/*******************************************
- * Configuration à la base de données
- *******************************************/
-
 $database = array(
 	//Database
 	'DB' => 'betgame', //Nom de la base de données
@@ -14,6 +9,3 @@ $database = array(
 	//Mot de passe
 	'PASSWORD' => '',
 );
-/*******************************************
- * Fin de la configuration à la base de données
- *******************************************/
