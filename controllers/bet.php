@@ -5,9 +5,6 @@
 //include_once("controllers/points.php");
 //include_once("controllers/match.php");
 
-
-// counting bet in session data 
-// principal array = session bet 
 if (isset($_GET['bet']) && isset($_GET['matchid']) && isset($_GET['sport']) && isset($_GET['league'])) {
     addBet();
 }
@@ -17,7 +14,7 @@ if (isset($_GET['delete']) && isset($_GET['matchid']) && isset($_GET['sport']) &
 }
 
 if (isset($_POST['mise'])) {
-    miseBet($conn);
+    miseBet();
 }
 
 function checkBet(mysqli $conn): void
@@ -52,10 +49,8 @@ function checkBet(mysqli $conn): void
                     $matchidbetdetails = $arraybetdetails[$j]['matchid'];
                     $betbetdetails = $arraybetdetails[$j]['bet'];
 
-                    if ($curPageName == 'index.php') {
-                        $filename = 'json/' . $sportbetdetails . '/' . $leaguebetdetails . '.json';
-                    } else
-                        $filename = '../json/' . $sportbetdetails . '/' . $leaguebetdetails . '.json';
+
+                    $filename = 'data/json/' . $sportbetdetails . '/' . $leaguebetdetails . '.json';
 
                     $arrayjson = file_get_contents($filename);
                     $arrayjson = json_decode($arrayjson, true);
@@ -174,31 +169,36 @@ function addBet(): void
                     )
                 );
 
-                header('Location: ../pages/pari.php?sport=' . $sport . '&matchid=' . $matchid . '&league=' . $league);
+                header('Location: ../index.php?page=sports&sport=' . $sport . '&league=' . $league);
             } else {
                 array_push($_SESSION['bet'], $array);
-                header('Location: ../pages/pari.php?sport=' . $sport . '&matchid=' . $matchid . '&league=' . $league);
+                header('Location: ../index.php?page=sports&sport=' . $sport . '&league=' . $league);
             }
         } elseif ($error == "alreadybet") {
-            header('Location: ../pages/pari.php?sport=' . $sport . '&matchid=' . $matchid . '&league=' . $league . '&error=alreadybet');
+            header('Location: ../index.php?page=sports&sport=' . $sport . '&league=' . $league . '&error=alreadybet');
         }
     }
 }
 
-function miseBet(mysqli $conn): void
+function miseBet(): void
 {
+    require('../config/DatabaseConfiguration.php');
+    require('match.php');
+    require('points.php');
+    $conn = connect();
+
     if (!isset($_SESSION['user'])) {
         session_start();
     }
 
-    $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
     $mise = htmlspecialchars($_POST['mise']);
     $error = 'no';
     $cotetotale = 1;
 
     // Check if the player has enough points to bet
     if ($mise > $_SESSION['points'] || $_SESSION['points'] == 0) {
-        $error = 'notenoughpoints';
+        header('Location: ../index.php?page=sports&sport=basket');
+        die();
     }
 
     // Check if the game has started or not : if the game has started we cant bet, else we can.
@@ -208,10 +208,7 @@ function miseBet(mysqli $conn): void
             $league = $_SESSION['bet'][$i]['league'];
             $sport = $_SESSION['bet'][$i]['sport'];
 
-            if ($curPageName == 'index.php') {
-                $filename = 'json/' . $sport . '/' . $league . '.json';
-            } else
-                $filename = '../json/' . $sport . '/' . $league . '.json';
+            $filename = '../data/json/' . $sport . '/' . $league . '.json';
 
             str_replace(" ", "", $filename);
 
@@ -286,5 +283,5 @@ function deleteBet(): void
     $league = htmlspecialchars($_GET['league']);
     $nb = htmlspecialchars($_GET['delete']);
     array_splice($_SESSION['bet'], $nb, 1);
-    header('Location: ../pages/pari.php?sport=' . $sport . '&matchid=' . $matchid . '&league=' . $league);
+    header('Location: ../index.php?page=sports&sport=' . $sport . '&league=' . $league);
 }

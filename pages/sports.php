@@ -72,7 +72,7 @@ if ($_GET['sport'] == 'basket') {
                                 </div>
                                 <h2 class="match-teamname">' . $nameTeamAway . '</h2>
                                 <div class="match-odds-away">
-                                    <a href="controllers/bet.php?sport=' . $sport . '&bet=1&matchid=' . $matchID . '&league=' . $league . '" class="odds-links">' . $coteAway . '</a>
+                                    <a href="controllers/bet.php?sport=' . $sport . '&bet=2&matchid=' . $matchID . '&league=' . $league . '" class="odds-links">' . $coteAway . '</a>
                                 </div>
                             </div>
                         </div>
@@ -83,30 +83,16 @@ if ($_GET['sport'] == 'basket') {
             ?>
         </main>
 
-        <!--<div class="betip">
-            <div class="betip-title">
-                <h2>En cours :</h2>
-            </div>
-            <div class="flex bet">
-                <p>HOME - AWAY</p>
-                <p>1.9</p>
-                <a href="#">❌</a>
-            </div>
-            <div class="form">
-                <form action="#" class="flex">
-                    <input type="text" placeholder="Mise" class="betip-mise">
-                    <button type="submit" class="betip-button">Bet</button>
-                </form>
-            </div>
-        </div>-->
-
         <?php
         if (isset($_SESSION['bet'][0])) {
             if (isset($_GET['bet']) || !empty($_SESSION['bet'])) {
         ?>
                 <div class="betip">
-                    <div class="betip-title">
+                    <div class="betip-title flex">
                         <h2>En cours :</h2>
+                        <div class="downbutton">
+                            <button></button>
+                        </div>
                     </div>
                     <?php
                     for ($i = 0; $i < count($_SESSION['bet']); $i++) {
@@ -149,20 +135,21 @@ if ($_GET['sport'] == 'basket') {
                                 }
                             }
 
+                            var_dump($_SESSION['bet']);
 
                             echo '
                             <div class="flex bet">
                             <p>' . $nameHomeSession . ' - ' . $nameAwaySession . '</p>
                             <p>' . $coteSession . '</p>
-                            <a href="#">❌</a>
+                            <a href="controllers/bet.php?sport=' . $sportSession . '&matchid=' . $matchIDSession . '&league=' . $leagueSession . '&delete=' . $i . '">❌</a>
                             </div>';
                         }
                     }
 
                     ?>
                     <div class="form">
-                        <form action="#" class="flex">
-                            <input type="text" placeholder="Mise" class="betip-mise">
+                        <form action="controllers/bet.php" method="POST" class="flex">
+                            <input type="text" name="mise" placeholder="Mise" class="betip-mise">
                             <button type="submit" class="betip-button">Bet</button>
                         </form>
                     </div>
@@ -248,6 +235,79 @@ if ($_GET['sport'] == 'basket') {
             }
             ?>
         </main>
+        <?php
+        if (isset($_SESSION['bet'][0])) {
+            if (isset($_GET['bet']) || !empty($_SESSION['bet'])) {
+        ?>
+                <div class="betip">
+                    <div class="betip-title flex">
+                        <h2>En cours :</h2>
+                        <div class="downbutton">
+                            <button></button>
+                        </div>
+                    </div>
+                    <?php
+                    for ($i = 0; $i < count($_SESSION['bet']); $i++) {
+                        if ($_SESSION['bet'][$i] != null && isset($_SESSION['bet'][$i])) {
+                            $matchIDSession = $_SESSION['bet'][$i]['matchid'];
+                            $leagueSession = $_SESSION['bet'][$i]['league'];
+                            $sportSession = $_SESSION['bet'][$i]['sport'];
+
+                            $fileNameBet = @dirname(__DIR__) . '/data/json/' . $sportSession . '/' . $leagueSession . '.json';
+                            str_replace(" ", "", $fileNameBet);
+
+                            $matchesBet = file_get_contents($fileNameBet);
+                            $matchesBet = json_decode($matchesBet, true);
+
+                            if ($sportSession == 'foot') {
+                                for ($j = 0; $j < count($matchesBet['response']); $j++) {
+                                    if ($matchIDSession == $matchesBet['response'][$j]['fixture']['id']) {
+                                        $nameHomeSession = $matchesBet['response'][$j]['teams']['home']['name'];
+                                        $nameAwaySession = $matchesBet['response'][$j]['teams']['away']['name'];
+
+                                        $logoHomeSession = $matchesBet['response'][$j]['teams']['home']['logo'];
+                                        $logoAwaySession = $matchesBet['response'][$j]['teams']['away']['logo'];
+
+                                        $coteSession = getCoteMatch($matchID, $_SESSION['bet'][$i]['bet'], $sportSession, $leagueSession) / 100;
+                                        break;
+                                    }
+                                }
+                            } elseif ($sportSession == 'basket') {
+                                for ($j = 0; $j < count($matchesBet['response']); $j++) {
+                                    if ($matchIDSession == $matchesBet['response'][$j]['id']) {
+                                        $nameHomeSession = $matchesBet['response'][$j]['teams']['home']['name'];
+                                        $nameAwaySession = $matchesBet['response'][$j]['teams']['away']['name'];
+
+                                        $logoHomeSession = $matchesBet['response'][$j]['teams']['home']['logo'];
+                                        $logoAwaySession = $matchesBet['response'][$j]['teams']['away']['logo'];
+
+                                        $coteSession = getCoteMatch($matchID, $_SESSION['bet'][$i]['bet'], $sportSession, $leagueSession) / 100;
+                                        break;
+                                    }
+                                }
+                            }
+
+
+                            echo '
+                            <div class="flex bet">
+                            <p>' . $nameHomeSession . ' - ' . $nameAwaySession . '</p>
+                            <p>' . $coteSession . '</p>
+                            <a href="controllers/bet.php?sport=' . $sportSession . '&matchid=' . $matchIDSession . '&league=' . $leagueSession . '&delete=' . $i . '">❌</a>
+                            </div>';
+                        }
+                    }
+
+                    ?>
+                    <div class="form">
+                        <form action="#" class="flex">
+                            <input type="text" placeholder="Mise" class="betip-mise">
+                            <button type="submit" class="betip-button">Bet</button>
+                        </form>
+                    </div>
+                </div>
+        <?php
+            }
+        } ?>
     </div>
 <?php
 } elseif ($_GET['sport'] == 'hockey') {
@@ -270,7 +330,7 @@ if ($_GET['sport'] == 'basket') {
             <?php
             if (isset($_GET['league'])) {
                 $league = htmlspecialchars($_GET['league']);
-                $sport = 'foot';
+                $sport = 'hockey';
 
                 $filename = '../json/' . $sport . '/' . $league . '.json';
                 $someArray = file_get_contents($filename);

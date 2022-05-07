@@ -1,64 +1,48 @@
 <?php
-//rank definition :
-function attributerank($ranknum)
+
+function setRank($points)
 {
-    if (isset($ranknum)) {
-        switch ($ranknum) {
-
-            case $ranknum <= 100:
-                $rankdesc = "iron";
+    if (isset($points)) {
+        switch ($points) {
+            case $points <= 100:
+                $rankdesc = "Iron";
                 return $rankdesc;
                 break;
 
-            case $ranknum < 200 && $ranknum >= 100:
-                $rankdesc = "bronze";
+            case $points < 200 && $points >= 100:
+                $rankdesc = "Bronze";
                 return $rankdesc;
                 break;
 
-            case $ranknum < 300 && $ranknum >= 200:
-                $rankdesc = "silver";
+            case $points < 300 && $points >= 200:
+                $rankdesc = "Silver";
                 return $rankdesc;
                 break;
 
-            case $ranknum < 400 && $ranknum >= 300:
-                $rankdesc = "gold";
+            case $points < 400 && $points >= 300:
+                $rankdesc = "Gold";
                 return $rankdesc;
                 break;
 
-            case $ranknum < 500 && $ranknum >= 400:
-                $rankdesc = "gold";
+            case $points < 600 && $points >= 500:
+                $rankdesc = "Platinium";
                 return $rankdesc;
                 break;
 
-            case $ranknum < 600 && $ranknum >= 500:
-                $rankdesc = "platinium";
+            case $points < 700 && $points >= 600:
+                $rankdesc = "Diamond";
                 return $rankdesc;
                 break;
 
-            case $ranknum < 700 && $ranknum >= 600:
-                $rankdesc = "diamond";
+            case $points < 1000 && $points >= 800:
+                $rankdesc = "Immortal";
                 return $rankdesc;
                 break;
 
-            case $ranknum < 800 && $ranknum >= 700:
-                $rankdesc = "platinium";
-                return $rankdesc;
-                break;
-
-            case $ranknum < 1000 && $ranknum >= 800:
-                $rankdesc = "immortal";
-                return $rankdesc;
-                break;
-
-            case $ranknum >= 1000:
-                $rankdesc = "radiant";
+            case $points >= 1000:
+                $rankdesc = "Professional";
                 return $rankdesc;
                 break;
         }
-    } else {
-        return " ";
     }
 }
-
-
-?>

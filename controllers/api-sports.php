@@ -61,7 +61,7 @@ function refreshBasket(): void
                 break;
         };
 
-        file_put_contents("json/basket/" . $leaguename . ".json", $response);
+        file_put_contents("data/json/basket/" . $leaguename . ".json", $response);
     }
 }
 
@@ -112,7 +112,7 @@ function refreshFoot(): void
                 break;
         };
 
-        file_put_contents("json/foot/" . $leaguename . ".json", $response);
+        file_put_contents("data/json/foot/" . $leaguename . ".json", $response);
     }
 }
 

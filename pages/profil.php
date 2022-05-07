@@ -1,31 +1,14 @@
-<!DOCTYPE html>
-<html lang="fr">
+<title>Profil - BetGame</title>
 
-<head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="../css/profil.css" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Profil - BetGame</title>
-    <meta name="theme-color" content="#fff">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fanwood+Text:ital@0;1&family=Tenor+Sans&display=swap" rel="stylesheet">
-</head>
-
-<body>
-
-    <?php
-    include("../controllers/rank.php");
-    include('../includes/header.php');
-    ?>
-
+<div class="flex">
     <div class="sidebar">
         <aside>
-            <h4 class="sidebar-title">Profil</h4>
-            <ul>
-                <li><a href="profil.php?page=informations">Informations</a></li>
-                <li><a href="profil.php?page=historique">Historique de paris</a></li>
-            </ul>
+            <h2 class="sport-title">Profil</h2>
+            <div class="barre"></div>
+            <div class="sidebar-links-container">
+                <a href="index.php?page=profil&section=informations" class="sidebar-links">Informations</a>
+                <a href="index.php?page=profil&section=historique" class="sidebar-links">Historique des paris</a>
+            </div>
         </aside>
     </div>
 
@@ -33,122 +16,135 @@
         <div class="container">
 
             <?php
-            if (isset($_GET['page'])) {
-                $page = htmlspecialchars($_GET['page']);
+            if (isset($_GET['section'])) {
+                $page = htmlspecialchars($_GET['section']);
+                require('controllers/rank.php');
 
                 switch ($page) {
                     case 'informations':
                         $pseudo = $_SESSION['user'];
                         $email = $_SESSION['email'];
                         $points = $_SESSION['points'];
-
+                        $rank = setRank($points);
             ?>
-                        <h1 class="title">Informations</h1>
+                        <h1 class="profil-title">Informations</h1>
 
-                        <?php
-                        $rank = attributerank($points);
-                        ?>
-
-                        <div class="informations">
+                        <div class="profil-informations">
                             <p><strong>Pseudo</strong> : <?= $pseudo ?></p>
                             <p><strong>Email</strong> : <?= $email ?></p>
                             <p><strong>BetCoin(s)</strong> : <?= $points ?></p>
                             <p><strong>Rank</strong> : <?= $rank ?> </p>
                         </div>
 
-                        <div class="buttonsmodify">
-                            <a href="profil.php?modify=email"><button>Modifier l'adresse e-mail</button></a>
-                            <a href="profil.php?modify=password"><button>Modifier le mot de passe</button></a>
+                        <div class="profil-buttons flex">
+                            <a href="index.php?page=profil&modify=email">Modifier l'adresse e-mail</a>
+                            <a href="index.php?page=profil&modify=password">Modifier le mot de passe</a>
                         </div>
                     <?php
                         break;
 
                     case 'historique':
-                        require_once('../config/database.php');
 
-                        if (!isset($host)) {
-                            define('host', $host);
-                            define('user', $user);
-                            define('password', $password);
-                            define('database', $database);
-                        }
+                    ?>
+                        <h2 class="profil-title">Historique des paris</h2>
 
-                        $conn = new mysqli($host, $user, $password, $database);
+                        <div class="betline">
+                            <div class="betline-head flex">
+                                <p class="betline-title">Bet n° X</p>
+                                <p class="betline-status"><strong>Status</strong> : Gagné ✅</p>
+                            </div>
+                            <div class="betline-body">
+                                <div class="flex" style="justify-content: space-between;">
+                                    <p>Nombre de match pariés : X</p>
+                                    <p>Cote totale : X</p>
+                                </div>
+                                <br>
+                                <div class="flex" style="justify-content: space-between;">
+                                    <p>Mise : X</p>
+                                    <button class="betline-button" onclick="showBetDetails()">En savoir plus</button>
+                                </div>
+                            </div>
+                            <div class="betline-details" id="">
+                                <p class="betline-details-title"><strong>Détails du bet :</strong></p>
+                                <br>
+                                <div class="gameline flex">
+                                    <p>Equipe 1 - Equipe 2</p>
+                                    <p>1/N/2</p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
 
-                        $queryallbets = 'SELECT * FROM bets WHERE accountid =' . $_SESSION['id'];
+                        $conn = connect();
 
-                        $resultallbets = $conn->query($queryallbets);
-                        $databets = $resultallbets->fetch_all(MYSQLI_ASSOC);
+                        $queryAllBets = 'SELECT * FROM bets WHERE accountid =' . $_SESSION['id'];
 
-                        if ($resultallbets->num_rows <= 0) {
+                        $resultAllBets = $conn->query($queryAllBets);
+                        $dataBets = $resultAllBets->fetch_all(MYSQLI_ASSOC);
+
+                        if ($resultAllBets->num_rows <= 0) {
                             echo "<p>Vous n'avez pas encore effectué de paris.</p>";
                         } else {
-                            for ($i = 0; $i < count($databets); $i++) {
-                                $databetsid = $databets[$i]['id'];
-                                $querynummatches = "SELECT * FROM bets_details WHERE betid =" . $databetsid;
-                                $resultnummatches = $conn->query($querynummatches);
-                                $nummatches = $resultnummatches->num_rows;
+                            for ($i = 0; $i < count($dataBets); $i++) {
+                                $dataBetsID = $dataBets[$i]['id'];
+                                $queryNumMatches = "SELECT * FROM bets_details WHERE betid =" . $dataBetsID;
+                                $resultNumMatches = $conn->query($queryNumMatches);
+                                $numMatches = $resultNumMatches->num_rows;
 
-                                if ($databets[$i]['status'] == '') {
-                                    echo '<div class="linebet">
-                                <div class="top left">
-                                    <p class="title-bet">Bet n° ' . $databets[$i]['id'] . '</p>
-                                </div>
-                                <div class="top middle">
-                                </div>
-                                <div class="top right">
-                                    <p class="status-bet"><strong>Status</strong>: 🕒 En attente</p>
-                                </div>
-                                <div class="bottom left">
-                                    <p class="text-bet">Nombre de match pariés : ' . $nummatches . '</p>
-                                </div>
-                                <div class="bottom middle">
-                                    <p class="text-bet">Cote totale : ' . ($databets[$i]['cote'] / 100) . '</p>
-                                </div>
-                                <div class="bottom right">
-                                    <p class="text-bet">Mise : ' . $databets[$i]['mise'] . '</p>
-                                </div>
-                            </div>';
-                                } elseif ($databets[$i]['status'] == '1') {
-                                    echo '<div class="linebet">
-                                <div class="top left">
-                                    <p class="title-bet">Bet n° ' . $databets[$i]['id'] . '</p>
-                                </div>
-                                <div class="top middle">
-                                </div>
-                                <div class="top right">
-                                    <p class="status-bet"><strong>Status</strong>: ✅ Gagné !</p>
-                                </div>
-                                <div class="bottom left">
-                                    <p class="text-bet">Nombre de match pariés : ' . $nummatches . '</p>
-                                </div>
-                                <div class="bottom middle">
-                                    <p class="text-bet">Cote totale : ' . ($databets[$i]['cote'] / 100) . '</p>
-                                </div>
-                                <div class="bottom right">
-                                    <p class="text-bet">Mise : ' . $databets[$i]['mise'] . '</p>
-                                </div>
-                            </div>';
-                                } elseif ($databets[$i]['status'] == '0') {
-                                    echo '<div class="linebet">
-                                <div class="top left">
-                                    <p class="title-bet">Bet n° ' . $databets[$i]['id'] . '</p>
-                                </div>
-                                <div class="top middle">
-                                </div>
-                                <div class="top right">
-                                    <p class="status-bet"><strong>Status</strong>: ❌ Perdu</p>
-                                </div>
-                                <div class="bottom left">
-                                    <p class="text-bet">Nombre de match pariés : ' . $nummatches . '</p>
-                                </div>
-                                <div class="bottom middle">
-                                    <p class="text-bet">Cote totale : ' . ($databets[$i]['cote'] / 100) . '</p>
-                                </div>
-                                <div class="bottom right">
-                                    <p class="text-bet">Mise : ' . $databets[$i]['mise'] . '</p>
-                                </div>
-                            </div>';
+                                if ($dataBets[$i]['status'] == '') {
+                                    echo '<div class="betline">
+                                    <div class="betline-head flex">
+                                        <p class="betline-title">Bet n° ' . $dataBets[$i]['id'] . '</p>
+                                        <p class="betline-status"><strong>Status</strong> : 🕒 En attente</p>
+                                    </div>
+                                    <div class="betline-body">
+                                        <div class="flex" style="justify-content: space-between;">
+                                            <p>Nombre de match pariés : ' . $numMatches . '</p>
+                                            <p>Cote totale : ' . ($dataBets[$i]['cote'] / 100) . '</p>
+                                        </div>
+                                        <br>
+                                        <div class="flex" style="justify-content: space-between;">
+                                            <p>Mise : ' . $dataBets[$i]['mise'] . '</p>
+                                            <button class="betline-button">En savoir plus</button>
+                                        </div>
+                                    </div>
+                                </div>';
+                                } elseif ($dataBets[$i]['status'] == '1') {
+                                    echo '<div class="betline">
+                                    <div class="betline-head flex">
+                                        <p class="betline-title">Bet n° ' . $dataBets[$i]['id'] . '</p>
+                                        <p class="betline-status"><strong>Status</strong> : ✅ Gagné</p>
+                                    </div>
+                                    <div class="betline-body">
+                                        <div class="flex" style="justify-content: space-between;">
+                                            <p>Nombre de match pariés : ' . $numMatches . '</p>
+                                            <p>Cote totale : ' . ($dataBets[$i]['cote'] / 100) . '</p>
+                                        </div>
+                                        <br>
+                                        <div class="flex" style="justify-content: space-between;">
+                                            <p>Mise : ' . $dataBets[$i]['mise'] . '</p>
+                                            <button class="betline-button">En savoir plus</button>
+                                        </div>
+                                    </div>
+                                </div>';
+                                } elseif ($dataBets[$i]['status'] == '0') {
+                                    echo '<div class="betline">
+                                    <div class="betline-head flex">
+                                        <p class="betline-title">Bet n° ' . $dataBets[$i]['id'] . '</p>
+                                        <p class="betline-status"><strong>Status</strong> : ❌ Perdu</p>
+                                    </div>
+                                    <div class="betline-body">
+                                        <div class="flex" style="justify-content: space-between;">
+                                            <p>Nombre de match pariés : ' . $numMatches . '</p>
+                                            <p>Cote totale : ' . ($dataBets[$i]['cote'] / 100) . '</p>
+                                        </div>
+                                        <br>
+                                        <div class="flex" style="justify-content: space-between;">
+                                            <p>Mise : ' . $dataBets[$i]['mise'] . '</p>
+                                            <button class="betline-button">En savoir plus</button>
+                                        </div>
+                                    </div>
+                                </div>';
                                 }
                             }
                         }
@@ -173,18 +169,16 @@
                         }
                     }
                     ?>
-                    <h1 class="title">Modifier l'e-mail</h1>
+                    <h1 class="profil-title">Modifier l'e-mail</h1>
 
-                    <div class="informations">
+                    <div class="profil-informations">
                         <p><strong>E-mail actuelle</strong> : <?= $email ?></p>
 
-                        <form action="../controllers/modifyprofil.php" method="POST" class="modify">
-                            <label for="email">Nouvel e-mail</label>
-                            <input type="text" name="email" id="modify" required>
-                            <label for="emailretype">Re-taper la nouvelle adresse e-mail</label>
-                            <input type="text" name="emailretype" id="modify" required>
-                            <div class="buttonsmodify">
-                                <button type="submit">Envoyer</button>
+                        <form action="controllers/modifyprofil.php" method="POST" class="modify">
+                            <input type="text" name="email" class="edit-input" placeholder="Nouvel e-mail" required>
+                            <input type="text" name="emailretype" id="edit-input" placeholder="Re-taper le nouvel e-mail" required>
+                            <div class="profil-buttons flex">
+                                <button type="submit">Modifier</button>
                             </div>
                         </form>
                     </div>
@@ -206,32 +200,33 @@
                         }
                     }
                     ?>
-                    <h1 class="title">Modifier le mot de passe</h1>
+                    <h1 class="profil-title">Modifier le mot de passe</h1>
 
-                    <div class="informations">
-                        <form action="../controllers/modifyprofil.php" method="POST" class="modify">
+                    <div class="profil-informations">
+                        <form action="controllers/modifyprofil.php" method="POST" class="modify">
                             <label for="oldpassword">Ancien mot de passe</label>
                             <input type="password" name="oldpassword" required>
                             <label for="password">Nouveau mot de passe</label>
                             <input type="password" name="password">
                             <label for="passwordretype">Re-taper le nouveau mot de passe</label>
                             <input type="password" name="passwordretype" required>
-                            <div class="buttonsmodify">
-                                <button type="submit">Envoyer</button>
+                            <div class="profil-buttons flex">
+                                <button type="submit">Modifier</button>
                             </div>
                         </form>
                     </div>
             <?php
                 } else {
-                    header("Location: profil.php?error=inputnotfound");
+                    header("Location: index.php?page=profil&section=informations&error=inputnotfound");
                 }
             } else {
-                header("Location: profil.php?page=informations");
+                header("Location: index.php?page=profil&section=informations");
             };
 
             ?>
         </div>
     </main>
+</div>
 
 </body>
 

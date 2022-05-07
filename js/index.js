@@ -91,3 +91,9 @@ function closeMenuMobile() {
 
     dropdownMenuMobile.classList.remove('active');
 }
+
+// Profil
+
+function showBetDetails() {
+    
+}

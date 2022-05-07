@@ -51,8 +51,8 @@
                     <button type="button" class="links" onclick="showProfilMenu()"><?= $_SESSION['user'] ?></button>
                     <div class="profil-menu">
                         <div class="profil-links-container">
-                            <a href="#" class="profil-links">Informations</a>
-                            <a href="#" class="profil-links">Historique des paris</a>
+                            <a href="index.php?page=profil&section=informations" class="profil-links">Informations</a>
+                            <a href="index.php?page=profil&section=historique" class="profil-links">Historique des paris</a>
                             <div class="profil-menu-buttons">
                                 <a href="controllers/login.php?action=logout" class="profil-logout-button">Se déconnecter</a>
                             </div>

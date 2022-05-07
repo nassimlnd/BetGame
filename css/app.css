@@ -437,6 +437,7 @@ h4 {
     border-radius: 0.375rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
+    color: white;
 }
 
 .profil-logout-button:hover {
@@ -956,4 +957,136 @@ h4 {
 
 .register-button:hover {
     background-color: #31488b;
+}
+
+/*************************************************
+****************** PAGE PROFIL *******************
+*************************************************/
+
+.profil-title {
+    font-size: 24px;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.profil-informations {
+    font-size: 14px;
+}
+
+.profil-informations p {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+.profil-buttons {
+    padding-top: 1rem;
+    margin-top: 1rem;
+    border-top: 1px solid #e8e8e8;
+}
+
+.profil-buttons a {
+    padding: 0.75rem;
+    background-color: #3d5cb2;
+    border-radius: 00.375rem;
+    margin-right: 1rem;
+    color: white;
+}
+
+.profil-buttons a:hover {
+    background: #31488b;
+}
+
+.profil-informations form input {
+    border-radius: 0.375rem;
+    border: 1px solid #e8e8e8;
+    padding: 0.25rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.profil-informations form input:focus {
+    border-color: #3d5cb2;
+    border-width: 2px;
+}
+
+.profil-informations form button {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    background-color: #3d5cb2;
+    border-radius: 00.375rem;
+    margin-right: 1rem;
+    color: white;
+}
+
+.profil-informations form button:hover {
+    background-color: #31488b;
+}
+
+.betline {
+    margin-top: 1rem;
+    padding: 2rem;
+    border-top: 1px solid #e8e8e8;
+    align-items: center;
+}
+
+.betline:last-child {
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.betline-head {
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.betline-title {
+    font-size: 16px;
+}
+
+.betline-button {
+    background: #3d5cb2;
+    color: white;
+    border-radius: 00.375rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.betline-button:hover {
+    background-color: #31488b;
+}
+
+.betline-details {
+    display: none;
+    padding: 1rem;
+    margin-top: 1rem;
+    color: white;
+    background-color: #3d5cb2;
+    border-radius: 00.375rem;
+    opacity: 0;
+}
+
+.betline-details-title {
+    font-size: 15px;
+}
+
+.gameline {
+    border-top: 1px solid white;
+    padding: 1rem;
+    justify-content: space-between;
+}
+
+.gameline:last-child {
+    border-bottom: 1px solid white;
+}
+
+.betline-active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
 }
