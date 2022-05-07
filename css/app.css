@@ -140,7 +140,7 @@ h1,
 h2,
 h3,
 h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 /* Header */
@@ -237,7 +237,7 @@ h4 {
 
 .username {
     color: white;
-    font-family: "Montserrat";
+    font-family: "Poppins";
     margin-right: 15px;
     margin-top: 10px;
 }

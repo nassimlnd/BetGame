@@ -94,6 +94,15 @@ function closeMenuMobile() {
 
 // Profil
 
-function showBetDetails() {
-    
+function showBetDetails(i) {
+    const showBetDetailsAll = document.querySelectorAll('.betline-details');
+    const showBetDetails = showBetDetailsAll[i];
+
+    console.log(showBetDetails);
+
+    if (showBetDetails.classList.contains('betline-active')) {
+        showBetDetails.classList.remove('betline-active');
+    } else {
+        showBetDetails.classList.add('betline-active');
+    }
 }

@@ -48,7 +48,7 @@
                     ?>
                         <h2 class="profil-title">Historique des paris</h2>
 
-                        <div class="betline">
+                        <!--<div class="betline">
                             <div class="betline-head flex">
                                 <p class="betline-title">Bet n° X</p>
                                 <p class="betline-status"><strong>Status</strong> : Gagné ✅</p>
@@ -61,10 +61,10 @@
                                 <br>
                                 <div class="flex" style="justify-content: space-between;">
                                     <p>Mise : X</p>
-                                    <button class="betline-button" onclick="showBetDetails()">En savoir plus</button>
+                                    <button class="betline-button" onclick="showBetDetails(1)">En savoir plus</button>
                                 </div>
                             </div>
-                            <div class="betline-details" id="">
+                            <div class="betline-details" id="1">
                                 <p class="betline-details-title"><strong>Détails du bet :</strong></p>
                                 <br>
                                 <div class="gameline flex">
@@ -72,7 +72,7 @@
                                     <p>1/N/2</p>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     <?php
 
                         $conn = connect();
@@ -105,9 +105,17 @@
                                         <br>
                                         <div class="flex" style="justify-content: space-between;">
                                             <p>Mise : ' . $dataBets[$i]['mise'] . '</p>
-                                            <button class="betline-button">En savoir plus</button>
+                                            <button class="betline-button" onclick="showBetDetails(' . $i . ')">En savoir plus</button>
                                         </div>
                                     </div>
+                                    <div class="betline-details" id="' . $i . '">
+                                <p class="betline-details-title"><strong>Détails du bet :</strong></p>
+                                <br>
+                                <div class="gameline flex">
+                                    <p>Equipe 1 - Equipe 2</p>
+                                    <p>1/N/2</p>
+                                </div>
+                            </div>
                                 </div>';
                                 } elseif ($dataBets[$i]['status'] == '1') {
                                     echo '<div class="betline">
@@ -123,9 +131,17 @@
                                         <br>
                                         <div class="flex" style="justify-content: space-between;">
                                             <p>Mise : ' . $dataBets[$i]['mise'] . '</p>
-                                            <button class="betline-button">En savoir plus</button>
+                                            <button class="betline-button" onclick="showBetDetails(' . $i . ')">En savoir plus</button>
                                         </div>
                                     </div>
+                                    <div class="betline-details" id="' . $i  . '">
+                                <p class="betline-details-title"><strong>Détails du bet :</strong></p>
+                                <br>
+                                <div class="gameline flex">
+                                    <p>Equipe 1 - Equipe 2</p>
+                                    <p>1/N/2</p>
+                                </div>
+                            </div>
                                 </div>';
                                 } elseif ($dataBets[$i]['status'] == '0') {
                                     echo '<div class="betline">
@@ -141,9 +157,17 @@
                                         <br>
                                         <div class="flex" style="justify-content: space-between;">
                                             <p>Mise : ' . $dataBets[$i]['mise'] . '</p>
-                                            <button class="betline-button">En savoir plus</button>
+                                            <button class="betline-button" onclick="showBetDetails(' . $i . ')">En savoir plus</button>
                                         </div>
                                     </div>
+                                    <div class="betline-details" id="' . $i  . '">
+                                <p class="betline-details-title"><strong>Détails du bet :</strong></p>
+                                <br>
+                                <div class="gameline flex">
+                                    <p>Equipe 1 - Equipe 2</p>
+                                    <p>1/N/2</p>
+                                </div>
+                            </div>
                                 </div>';
                                 }
                             }

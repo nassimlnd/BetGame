@@ -45,10 +45,10 @@ if (isset($_POST['pseudo']) && isset($_POST['password'])) {
                 $_SESSION['bet'] = array();
                 header("Location: ../index.php");
             } else {
-                header("Location: ../pages/login.php?log_error=notconfirmed&accountid=" . $data['id']);
+                header("Location: ../index.php?page=login&log_error=notconfirmed&accountid=" . $data['id']);
             }
-        } else header("Location: ../pages/login.php?log_error=passwordincorrect");
-    } else header("Location: ../pages/login.php?log_error=pseudonotfound");
+        } else header("Location: ../index.php?page=login&log_error=passwordincorrect");
+    } else header("Location: ../index.php?page=login&log_error=pseudonotfound");
 } else if (isset($_POST['code']) && isset($_GET['accountid'])) {
     $code = htmlspecialchars($_POST['code']);
     $accountid = htmlspecialchars($_GET['accountid']);

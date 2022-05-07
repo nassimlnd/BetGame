@@ -135,8 +135,6 @@ if ($_GET['sport'] == 'basket') {
                                 }
                             }
 
-                            var_dump($_SESSION['bet']);
-
                             echo '
                             <div class="flex bet">
                             <p>' . $nameHomeSession . ' - ' . $nameAwaySession . '</p>
