@@ -3,6 +3,7 @@ require_once("../config/DatabaseConfiguration.php");
 include_once("../controllers/mail.php");
 
 if (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['email'])) {
+    registerAccount();
 }
 
 function registerAccount()
