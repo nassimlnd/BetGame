@@ -1090,3 +1090,41 @@ h4 {
     opacity: 1;
     visibility: visible;
 }
+
+/*************************************************
+****************** PAGE 404 ********************
+*************************************************/
+
+.error{
+    font-size: 150px;
+    padding: 2rem;
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.errorQuote{
+    padding :1rem;
+    font-size: 60px;
+    text-align: center;
+}
+
+.errorButton{
+    display : block;
+    background-color: #3d5cb2;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    border-radius: 0.375rem;
+    color: white;
+    margin: auto;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    text-align: center;
+}
+
+.errorButton:hover{
+    background-color: #31488b;
+}
