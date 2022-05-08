@@ -105,17 +105,14 @@
                                         <br>
                                         <div class="flex" style="justify-content: space-between;">
                                             <p>Mise : ' . $dataBets[$i]['mise'] . '</p>
-                                            <button class="betline-button" onclick="showBetDetails(' . $i . ')">En savoir plus</button>
+                                            <button class="betline-button" onclick="showBetDetails(' . $i . ')">+ de détails</button>
                                         </div>
                                     </div>
                                     <div class="betline-details" id="' . $i . '">
                                 <p class="betline-details-title"><strong>Détails du bet :</strong></p>
-                                <br>
-                                <div class="gameline flex">
-                                    <p>Equipe 1 - Equipe 2</p>
-                                    <p>1/N/2</p>
-                                </div>
-                            </div>
+                                <br>';
+                                    getMatches($dataBets[$i]['id']);
+                                    echo '</div>
                                 </div>';
                                 } elseif ($dataBets[$i]['status'] == '1') {
                                     echo '<div class="betline">
@@ -131,17 +128,14 @@
                                         <br>
                                         <div class="flex" style="justify-content: space-between;">
                                             <p>Mise : ' . $dataBets[$i]['mise'] . '</p>
-                                            <button class="betline-button" onclick="showBetDetails(' . $i . ')">En savoir plus</button>
+                                            <button class="betline-button" onclick="showBetDetails(' . $i . ')">+ de détails</button>
                                         </div>
                                     </div>
                                     <div class="betline-details" id="' . $i  . '">
                                 <p class="betline-details-title"><strong>Détails du bet :</strong></p>
-                                <br>
-                                <div class="gameline flex">
-                                    <p>Equipe 1 - Equipe 2</p>
-                                    <p>1/N/2</p>
-                                </div>
-                            </div>
+                                <br>';
+                                    getMatches($dataBets[$i]['id']);
+                                    echo '</div>
                                 </div>';
                                 } elseif ($dataBets[$i]['status'] == '0') {
                                     echo '<div class="betline">
@@ -157,17 +151,14 @@
                                         <br>
                                         <div class="flex" style="justify-content: space-between;">
                                             <p>Mise : ' . $dataBets[$i]['mise'] . '</p>
-                                            <button class="betline-button" onclick="showBetDetails(' . $i . ')">En savoir plus</button>
+                                            <button class="betline-button" onclick="showBetDetails(' . $i . ')">+ de détails</button>
                                         </div>
                                     </div>
                                     <div class="betline-details" id="' . $i  . '">
                                 <p class="betline-details-title"><strong>Détails du bet :</strong></p>
-                                <br>
-                                <div class="gameline flex">
-                                    <p>Equipe 1 - Equipe 2</p>
-                                    <p>1/N/2</p>
-                                </div>
-                            </div>
+                                <br>';
+                                    getMatches($dataBets[$i]['id']);
+                                    echo '</div>
                                 </div>';
                                 }
                             }

@@ -204,7 +204,7 @@ function miseBet(): void
     // Check if the game has started or not : if the game has started we cant bet, else we can.
     if ($error == 'no') {
         for ($i = 0; $i < count($_SESSION['bet']); $i++) {
-            $cotetotale = $cotetotale * $_SESSION['bet'][$i]['cote'];
+            $cotetotale = $cotetotale * ($_SESSION['bet'][$i]['cote'] / 100);
             $league = $_SESSION['bet'][$i]['league'];
             $sport = $_SESSION['bet'][$i]['sport'];
 
@@ -244,6 +244,7 @@ function miseBet(): void
     // Adding the bet to the database
     if ($error == 'no') {
         $date = date("Y-m-d H:i:s");
+        $cotetotale *= 100;
         $addbet = "INSERT INTO bets(id, accountid, cote, mise, date) VALUES ('', '" . $_SESSION['id'] . "', '$cotetotale', '$mise', '$date')";
         if ($conn->query($addbet)) {
         }

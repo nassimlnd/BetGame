@@ -143,7 +143,6 @@ if ($_GET['sport'] == 'basket') {
                             </div>';
                         }
                     }
-
                     ?>
                     <div class="form">
                         <form action="controllers/bet.php" method="POST" class="flex">
@@ -157,7 +156,7 @@ if ($_GET['sport'] == 'basket') {
         } ?>
     </div>
 <?php
-} elseif ($_GET['sport'] == 'football') {
+} elseif ($_GET['sport'] == 'foot') {
 ?>
     <title>Football - BetGame</title>
 
@@ -198,6 +197,9 @@ if ($_GET['sport'] == 'basket') {
                         $logoTeamHome = $footJson['response'][$i]['teams']['home']['logo'];
                         $logoTeamAway = $footJson['response'][$i]['teams']['away']['logo'];
 
+                        $coteHome = getCoteMatch($matchID, '1', $sport, $league) / 100;
+                        $coteDraw = getCoteMatch($matchID, 'N', $sport, $league) / 100;
+                        $coteAway = getCoteMatch($matchID, '2', $sport, $league) / 100;
 
                         echo '<div class="container">
                             <div class="match-title">
@@ -210,7 +212,7 @@ if ($_GET['sport'] == 'basket') {
                                     </div>
                                     <h2 class="match-teamname">' . $nameTeamHome . '</h2>
                                     <div class="match-odds-home">
-                                        <a href="#" class="odds-links">2.00</a>
+                                    <a href="controllers/bet.php?sport=' . $sport . '&bet=1&matchid=' . $matchID . '&league=' . $league . '" class="odds-links">' . $coteHome . '</a>
                                     </div>
                                 </div>
                                 <div class="match-center">
@@ -223,7 +225,7 @@ if ($_GET['sport'] == 'basket') {
                                     </div>
                                     <h2 class="match-teamname">' . $nameTeamAway . '</h2>
                                     <div class="match-odds-away">
-                                        <a href="#" class="odds-links">2.00</a>
+                                    <a href="controllers/bet.php?sport=' . $sport . '&bet=2&matchid=' . $matchID . '&league=' . $league . '" class="odds-links">' . $coteAway . '</a>
                                     </div>
                                 </div>
                             </div>
@@ -297,8 +299,8 @@ if ($_GET['sport'] == 'basket') {
 
                     ?>
                     <div class="form">
-                        <form action="#" class="flex">
-                            <input type="text" placeholder="Mise" class="betip-mise">
+                        <form action="controllers/bet.php" method="POST" class="flex">
+                            <input type="text" name="mise" placeholder="Mise" class="betip-mise">
                             <button type="submit" class="betip-button">Bet</button>
                         </form>
                     </div>

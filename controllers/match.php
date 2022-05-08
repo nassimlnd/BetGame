@@ -90,3 +90,41 @@ function setCoteMatch(mysqli $conn, int $matchid, string $sport, string $league,
         $conn->query($queryupdatecote);
     }
 }
+
+function getMatches($betID)
+{
+    $conn = connect();
+
+    $queryBetDetailsMatches = "SELECT * FROM bets_details WHERE betid = " . $betID;
+    $resultQuery = $conn->query($queryBetDetailsMatches);
+    $dataQuery = $resultQuery->fetch_all(MYSQLI_ASSOC);
+
+    for ($i = 0; $i < count($dataQuery); $i++) {
+        $matchID = $dataQuery[$i]['matchid'];
+        $sport = $dataQuery[$i]['sport'];
+        $league = $dataQuery[$i]['league'];
+        $bet = $dataQuery[$i]['bet'];
+
+        $fileName = @dirname(__DIR__) . '/data/json/' . $sport . '/' . $league . '.json';
+
+        $matchesJson = file_get_contents($fileName);
+        $matchesJson = json_decode($matchesJson, true);
+
+        switch ($sport) {
+            case 'basket':
+                for ($j = 0; $j < count($matchesJson['response']); $j++) {
+                    if ($matchesJson['response'][$j]['id'] == $matchID) {
+                        $nameTeamHome = $matchesJson['response'][$j]['teams']['home']['name'];
+                        $nameTeamAway = $matchesJson['response'][$j]['teams']['away']['name'];
+                    }
+                }
+                echo '<div class="gameline flex">
+                    <p>' . $nameTeamHome . ' - ' . $nameTeamAway . '</p>
+                    <p>' . $bet . '</p>
+                    </div>';
+                break;
+            case 'football':
+                break;
+        }
+    }
+}
