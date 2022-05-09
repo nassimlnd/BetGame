@@ -106,3 +106,4 @@ function showBetDetails(i) {
         showBetDetails.classList.add('betline-active');
     }
 }
+

@@ -5,7 +5,7 @@
 </div>
 
 <div class="errorQuote">
-    <h1>This is not the page you are looking for. </h1>
+    <h1>La page que vous essayer d'afficher n'existe pas.</h1>
 </div>
 
 

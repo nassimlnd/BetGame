@@ -1,5 +1,13 @@
 <?php
 
+if (isset($_SESSION['user'])) {
+?>
+    <script type="text/javascript">
+        window.location.href = 'index.php?page=home';
+    </script>
+<?php
+}
+
 if (isset($_GET['log_error']) && $_GET['log_error'] == 'notconfirmed') {
 ?>
     <div class="login-container">
@@ -38,24 +46,32 @@ if (isset($_GET['log_error']) && $_GET['log_error'] == 'notconfirmed') {
             switch ($error) {
                 case 'notconnected':
         ?>
-                    <div class="errorbox">
-                        <p class="error"><strong>Erreur : </strong>Vous ne pouvez pas accéder à cette page si vous n'êtes pas connecté.</p>
+                    <div class="notification-error">
+                        <p class="notification-text"><strong>Erreur : </strong>Vous ne pouvez pas accéder à cette page si vous n'êtes pas connecté.</p>
                     </div>
                 <?php
                     break;
 
                 case 'pseudonotfound':
                 ?>
-                    <div class="errorbox">
-                        <p class="error"><strong>Erreur : </strong>Aucun compte n'existe avec ce pseudo.</p>
+                    <div class="notification-error">
+                        <p class="notification-text"><strong>Erreur : </strong>Aucun compte n'existe avec ce pseudo.</p>
                     </div>
                 <?php
                     break;
 
                 case 'passwordincorrect':
                 ?>
-                    <div class="errorbox">
-                        <p class="error"><strong>Erreur : </strong>Mot de passe incorrect.</p>
+                    <div class="notification-error">
+                        <p class="notification-text"><strong>Erreur : </strong>Mot de passe incorrect.</p>
+                    </div>
+                <?php
+                    break;
+
+                case 'confirmed':
+                ?>
+                    <div class="notification-success show">
+                        <p class="notification-text">✅ Félicitations vous avez confirmé votre compte ! <br> Vous pouvez maintenant vous connecter !</p>
                     </div>
         <?php
                     break;

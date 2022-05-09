@@ -3,22 +3,34 @@
 session_start();
 require_once("../config/DatabaseConfiguration.php");
 
-$conn = connect();
-
 if (isset($_GET['action'])) {
     $action = htmlspecialchars($_GET['action']);
-
     switch ($action) {
         case 'logout':
             logout();
             break;
     }
-
     die();
 }
 
-
 if (isset($_POST['pseudo']) && isset($_POST['password'])) {
+    login();
+} else if (isset($_POST['code']) && isset($_GET['accountid'])) {
+    confirmAccount();
+} else
+    header("Location: ../index.php?page=login&log_error=fieldserror");
+
+function logout()
+{
+    if (isset($_SESSION['user'])) {
+        session_destroy();
+        header("Location: ../index.php");
+    } else header("Location: ../index.php");
+}
+
+function login()
+{
+    $conn = connect();
 
     $pseudo = htmlspecialchars($_POST['pseudo']);
     $password = htmlspecialchars($_POST['password']);
@@ -49,7 +61,12 @@ if (isset($_POST['pseudo']) && isset($_POST['password'])) {
             }
         } else header("Location: ../index.php?page=login&log_error=passwordincorrect");
     } else header("Location: ../index.php?page=login&log_error=pseudonotfound");
-} else if (isset($_POST['code']) && isset($_GET['accountid'])) {
+}
+
+function confirmAccount()
+{
+    $conn = connect();
+
     $code = htmlspecialchars($_POST['code']);
     $accountid = htmlspecialchars($_GET['accountid']);
 
@@ -61,17 +78,8 @@ if (isset($_POST['pseudo']) && isset($_POST['password'])) {
         if ($code === $datacode['confirmCode']) {
             $setconfirmed = 'UPDATE accounts SET confirmed=1 WHERE id=' . $accountid;
             if ($conn->query($setconfirmed)) {
-                header('Location: ../pages/login.php?log_error=confirmed');
+                header('Location: ../index.php?page=login&log_error=confirmed');
             }
         }
     } else header('Location: ../index.php');
-} else
-    header("Location: ../index.php?page=login&log_error=fieldserror");
-
-function logout()
-{
-    if (isset($_SESSION['user'])) {
-        session_destroy();
-        header("Location: ../index.php");
-    } else header("Location: ../index.php");
 }

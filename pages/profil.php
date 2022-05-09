@@ -1,3 +1,13 @@
+<?php
+if (!isset($_SESSION['user'])) {
+?>
+    <script type="text/javascript">
+        window.location.href = 'index.php?page=home';
+    </script>
+<?php
+}
+?>
+
 <title>Profil - BetGame</title>
 
 <div class="flex">
@@ -39,6 +49,7 @@
                         <div class="profil-buttons flex">
                             <a href="index.php?page=profil&modify=email">Modifier l'adresse e-mail</a>
                             <a href="index.php?page=profil&modify=password">Modifier le mot de passe</a>
+                            <a href="index.php?page=boutique">Besoin de BetCoins ? Achetez-en !</a>
                         </div>
                     <?php
                         break;

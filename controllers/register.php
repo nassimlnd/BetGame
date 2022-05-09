@@ -30,7 +30,7 @@ function registerAccount()
 
                     sendMailConfirmation($confirmCode, $pseudo, $email);
 
-                    header('Location: ../index.php?page=register&reg_error=reg_error=success');
+                    header('Location: ../index.php?page=register&reg_error=success');
                 } else header('Location: ../index.php?page=register&reg_error=invalidpassword');
             } else header("Location: ../index.php?page=register&reg_error=emailnotvalid");
         } else header("Location: ../index.php?page=register&reg_error=alreadyemail");
