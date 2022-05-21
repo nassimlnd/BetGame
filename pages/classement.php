@@ -16,14 +16,11 @@ require('controllers/rank.php');
         </div>
     </div>
 
-    <!--<form action="../pages/scoreboard.php" method="GET">
-        <select name="select" id="select">
-            <option value="1"> par points desc</option>
-            <option value="2"> par points</option>
-            <option value="3"> par pseudo</option>
-        </select>
-        <button type="submit" id="Change">Envoyer</button>
-    </form>-->
+    <div class="scoreboard-buttons">
+        <a href="index.php?page=classement&tri=desc" class="tri-buttons">Tri par ordre croissant</a>
+        <a href="index.php?page=classement&tri=points" class="tri-buttons">Tri par points</a>
+        <a href="index.php?page=classement&tri=pseudo" class="tri-buttons">Tri par pseudo</a>
+    </div>
 
     <div class="scoreboard-lines">
         <div class="main-line">
@@ -45,14 +42,33 @@ require('controllers/rank.php');
 
         $conn = connect();
         $rank = "";
-        $rank = 'SELECT pseudo, points FROM accounts ORDER BY points DESC';
-        $resultrank = $conn->query($rank);
-        $data = $resultrank->fetch_all(MYSQLI_ASSOC);
-        for ($i = 0; $i <= 20; $i++) {
-            if (isset($data[$i])) {
-                $ranknum = $data[$i]['points'];
-                $rankdesc = setRank($ranknum);
-                echo '<div class="line">
+
+        if (isset($_GET['tri'])) {
+            $tri = $_GET['tri'];
+        } else {
+            $tri = 'points';
+        }
+
+        switch ($tri) {
+            case 'desc':
+                $rank = "SELECT pseudo, points FROM accounts ORDER BY points";
+                break;
+            case 'points':
+                $rank = "SELECT pseudo, points FROM accounts ORDER BY points DESC";
+                break;
+            case 'pseudo':
+                $rank = "SELECT pseudo, points FROM accounts ORDER BY pseudo";
+                break;
+        }
+
+        if (isset($rank)) {
+            $resultrank = $conn->query($rank);
+            $data = $resultrank->fetch_all(MYSQLI_ASSOC);
+            for ($i = 0; $i <= 20; $i++) {
+                if (isset($data[$i])) {
+                    $ranknum = $data[$i]['points'];
+                    $rankdesc = setRank($ranknum);
+                    echo '<div class="line">
                         <div class="pos"> 
                             <p>' . $i + 1 . ' </p> 
                         </div>
@@ -66,8 +82,9 @@ require('controllers/rank.php');
                             <p> ' . $rankdesc . ' </p>
                         </div>
                     </div>';
-            } else {
-                break;
+                } else {
+                    break;
+                }
             }
         }
 

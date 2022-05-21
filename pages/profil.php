@@ -188,8 +188,8 @@ if (!isset($_SESSION['user'])) {
 
                         if ($error == "success" && $modify == "email") {
                     ?>
-                            <div class="successbox">
-                                <p>L'adresse e-mail a bien été modifié.</p>
+                            <div class="notification-success show">
+                                <p class="notification-text">✅ L'adresse e-mail a bien été modifié.</p>
                             </div>
                     <?php
                         }
@@ -219,8 +219,8 @@ if (!isset($_SESSION['user'])) {
                         $modify = htmlspecialchars($_GET['modify']);
                         if ($error == "success" && $modify = "password") {
                     ?>
-                            <div class="successbox">
-                                <p>Le mot de passe a bien été modifié.</p>
+                            <div class="notification-success show">
+                                <p class="notification-text">Le mot de passe a bien été modifié.</p>
                             </div>
                     <?php
                         }

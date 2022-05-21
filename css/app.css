@@ -1229,7 +1229,7 @@ h4 {
 }
 
 /*************************************************
-****************** PAGE BOUTIQUE ********************
+****************** PAGE SCOREBOARD ********************
 *************************************************/
 
 .scoreboard {
@@ -1312,8 +1312,26 @@ h4 {
     border-radius: 00.375rem;
 }
 
+.scoreboard-buttons {
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+.tri-buttons {
+    padding: 0.75rem;
+    background-color: #3d5cb2;
+    border-radius: 00.375rem;
+    margin-right: 1rem;
+    color: white;
+}
+
+.tri-buttons:hover {
+    background-color: #31488b;
+}
+
 /*************************************************
-****************** PAGE BOUTIQUE ********************
+****************** PAGE ABOUTUS ********************
 *************************************************/
 
 .aboutus-title {

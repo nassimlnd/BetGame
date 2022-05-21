@@ -81,6 +81,7 @@ function setCoteMatch(mysqli $conn, int $matchid, string $sport, string $league,
         $queryupdatecote = "UPDATE cotes SET home=" . $cotehome . ", away=" . $coteaway . ", draw=" . $cotedraw . " WHERE matchid=" . $matchid . " AND sport='" . $sport . "' AND league='" . $league . "'";
 
         $conn->query($queryupdatecote);
+        echo 'ok';
     } elseif ($bet == 'N') {
         $cotehome = getCoteMatch($matchid, '1', $sport, $league) + 5;
         $coteaway = getCoteMatch($matchid, '2', $sport, $league) + 5;
@@ -88,6 +89,7 @@ function setCoteMatch(mysqli $conn, int $matchid, string $sport, string $league,
         $queryupdatecote = "UPDATE cotes SET home=" . $cotehome . ", away=" . $coteaway . ", draw=" . $cotedraw . " WHERE matchid=" . $matchid . " AND sport='" . $sport . "' AND league='" . $league . "'";
 
         $conn->query($queryupdatecote);
+        echo 'ok';
     }
 }
 
@@ -123,7 +125,17 @@ function getMatches($betID)
                     <p>' . $bet . '</p>
                     </div>';
                 break;
-            case 'football':
+            case 'foot':
+                for ($j = 0; $j < count($matchesJson['response']); $j++) {
+                    if ($matchesJson['response'][$j]['fixture']['id'] == $matchID) {
+                        $nameTeamHome = $matchesJson['response'][$j]['teams']['home']['name'];
+                        $nameTeamAway = $matchesJson['response'][$j]['teams']['away']['name'];
+                    }
+                }
+                echo '<div class="gameline flex">
+                    <p>' . $nameTeamHome . ' - ' . $nameTeamAway . '</p>
+                    <p>' . $bet . '</p>
+                    </div>';
                 break;
         }
     }

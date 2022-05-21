@@ -23,11 +23,11 @@ function editPassword()
     $passwordretype = htmlspecialchars($_POST['passwordretype']);
     $password = htmlspecialchars($_POST['oldpassword']);
 
-    $password = hash("sha256", $password);
+    var_dump($resultoldpassword);
 
-    if ($password === $resultoldpassword['password']) {
+    if (password_verify($password, $password)) {
         if ($newpassword === $passwordretype) {
-            $newpassword = hash("sha256", $newpassword);
+            $newpassword = password_hash($newpassword, PASSWORD_DEFAULT);
             $sql = 'UPDATE accounts SET password ="' . $newpassword . '" WHERE pseudo = "' . $_SESSION['user'] . '" AND password = "' . $resultoldpassword['password'] . '"';
             if ($conn->query($sql)) {
                 header("Location: ../index.php?page=profil&modify=password&error=success");

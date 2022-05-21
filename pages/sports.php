@@ -205,6 +205,10 @@ if ($_GET['sport'] == 'basket') {
                         $logoTeamHome = $footJson['response'][$i]['teams']['home']['logo'];
                         $logoTeamAway = $footJson['response'][$i]['teams']['away']['logo'];
 
+                        if (checkCoteMatch($matchID, $sport, $league) == false) {
+                            setBaseCoteMatch($matchID, $sport, $league);
+                        }
+
                         $coteHome = getCoteMatch($matchID, '1', $sport, $league) / 100;
                         $coteDraw = getCoteMatch($matchID, 'N', $sport, $league) / 100;
                         $coteAway = getCoteMatch($matchID, '2', $sport, $league) / 100;
